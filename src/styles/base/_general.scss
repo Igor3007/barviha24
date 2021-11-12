@@ -183,11 +183,18 @@ main {
 /* ================== */
 
 @mixin section-title {
-    font-style: normal;
-    font-weight: normal;
-    font-size: rem(48);
-    line-height: 110%;
-    color: $black;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 140%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #322B2B;
+
+    & span {
+        color: #B4A775;
+    }
+
+
 
     @media screen and (max-width: $w1280) {
         font-size: rem(38);

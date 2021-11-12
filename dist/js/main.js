@@ -267,11 +267,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var lazysizes__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! lazysizes */ "./node_modules/lazysizes/lazysizes.js");
 /* harmony import */ var lazysizes__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lazysizes__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
 
 
 
 
- //add simple support for background images:
+
+
+swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_5__["Navigation"]]); //add simple support for background images:
 
 document.addEventListener('lazybeforeunveil', function (e) {
   var bg = e.target.getAttribute('data-bg');
@@ -288,6 +291,35 @@ document.addEventListener("DOMContentLoaded", function () {
     var IMaskPhone = new inputmask__WEBPACK_IMPORTED_MODULE_3___default.a("9(999)999-99-99");
     IMaskPhone.mask(document.querySelector("input[type=tel]"));
   }
+  /* swiper gallery */
+
+
+  function updateFraction(slider) {
+    var params = slider.params,
+        activeIndex = slider.activeIndex;
+    document.querySelector('.counter-current').innerText = String(activeIndex + 1).padStart(2, '0');
+    document.querySelector('.counter-total').innerText = slider.slides.length;
+  }
+
+  var swiper2 = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="gallery"]', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    navigation: {
+      nextEl: '[data-swiper-next="gallery"]',
+      prevEl: '[data-swiper-prev="gallery"]'
+    },
+    on: {
+      init: function init() {
+        setTimeout(updateFraction, 0, this);
+      },
+      slideChange: function slideChange() {
+        updateFraction(this);
+      },
+      resize: function resize() {
+        updateFraction(this);
+      }
+    }
+  });
 }); //DOMContentLoaded
 
 /***/ })

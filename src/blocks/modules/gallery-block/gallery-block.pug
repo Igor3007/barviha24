@@ -1,6 +1,28 @@
 mixin gallery-block()
   section.section-gallery-block(id="gallery")
-    .container
-      .gallery-block gallery-block
+    .gallery-block
+      .gallery-block__bg
+        .swiper-container(data-swiper="gallery")
+          .swiper-wrapper
+            each item in [1,1,1,1] 
+              .swiper-slide: +bgimage('./img/common/gallery_1.webp')
+
+      .gallery-block__content
+        .gallery-block__title: .container Галерея
+        .gallery-block__bottom
+          .container
+            .gallery-block__caption Коттедж в поселке “Барвиха 21”
+            .gallery-block__nav
+              .gallery-block__swiper
+                .swiper-nav
+                  .swiper-nav__prev(data-swiper-prev="gallery"): +icons('#ic_swiper-prev', 50)
+                  .swiper-nav__next(data-swiper-next="gallery"): +icons('#ic_swiper-next', 50)
+              .gallery-block__counter
+                span.counter-current 01
+                span /
+                span.counter-total 4
+
+
+
 
 
