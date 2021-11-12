@@ -1,7 +1,23 @@
 include ../main-menu/main-menu.pug
 
-.footer
-  .container footer
+.container 
+  .footer
+    .footer__nav
+      nav
+        ul
+          each item in app.mainMenu
+            li: a(href=item.href)= item.text
+
+    .footer__info
+      .footer__help Нужна помощь? <br> Позвоните или напишите в <br> чат эксперту проекта 
+      .footer__contacts
+        a(href=':tel7(495)-135-13-34') +7(495)-135-13-34
+        ul
+          li.ic_wa: a(href='#'): +icons('#ic_wa-solid')
+          li.ic_tg: a(href='#'): +icons('#ic_tg')
+      .footer__callback
+        button.btn.btn-line Заказать звонок
+
 
 
 +main-menu(app.mainMenu)

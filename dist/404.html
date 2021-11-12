@@ -28,49 +28,30 @@
   </head>
   <body>
     <header class="header-layout-page">
-      <div class="header">
-        <div class="header__logo"><a href="/"><span class="bgimage" data-bg="/img/common/logo.svg"> </span></a></div>
-        <div class="header__mobile">
-          <div class="burger"><i></i><i></i><i></i></div>
-        </div>
-        <div class="header__nav">
-          <nav>
+      <div class="container">
+        <div class="header">
+          <div class="header__mobile">
+            <div class="burger"><i></i><i></i><i></i></div><span>Meню</span>
+          </div>
+          <div class="header__msgr">
             <ul>
-              <li><a href="catalog.html">Каталог недвижимости</a></li>
-              <li><a href="shop.html">Купить</a></li>
-              <li><a href="rent.html">Арендовать</a></li>
-              <li><a href="#">Сoбственникам</a></li>
-              <li><a href="about.html">О компании</a></li>
+              <li class="ic_wa"><a href="#">
+                  <svg width="25" height="25">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_wa-solid"></use>
+                  </svg></a></li>
+              <li class="ic_tg"><a href="#">
+                  <svg width="25" height="25">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_tg"></use>
+                  </svg></a></li>
             </ul>
-          </nav>
+          </div>
+          <div class="header__phones">
+            <div class="header__number"><a href="#"><span> +7 (495) 135-13-34</span></a></div>
+          </div>
+          <div class="header__callback">
+            <button class="btn btn-line">Заказать звонок</button>
+          </div>
         </div>
-        <div class="header__phones">
-          <div class="header__number"><a href="#">
-              <svg width="24" height="24">
-                <use xlink:href="/img/sprites/sprite.svg#ic_phone"></use>
-              </svg><span> +7 495 799 34 99</span></a></div>
-          <div class="header__worktime"><span>Работаем с 9.00 до 19.00</span></div>
-        </div>
-        <div class="header__msgr">
-          <ul>
-            <li class="ic_wa"><a href="#">
-                <svg width="25" height="25">
-                  <use xlink:href="/img/sprites/sprite.svg#ic_wa"></use>
-                </svg></a></li>
-            <li class="ic_tg"><a href="#">
-                <svg width="25" height="25">
-                  <use xlink:href="/img/sprites/sprite.svg#ic_tg"></use>
-                </svg></a></li>
-          </ul>
-        </div>
-        <div class="header__fav"><a href="wish-list.html"><span class="wrp-wishlist">
-              <svg width="25" height="25">
-                <use xlink:href="/img/sprites/sprite.svg#ic_heart"></use>
-              </svg><span class="hide total-wishlist" data-totalwishlist="">0</span></span></a></div>
-        <div class="header__find"><a href="#">
-            <svg width="25" height="25">
-              <use xlink:href="/img/sprites/sprite.svg#ic_loupe"></use>
-            </svg></a></div>
       </div>
     </header>
     <main>
@@ -108,8 +89,41 @@
       </div>
     </main>
     <footer>
-      <div class="footer">
-        <div class="container">footer</div>
+      <div class="container"> 
+        <div class="footer">
+          <div class="footer__nav">
+            <nav>
+              <ul>
+                <li><a href="#about">О поселке</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#catalog">Дома/участки в поселке</a></li>
+                <li><a href="#presentation">Презентация</a></li>
+                <li><a href="#plans">Генплан поселка</a></li>
+                <li><a href="#infrastructure">Инфраструктура</a></li>
+                <li><a href="#team">Команда отдела продаж</a></li>
+                <li><a href="#location">Расположение поселка</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="footer__info">
+            <div class="footer__help">Нужна помощь? <br> Позвоните или напишите в <br> чат эксперту проекта </div>
+            <div class="footer__contacts"><a href=":tel7(495)-135-13-34">+7(495)-135-13-34</a>
+              <ul>
+                <li class="ic_wa"><a href="#">
+                    <svg width="25" height="25">
+                      <use xlink:href="/img/sprites/sprite.svg#ic_wa-solid"></use>
+                    </svg></a></li>
+                <li class="ic_tg"><a href="#">
+                    <svg width="25" height="25">
+                      <use xlink:href="/img/sprites/sprite.svg#ic_tg"></use>
+                    </svg></a></li>
+              </ul>
+            </div>
+            <div class="footer__callback">
+              <button class="btn btn-line">Заказать звонок</button>
+            </div>
+          </div>
+        </div>
       </div>
             <div class="main-menu">
               <div class="main-menu__wrp">
@@ -117,11 +131,14 @@
                 <div class="main-menu__nav">
                   <nav>
                     <ul>
-                      <li><a href="catalog.html">Каталог недвижимости</a></li>
-                      <li><a href="shop.html">Купить</a></li>
-                      <li><a href="rent.html">Арендовать</a></li>
-                      <li><a href="#">Сoбственникам</a></li>
-                      <li><a href="about.html">О компании</a></li>
+                      <li><a href="#about">О поселке</a></li>
+                      <li><a href="#gallery">Галерея</a></li>
+                      <li><a href="#catalog">Дома/участки в поселке</a></li>
+                      <li><a href="#presentation">Презентация</a></li>
+                      <li><a href="#plans">Генплан поселка</a></li>
+                      <li><a href="#infrastructure">Инфраструктура</a></li>
+                      <li><a href="#team">Команда отдела продаж</a></li>
+                      <li><a href="#location">Расположение поселка</a></li>
                     </ul>
                   </nav>
                 </div>

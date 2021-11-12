@@ -1,3 +1,74 @@
-header {}
+header {
+    padding: rem(42) 0;
+    position: fixed;
+    left: 0;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
 
-.header {}
+.header {
+    display: flex;
+    align-items: center;
+    color: #fff;
+
+    &__mobile {
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        & .burger {
+            & i {
+                background-color: #fff;
+                width: 40px;
+            }
+        }
+
+        & span {
+            margin-left: rem(40);
+            font-size: rem(25);
+            margin-top: -0.1em;
+        }
+    }
+
+    &__msgr {
+
+        & svg {
+            fill: #fff;
+        }
+
+        & ul {
+            display: flex;
+
+            & li {
+                margin: 0 7px;
+            }
+        }
+    }
+
+    &__number {
+        padding: 0 rem(15);
+        margin-right: rem(20);
+
+        & a {
+            color: #fff;
+            font-size: rem(25);
+        }
+    }
+
+    &__callback {
+        width: 100%;
+        max-width: 260px;
+
+        & .btn {
+            height: rem(52);
+            color: #fff;
+            border-color: #fff;
+            width: 100%;
+            font-weight: 300;
+            font-size: rem(22);
+            text-transform: none;
+        }
+    }
+}

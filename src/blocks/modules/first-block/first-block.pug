@@ -1,0 +1,40 @@
+mixin first-block ()
+  section.section-first-block
+    .first-block
+      .first-block__bg: +bgimage('./img/common/fb-bg.jpg')
+      .first-block__content
+        .container.animate
+          .first-block__title: h1 Барвиха 21 - 
+          .first-block__subtitle Kоттеджный поселок на Рублево-Успенском шоссе
+          .first-block__props
+            ul
+              li
+                span 49 домов в поселке
+                span Цены от 215 млн. ₽
+              li
+                span Площадь от 478 до 700 м²
+                span Площадь поселка 25 Га
+          .first-block__button
+            button.btn.btn-radius.btn-large Получить презентацию
+            div Получите презентацию <br> объектов от наших экспертов
+
+          .first-block__inmap
+            .fb-inmap
+              .fb-inmap__icon: span: +icons('#ic_pen', 57)
+              .fb-inmap__text Расположение на карте
+
+
+    .present-block
+
+      .present-block__wrp
+        .present-block__bg.lazyload(data-bg="./img/common/fb-bg.jpg")
+        .present-block__content
+          .container
+            .present-block__box 
+              .present-block__text Полная база объектов в поселке Барвиха-21
+              .present-block__btn
+                button.btn.btn-large.btn-blick
+                  +icons('#ic_file', 45)
+                  span Получить презентацию
+
+
