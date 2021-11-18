@@ -137,6 +137,26 @@
         }
     }
 
+    &.btn-white {
+        color: #000;
+        background-color: #fff;
+
+        &:hover {
+            background-color: $main;
+            color: #fff;
+
+            & svg {
+                fill: #fff;
+            }
+        }
+
+        & svg {
+            height: 1em;
+            margin-left: 0.5em;
+            margin-right: 0;
+        }
+    }
+
 
     &.btn-line {
         border: 1px solid $main;

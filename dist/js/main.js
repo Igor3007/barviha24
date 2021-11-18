@@ -207,6 +207,17 @@
 
 /***/ }),
 
+/***/ "./src/blocks/modules/gallery-block/gallery-block.js":
+/*!***********************************************************!*\
+  !*** ./src/blocks/modules/gallery-block/gallery-block.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+
 /***/ "./src/js/import/components.js":
 /*!*************************************!*\
   !*** ./src/js/import/components.js ***!
@@ -235,6 +246,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_common_header_header__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modules_common_header_header__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _modules_common_main_menu_main_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! %modules%/common/main-menu/main-menu */ "./src/blocks/modules/common/main-menu/main-menu.js");
 /* harmony import */ var _modules_common_main_menu_main_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_common_main_menu_main_menu__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/gallery-block/gallery-block.js */ "./src/blocks/modules/gallery-block/gallery-block.js");
+/* harmony import */ var _modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2__);
+
 
  // import "%modules%/video/video";
 // import "%modules%/catalog/minicard/minicard";
@@ -320,6 +334,53 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+  var swiperMinicard = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="minicard"]', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    navigation: {
+      nextEl: '[data-swiper-next="minicard"]',
+      prevEl: '[data-swiper-prev="minicard"]'
+    }
+  });
+  var swiperTeam = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="team"]', {
+    slidesPerView: 2,
+    spaceBetween: 100,
+    navigation: {
+      nextEl: '[data-swiper-next="team"]',
+      prevEl: '[data-swiper-prev="team"]'
+    }
+  });
+  /* wewewewewe */
+
+  /* ============================================================== */
+
+  /* ============================================================== */
+  // function galleryShowMore(setmax){
+  //     var container = document.querySelector('.catalog-block__list')
+  //     var table = container.querySelector('ul')
+  //     var max = (setmax ? setmax : 30)
+  //     if(table.querySelectorAll('').length <= max){
+  //         $('[data-gallery="tmore"]').hide()
+  //     }
+  //     table.find('li').not('.li-show').each(function(index){
+  //         if(index < max ){
+  //             $(this).addClass('li-show')
+  //         }
+  //     })
+  //   }
+  //   $(document).on('click', '[data-gallery="tmore"]',function(event){
+  //       galleryShowMore(12)
+  //   })
+  //   galleryShowMore(12)
+  //   /* ================================================== */
+  //   /* ================================================== */
+  //   $(document).on('click', '[data-tabs="nav"] li', function(event){
+  //       if($(this).index() == 4){
+  //           $('.leagues__arhive').show()
+  //       }else{
+  //           $('.leagues__arhive').hide()
+  //       }
+  // })
 }); //DOMContentLoaded
 
 /***/ })

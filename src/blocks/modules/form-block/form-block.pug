@@ -1,5 +1,18 @@
 mixin form-block()
-  section.sectionform-block-(id="form")
+  section.section-form-block(id="form")
     .container
-      .form-block form-block
+      .form-block
+        .form-block__title Получить консультацию
+        .form-block__desc Укажите свои контакты и менеджер свяжится с вами
+        .form-block__form
+          form(action='#' method='POST')
+            .form
+              .form__item
+                .form__subitem
+                  .form__title Номер телефона
+                  input(type="tel" placeholder="+7(___)___-__-__")
+                .form__subitem
+                  button.btn.btn-large(type="submit") Получить консультацию
+                  span.now-works Сейчас работаем
+
 

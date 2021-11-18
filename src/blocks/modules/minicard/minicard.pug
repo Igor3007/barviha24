@@ -1,0 +1,31 @@
+mixin minicard(data, slider)
+  .minicard
+
+    .minicard__image
+      if slider
+        .swiper-container(data-swiper="minicard")
+          .swiper-wrapper
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
+          .swiper-nav-mini
+            .swiper-nav-mini__prev(data-swiper-prev="minicard"): +icons('#ic_swiper-prev', 30)
+            .swiper-nav-mini__next(data-swiper-next="minicard"): +icons('#ic_swiper-next', 30)
+      else
+        +bgimage('/img/catalog/r'+data+'.jpg')
+
+    .minicard__desc
+      .minicard__price
+        .minicard__rub  250 000 000 руб
+
+      .minicard__props
+        ul
+          li Дом: <span>1120 м2</span>
+          li Спален: <span>3</span>
+          li Отделка: <span>Под ключ с мебелью</span>
+
+
+    .minicard__link
+      a(href='/page-apartment.html'): button.btn Подробнее
+

@@ -1,5 +1,24 @@
 mixin team-block()
-  section.sectionteam-block-(id="team")
+  section.section-team-block(id="team")
     .container
-      .team-block team-block
+      .team-block
+        .team-block__title <span>Команда</span> <br> отдела продаж
+        .team-block__swiper
+          .swiper-container(data-swiper="team")
+            .swiper-wrapper
+              each item in app.team
+                .swiper-slide: +team-member(item)
+          .swiper-nav
+            .swiper-nav__prev(data-swiper-prev="team"): +icons('#ic_swiper-prev')
+            .swiper-nav__next(data-swiper-next="team"): +icons('#ic_swiper-next')
 
+mixin team-member(data)
+  .team-member
+    .team-member__wrp
+      .team-member__head
+        .team-member__photo: +bgimage(data.img)
+        .team-member__data
+          .team-member__post= data.post
+          .team-member__name= data.name
+      .team-member__main
+        span= data.text

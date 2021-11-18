@@ -1,5 +1,28 @@
 mixin advantages-block()
-  section.section-advantages-block(id="advantages")
-    .container
-      .advantages-block advantages-block
+  section.section-advantages-block(id="gallery")
+    .advantages-block
+      .advantages-block__bg
+        .swiper-container(data-swiper="gallery")
+          .swiper-wrapper
+            each item in [1,1,1,1] 
+              .swiper-slide: +bgimage('./img/common/gallery_1.webp')
+
+      .advantages-block__content
+        .advantages-block__title: .container Галерея
+        .advantages-block__bottom
+          .container
+            .advantages-block__caption Коттедж в поселке “Барвиха 21”
+            .advantages-block__nav
+              .advantages-block__swiper
+                .swiper-nav
+                  .swiper-nav__prev(data-swiper-prev="gallery"): +icons('#ic_swiper-prev', 50)
+                  .swiper-nav__next(data-swiper-next="gallery"): +icons('#ic_swiper-next', 50)
+              .advantages-block__counter
+                span.counter-current 01
+                span /
+                span.counter-total 4
+
+
+
+
 

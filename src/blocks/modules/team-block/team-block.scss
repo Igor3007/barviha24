@@ -1,0 +1,109 @@
+.section-team-block {
+    @include section-padding;
+    background-color: #F4F4F4;
+
+    @media screen and (min-width: $w1376) {
+        padding: 100px 0;
+    }
+}
+
+.team-block {
+    &__title {
+        @include section-title;
+
+        padding-bottom: rem(40);
+    }
+
+    &__swiper {
+        position: relative;
+    }
+
+    & .swiper-nav {
+
+        position: absolute;
+        top: 50%;
+        z-index: 2;
+        left: -12%;
+        right: -12%;
+        height: 0px;
+
+        display: flex;
+        justify-content: space-between;
+
+        &__next,
+        &__prev {
+            border-color: #5E5959;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: translateY(-50%);
+
+            &.swiper-button-disabled {
+                opacity: 0.2;
+                cursor: default;
+            }
+
+            & svg {
+                fill: #5E5959;
+                width: rem(35);
+                height: rem(35);
+            }
+        }
+    }
+}
+
+.team-member {
+
+    background-color: #FFF;
+    border-radius: rem(21);
+    padding: rem(50) rem(40);
+
+    &__photo {
+        max-width: rem(195);
+        border-radius: 50%;
+        overflow: hidden;
+        width: 100%;
+        margin-right: rem(40);
+
+        & .bgimage {
+            padding-top: 100%;
+            @include bgimage-cover;
+            background-color: #eee;
+        }
+    }
+
+    &__head {
+        display: flex;
+        align-items: center;
+        padding-bottom: rem(40);
+    }
+
+    &__post {
+
+        font-weight: 600;
+        font-size: rem(28);
+        line-height: 125%;
+        color: $gold;
+        padding-bottom: rem(20);
+
+
+    }
+
+    &__name {
+        font-weight: 600;
+        font-size: rem(28);
+        line-height: 125%;
+        border-top: 2px solid #c4c4c4;
+        padding-top: rem(20);
+
+    }
+
+    &__main {
+        & span {
+            font-size: rem(19);
+            line-height: 175%;
+            color: #737373;
+            @include line-clamp(7);
+        }
+    }
+}

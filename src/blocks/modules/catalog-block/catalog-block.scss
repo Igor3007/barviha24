@@ -1,0 +1,83 @@
+.section-catalog-block {
+    @include section-padding;
+}
+
+.catalog-block {
+    &__title {
+        @include section-title;
+        text-align: center;
+        padding-bottom: rem(40);
+    }
+
+    &__nav {
+
+        padding-bottom: rem(40);
+
+        & ul {
+
+            display: flex;
+            justify-content: center;
+
+            & li {
+
+                &.active {
+                    & a {
+                        background-color: $main;
+                        color: #fff;
+                    }
+                }
+
+                &:not(.active):hover {
+                    & a {
+                        background-color: #edf1f5;
+                    }
+                }
+
+                & a {
+
+
+                    font-weight: 600;
+                    font-size: rem(36);
+                    line-height: 192%;
+                    text-align: center;
+                    background-color: #F6F7F8;
+                    padding: 0.45em 2em;
+                    display: block;
+                    min-width: 310px;
+                    transition: 0.5s ease;
+
+
+
+                }
+            }
+        }
+    }
+
+    &__list {
+        @include row-flex();
+        padding-top: rem(30)
+    }
+
+    &__item {
+        @include col();
+        @include size-w940(4);
+        @include size(12);
+
+        margin-bottom: rem(40);
+    }
+
+    &__more {
+        justify-content: center;
+        display: flex;
+        padding-top: 30px;
+
+        & .btn {
+
+            background-color: #F6F7F8;
+
+            & svg {
+                fill: #000;
+            }
+        }
+    }
+}

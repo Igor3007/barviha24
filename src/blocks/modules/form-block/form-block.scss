@@ -1,0 +1,56 @@
+.section-form-block {
+    @include section-padding;
+
+    @media screen and (min-width: $w1376) {
+        padding: 100px 0;
+    }
+}
+
+.form-block {
+    &__title {
+        font-weight: 600;
+        font-size: rem(50);
+        line-height: 120%;
+        text-align: center;
+        color: #322B2B;
+        padding-bottom: rem(30);
+    }
+
+    &__desc {
+        font-size: rem(28);
+        line-height: 141%;
+        color: #322B2B;
+        text-align: center;
+        padding-bottom: rem(10);
+    }
+
+    &__form {
+        max-width: rem(910);
+        margin: 0 auto;
+
+        & .form input {
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            padding-left: 0;
+            height: 65px;
+            border-color: #C4C4C4;
+            max-width: 90%;
+
+            &:focus {
+                border-color: $main;
+            }
+        }
+
+        & .form button {
+            margin-top: rem(50);
+        }
+    }
+}
+
+.form__subitem>span.now-works {
+    color: #2C2C2C;
+    text-align: center;
+    max-width: 400px;
+    padding-top: 15px;
+}

@@ -1,5 +1,6 @@
 import "%modules%/common/header/header";
 import "%modules%/common/main-menu/main-menu";
+import "%modules%/gallery-block/gallery-block.js";
  
 // import "%modules%/video/video";
 // import "%modules%/catalog/minicard/minicard";

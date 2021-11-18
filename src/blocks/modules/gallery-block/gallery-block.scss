@@ -4,12 +4,20 @@
 
     &__title {
         font-weight: 600;
-        font-size: 50px;
+        font-size: rem(50);
         line-height: 140%;
         letter-spacing: 0.02em;
         text-transform: uppercase;
         color: #322B2B;
         padding: rem(100) 0 0 0;
+
+
+
+        @media screen and (max-width: $w1280) {
+            padding: rem(60) 0 0 0;
+
+
+        }
     }
 
     &__bg {
@@ -32,12 +40,18 @@
                 background: linear-gradient(0deg, #000000 0%, rgba(4, 4, 4, 0) 100%);
                 opacity: 0.6;
                 z-index: 2;
+
+                @media screen and (max-width: $w760) {
+                padding-top: 95%
+                }
             }
 
             & .bgimage {
                 padding-top: 48.8%;
                 @include bgimage-cover;
                 min-height: rem(768);
+
+                 
             }
         }
     }
@@ -60,17 +74,32 @@
         & .container {
             display: flex;
             align-items: flex-end;
+
+            @media screen and (max-width: $w480) {
+                flex-direction: column-reverse;
+
+                &>div {
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
         }
     }
 
     &__caption {
-        font-size: 36px;
-        line-height: 150%;
+        font-size: rem(36);
+        line-height: 125%;
         font-weight: 600;
         color: #FFFFFF;
         margin-right: auto;
+        max-width: 70%;
 
         padding-bottom: rem(60);
+
+        @media screen and (max-width: $w760) {
+            font-size: 28px;
+            padding-bottom: rem(30);
+        }
 
     }
 
@@ -79,13 +108,49 @@
         line-height: rem(84);
         font-weight: 600;
         color: #fff;
-        padding: 30px 0;
+        padding: rem(30) 0;
+
+        @media screen and (max-width: $w760) {
+            font-size: 61px;
+            line-height: 61px;
+            padding: 15px 0;
+        }
+
+        @media screen and (max-width: $w360) {
+            font-size: 40px;
+            line-height: 40px;
+        }
 
         & .counter-current {
             font-size: rem(151);
             line-height: rem(151);
 
+            @media screen and (max-width: $w760) {
+                font-size: rem(105);
+                line-height: rem(105);
+            }
+
+            @media screen and (max-width: $w360) {
+                font-size: rem(80);
+                line-height: rem(80);
+            }
+
         }
+
+
+    }
+
+    &__nav {
+        @media screen and (max-width: $w480) {
+            display: flex;
+            align-items: center;
+            flex-direction: row-reverse;
+        }
+
+    }
+
+    &__swiper {
+        margin-left: auto;
     }
 }
 
@@ -102,10 +167,31 @@
         height: rem(104);
         margin: 0 10px;
         cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media screen and (max-width: $w1280) {
+            width: rem(80);
+            height: rem(80);
+        }
+
+        @media screen and (max-width: $w360) {
+            width: rem(70);
+            height: rem(70);
+        }
 
         & svg {
             fill: #fff;
-            filter: invert(1);
+            width: rem(50);
+            height: rem(50);
+
+            @media screen and (max-width: $w1280) {
+                width: rem(35);
+                height: rem(35);
+            }
+             
+            
         }
     }
 
