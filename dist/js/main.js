@@ -288,7 +288,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_5__["Navigation"]]); //add simple support for background images:
+swiper__WEBPACK_IMPORTED_MODULE_5__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_5__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_5__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_5__["EffectFade"]]); //add simple support for background images:
 
 document.addEventListener('lazybeforeunveil', function (e) {
   var bg = e.target.getAttribute('data-bg');
@@ -334,6 +334,36 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   });
+
+  function updateFraction2(slider) {
+    var params = slider.params,
+        activeIndex = slider.activeIndex;
+    var slideContent = slider.slides[activeIndex].querySelector('.adv-block-content').outerHTML;
+    document.querySelector('.advantages-block__slide .container').innerHTML = slideContent;
+    document.querySelector('.advantages-block__counter .counter-current').innerText = String(activeIndex + 1).padStart(2, '0');
+    document.querySelector('.advantages-block__counter .counter-total').innerText = slider.slides.length;
+  }
+
+  var swiperAdv = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="advantages"]', {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    effect: 'fade',
+    navigation: {
+      nextEl: '[data-swiper-next="advantages"]',
+      prevEl: '[data-swiper-prev="advantages"]'
+    },
+    on: {
+      init: function init() {
+        setTimeout(updateFraction2, 0, this);
+      },
+      slideChange: function slideChange() {
+        updateFraction2(this);
+      },
+      resize: function resize() {
+        updateFraction2(this);
+      }
+    }
+  });
   var swiperMinicard = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="minicard"]', {
     slidesPerView: 1,
     spaceBetween: 0,
@@ -348,6 +378,14 @@ document.addEventListener("DOMContentLoaded", function () {
     navigation: {
       nextEl: '[data-swiper-next="team"]',
       prevEl: '[data-swiper-prev="team"]'
+    }
+  });
+  var swiperTeam2 = new swiper__WEBPACK_IMPORTED_MODULE_5__["default"]('[data-swiper="similar"]', {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '[data-swiper-next="similar"]',
+      prevEl: '[data-swiper-prev="similar"]'
     }
   });
   /* wewewewewe */

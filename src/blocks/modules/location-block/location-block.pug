@@ -1,5 +1,20 @@
 mixin location-block()
   section.section-location-block(id="location")
     .container
-      .location-block location-block
+      .location-block
+        .location-block__wrp
+          .location-block__left
+            .location-block__title <span> Расположение <br> </span> поселка
+            .location-block__desc Поселок уникален своим месторасположением, всего 5 км от МКАД по Рублево-Успенскому шоссе. От шоссе в «Барвиху XXI» ведет освещенная лесная дорога.
+            .location-block__phone Круглосуточная горячая линия:
+            .location-block__number: a(href='tel:+7(495)-135-13-34') +7(495)-135-13-34
+            .location-block__callback
+              button.btn.btn-line Заказать звонок
+              ul
+                li: a(href='#'): +icons('#ic_tg')
+                li: a(href='#'): +icons('#ic_wa')
+
+
+          .location-block__right
+            +bgimage('./img/common/photo_4.webp')
 

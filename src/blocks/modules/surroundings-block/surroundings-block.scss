@@ -1,0 +1,99 @@
+.section-surroundings-block {
+    background-color: #F4F4F4;
+    @include section-padding();
+
+    @media screen and (min-width: $w1376) {
+        padding: rem(150) 0 rem(100) 0;
+    }
+}
+
+.surroundings-block {
+
+    &__title {
+        @include section-title;
+        padding-bottom: rem(100);
+
+        @media screen and (max-width: $w1376) {
+            padding-bottom: rem(50);
+        }
+    }
+
+
+    &__item {
+        margin-bottom: rem(145);
+
+        @media screen and (max-width: $w1440) {
+            margin-bottom: rem(80);
+        }
+
+        &:nth-child(even) {
+            & .surroundings-item {
+                flex-direction: row-reverse;
+
+                &__img {
+                    & .bgimage {
+                        margin-right: 0;
+                        margin-left: -34%;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.surroundings-item {
+
+
+
+    $offset: 130px;
+    $offset_1440: 60px;
+
+    @include u-row-flex($offset);
+
+    @media screen and (max-width: $w1440) {
+        @include u-row-flex($offset_1440);
+    }
+
+    &__img,
+    &__main {
+        @include u-col($offset);
+        @include u-size(6, 12, $offset);
+
+        @media screen and (max-width: $w1440) {
+            @include u-col($offset_1440);
+            @include u-size(6, 12, $offset_1440);
+        }
+
+        @media screen and (max-width: $w940) {
+            @include u-col($offset_1440);
+            @include u-size(12, 12, $offset_1440);
+        }
+    }
+
+
+    &__title {
+        @include section-subtitle;
+        padding-bottom: rem(40);
+    }
+
+    &__desc {
+        font-size: rem(28);
+        line-height: 140%;
+        max-width: 90%;
+    }
+
+    &__img {
+        & .bgimage {
+            padding-top: 97%;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: block;
+            transition: 0.3s ease;
+            background-color: #eee;
+            margin-right: -34%;
+        }
+    }
+}

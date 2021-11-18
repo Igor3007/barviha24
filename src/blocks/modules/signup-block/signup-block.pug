@@ -1,5 +1,16 @@
 mixin signup-block()
   section.section-signup-block(id="signup")
     .container
-      .signup-block signup-block
+      .signup-block
+        .signup-block__left
+          .signup-block__title Запишитесь <br> на экскурсию
+          .signup-block__desc Укажите свои контакты и менеджер <br> свяжится с вами для уточнения <br> удобного времени экскурсии.
 
+        .signup-block__right
+          .signup-block__form
+            form(action='#' method='POST')
+              .form
+                .form__item: .form__subitem: input(type="text" placeholder="Введите Ваше Имя")
+                .form__item: .form__subitem: input(type="tel" placeholder="Введите Ваш телефон")
+                .form__item: .form__subitem: button.btn.btn-large(type="submit") Отправить
+                .form__item: +checkbox('Я соглашаюсь на обработку персональных данных')

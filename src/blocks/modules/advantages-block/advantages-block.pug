@@ -1,22 +1,29 @@
 mixin advantages-block()
-  section.section-advantages-block(id="gallery")
+  section.section-advantages-block(id="advantages")
     .advantages-block
       .advantages-block__bg
-        .swiper-container(data-swiper="gallery")
+        .swiper-container(data-swiper="advantages")
           .swiper-wrapper
-            each item in [1,1,1,1] 
-              .swiper-slide: +bgimage('./img/common/gallery_1.webp')
+            each item in app.adv 
+              .swiper-slide
+                +bgimage(item.img)
+                .adv-block-content
+                  .adv-block-content__title= item.title
+                  .adv-block-content__desc Рядом с Барвихинским лесопарком, на площади в 45 гектаров, располагаются 64 домовладения. Максимальная площадь участка — 45 соток. Дома площадью от 600 до 1400 квадратных метров органично смотрятся на фоне высоких деревьев.
 
       .advantages-block__content
-        .advantages-block__title: .container Галерея
+        .advantages-block__title: .container Преимущества
+        .advantages-block__slide
+          .container
+
         .advantages-block__bottom
           .container
-            .advantages-block__caption Коттедж в поселке “Барвиха 21”
+            .advantages-block__caption
             .advantages-block__nav
               .advantages-block__swiper
                 .swiper-nav
-                  .swiper-nav__prev(data-swiper-prev="gallery"): +icons('#ic_swiper-prev', 50)
-                  .swiper-nav__next(data-swiper-next="gallery"): +icons('#ic_swiper-next', 50)
+                  .swiper-nav__prev(data-swiper-prev="advantages"): +icons('#ic_swiper-prev', 50)
+                  .swiper-nav__next(data-swiper-next="advantages"): +icons('#ic_swiper-next', 50)
               .advantages-block__counter
                 span.counter-current 01
                 span /

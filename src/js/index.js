@@ -7,8 +7,9 @@ import lazysizes from "lazysizes"
 import Swiper, {
   Pagination,
   Navigation,
+  EffectFade,
 } from 'swiper';
-Swiper.use([Pagination, Navigation]);
+Swiper.use([Pagination, Navigation, EffectFade]);
 
 
 //add simple support for background images:
@@ -67,6 +68,43 @@ document.addEventListener("DOMContentLoaded", function () {
 
   });
 
+  function updateFraction2(slider) {
+    const { params, activeIndex } = slider;
+
+    let slideContent = slider.slides[activeIndex].querySelector('.adv-block-content').outerHTML
+
+    document.querySelector('.advantages-block__slide .container').innerHTML = slideContent;
+  
+    document.querySelector('.advantages-block__counter .counter-current').innerText = String(activeIndex + 1).padStart(2, '0')
+    document.querySelector('.advantages-block__counter .counter-total').innerText = (slider.slides.length)
+     
+  }
+
+
+  var swiperAdv = new Swiper('[data-swiper="advantages"]', {
+
+    slidesPerView: 1,
+    spaceBetween: 0,
+    effect: 'fade',
+    navigation: {
+      nextEl: '[data-swiper-next="advantages"]',
+      prevEl: '[data-swiper-prev="advantages"]',
+    },
+    
+    on: {
+      init() {
+        setTimeout(updateFraction2, 0, this);
+      },
+      slideChange() {
+        updateFraction2(this);
+      },
+      resize() {
+        updateFraction2(this);
+      },
+    },
+
+  });
+
 
   var swiperMinicard = new Swiper('[data-swiper="minicard"]', {
 
@@ -85,6 +123,16 @@ document.addEventListener("DOMContentLoaded", function () {
     navigation: {
       nextEl: '[data-swiper-next="team"]',
       prevEl: '[data-swiper-prev="team"]',
+    },
+  });
+
+  var swiperTeam2 = new Swiper('[data-swiper="similar"]', {
+
+    slidesPerView: 3,
+    spaceBetween: 30,
+    navigation: {
+      nextEl: '[data-swiper-next="similar"]',
+      prevEl: '[data-swiper-prev="similar"]',
     },
   });
 

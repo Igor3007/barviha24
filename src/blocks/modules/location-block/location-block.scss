@@ -1,0 +1,77 @@
+.section-location-block {
+    @include section-padding;
+}
+
+.location-block {
+    &__wrp {
+        @include row-flex;
+        align-items: center;
+    }
+
+    &__right,
+    &__left {
+        @include col();
+        @include size-w940(6);
+        @include size(12);
+    }
+
+    &__left {
+        padding-right: rem(50);
+    }
+
+    &__right {
+        & .bgimage {
+            padding-top: 100%;
+            @include bgimage-cover;
+        }
+    }
+
+    &__title {
+        @include section-title;
+        padding-bottom: rem(45);
+    }
+
+    &__desc {
+        font-size: rem(28);
+        padding-bottom: rem(45);
+        line-height: 140%;
+
+    }
+
+    &__phone {
+        font-size: rem(24);
+        padding-bottom: rem(20);
+    }
+
+    &__number {
+
+        padding-bottom: rem(30);
+
+        & a {
+            font-size: rem(32);
+            font-weight: 600;
+        }
+    }
+
+    &__callback {
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & ul {
+
+            display: flex;
+
+            & li {
+
+                margin: 0 rem(10);
+
+                & svg {
+                    width: rem(32);
+                    height: rem(32);
+                }
+            }
+        }
+    }
+}

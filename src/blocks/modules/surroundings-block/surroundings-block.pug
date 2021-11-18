@@ -1,5 +1,15 @@
 mixin surroundings-block()
   section.section-surroundings-block(id="surroundings")
     .container
-      .surroundings-block surroundings-block
+      .surroundings-block
+        .surroundings-block__title <span>Окружение поселка</span> “Барвиха 21”
+        .surroundings-block__list
+          each item in app.surr
+            .surroundings-block__item: +surroundings-item(item)
 
+mixin surroundings-item(data)
+  .surroundings-item
+    .surroundings-item__main
+      .surroundings-item__title= data.title
+      .surroundings-item__desc= data.desc
+    .surroundings-item__img: +bgimage(data.img)

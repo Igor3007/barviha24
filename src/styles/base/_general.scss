@@ -214,11 +214,11 @@ main {
 }
 
 @mixin section-subtitle {
-    font-style: normal;
-    font-weight: normal;
-    font-size: rem(36);
-    line-height: 110%;
-    color: $black;
+
+    font-weight: 600;
+    font-size: rem(50);
+    line-height: 125%;
+    color: #322B2B;
 
     @media screen and (max-width: $w1280) {
         font-size: rem(30);

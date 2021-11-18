@@ -55,13 +55,13 @@
 
     & input {
         &:hover~.checkbox__elem {
-            border-color: #fff;
+            // border-color: #fff;
         }
 
         &:checked~.checkbox__elem {
             background-color: #fff;
             z-index: 2;
-            border-color: #fff;
+            // border-color: #fff;
 
         }
 
@@ -85,7 +85,9 @@
     display: flex;
     position: relative;
     cursor: pointer;
-    font-size: 14px /*14*/;
+    font-size: 14px
+        /*14*/
+    ;
     line-height: 140%;
     -webkit-user-select: none;
     -moz-user-select: none;

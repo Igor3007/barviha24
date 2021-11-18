@@ -1,5 +1,21 @@
 mixin similar-block()
   section.section-similar-block(id="similar")
     .container
-      .similar-block similar-block
+      .similar-block 
+        .similar-block__title <span>ПОСМОТРИТЕ</span> <br> ПОХОЖИЕ ПОСЕЛКИ
+        .similar-block__slider
+          .swiper-container(data-swiper="similar")
+            .swiper-wrapper
+              each item in app.villages
+                .swiper-slide: +item-village(item)
+          .swiper-nav
+            .swiper-nav__prev(data-swiper-prev="similar"): +icons('#ic_swiper-prev')
+            .swiper-nav__next(data-swiper-next="similar"): +icons('#ic_swiper-next')
 
+mixin item-village(data)
+  .item-village
+    .item-village__name= data.name
+    .item-village__address= data.address
+    .item-village__img: +bgimage(data.img)
+    .item-village__btn
+      a(href='#' target="_blank" ): button.btn.btn-large Смотреть поселок

@@ -1,0 +1,79 @@
+.section-signup-block {
+    @include section-padding();
+
+    @media screen and (min-width: $w1376) {
+        padding: rem(100) 0;
+    }
+}
+
+.signup-block {
+
+    @include row-flex;
+    align-items: center;
+
+    &__left {
+        @include col();
+        @include size-w940(6);
+        @include size(12);
+    }
+
+    &__right {
+        @include col();
+        @include size-w940(6);
+        @include size(12);
+    }
+
+    &__title {
+        @include section-subtitle;
+        max-width: rem(600);
+        padding-bottom: rem(35);
+
+        @media screen and (max-width: $w1376) {
+            padding-bottom: rem(25);
+        }
+    }
+
+    &__desc {
+        font-size: rem(28);
+        line-height: 140%;
+        max-width: rem(600);
+    }
+
+    &__form {
+        background-color: #F4F4F4;
+        padding: rem(57) rem(50);
+        border-radius: 21px;
+
+        max-width: rem(565);
+
+        & .form__item {
+            margin: rem(13) 0;
+        }
+
+        & .checkbox__elem {
+            border: 1px solid #878787;
+            border-radius: 1px;
+            box-sizing: content-box;
+        }
+
+        & .checkbox__text {
+            color: #2C2C2C;
+            font-size: rem(16);
+        }
+
+        & .form input {
+            border-color: transparent;
+            height: rem(75);
+            color: #2C2C2C;
+        }
+
+        & button.btn {
+            height: rem(73);
+            margin: rem(15) 0 rem(10) 0;
+            width: 100%;
+            max-width: rem(253);
+        }
+    }
+
+
+}
