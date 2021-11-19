@@ -1,0 +1,33 @@
+mixin card-slider()
+  .card-slider
+    .card-slider__title-mobile ДОМ BARVIKHA21-KP ID 9433
+    .card-slider__id-mobile Дом ID 7625
+    .card-slider__gallery
+      .swiper-container(data-swiper="card-gallery")
+        //- .swiper-topbar
+        //-   .swiper-topbar__stick: span(style="background-color: #f00") Акция
+        //-   .swiper-topbar__brand
+        //-     +bgimage('/img/brands/1.png')
+
+        .swiper-wrapper
+          each img in [0,1,2,3]
+            .swiper-slide
+              +bgimage('/img/catalog/cart_'+img+'.webp')
+      // Add Arrows
+      .swiper-button-next.swiper-button-white(data-swiper-next="card-gallery")
+      .swiper-button-prev.swiper-button-white(data-swiper-prev="card-gallery")
+
+
+
+      .swiper-bottombar
+        .swiper-bottombar__fullscreen: +icons('#ic_fullscreen')
+
+    .card-slider__thumbs
+
+      .swiper-container(data-swiper="thumbs-gallery")
+        .swiper-wrapper
+          each img in [0,1,2,3]
+            .swiper-slide(data-gallery-src='/img/catalog/cart_'+img+'.webp'): +bgimage('/img/catalog/cart_'+img+'.webp')
+
+    .card-slider__desc Новый современный дом! Выгодная цена. Двухэтажный коттедж с цокольным этажом и пристроенным гаражом на 2 машины, ворота ламельные с дистанционным управлением, утепленные.
+

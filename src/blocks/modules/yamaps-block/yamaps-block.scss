@@ -1,0 +1,30 @@
+.section-yamaps-block {
+    @include section-padding;
+    padding-bottom: 0;
+}
+
+.yamaps-block {
+    padding-top: 30%;
+    min-height: 400px;
+    background-color: #eee;
+    position: relative;
+
+    & .mapcontainer {
+        @include layer(1);
+
+        // & span {
+        //     width: 40px;
+        //     height: 40px;
+        //     border: 2px solid $main;
+        //     opacity: 0.6;
+        //     display: block;
+        //     margin: auto;
+        //     top: 50%;
+        //     position: relative;
+        //     margin-top: -20px;
+        //     border-left-color: transparent;
+        //     border-radius: 50%;
+        //     animation: rotate 0.4s linear infinite forwards;
+        // }
+    }
+}

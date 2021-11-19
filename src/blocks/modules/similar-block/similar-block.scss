@@ -60,7 +60,6 @@
         line-height: 140%;
         color: #322B2B;
         padding-bottom: rem(12);
-
     }
 
     &__address {
@@ -69,9 +68,6 @@
         line-height: 140%;
         color: #878080;
         padding-bottom: rem(20);
-
-
-
     }
 
     &__img {
@@ -85,5 +81,9 @@
         padding-top: rem(50);
         display: flex;
         justify-content: center;
+
+        & .btn {
+            height: rem(70);
+        }
     }
 }

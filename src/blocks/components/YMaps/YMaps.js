@@ -101,7 +101,7 @@ export function YMaps(option){
                     // Создание метки  
                     PlacemarkArr[i] = new ymaps.Placemark(_this.mapsParams.points[i].coordinates.split(','), {
                         balloonContent: '',
-                        iconContent: '<span class="icons-marker" style="background-image: url('+_this.mapsParams.points[i].markerImage+')" ></span>',
+                        iconContent: '',
                         //hintContent: 'hint',
                     }, {
                         balloonShadow: false,
@@ -117,7 +117,7 @@ export function YMaps(option){
         
                         // balloonContentLayout: LayoutActivatePoint,
                         iconLayout: 'default#imageWithContent',
-                        iconImageHref: _this.mapsParams.icons.default,
+                        iconImageHref: _this.mapsParams.points[i].markerImage,
                         iconImageSize: sizeIcons,
                         iconImageOffset: placemarkOffset,
                         pane: 'balloon',

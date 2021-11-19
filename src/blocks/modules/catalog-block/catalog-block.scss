@@ -21,6 +21,8 @@
             & li {
 
                 &.active {
+
+                    & span,
                     & a {
                         background-color: $main;
                         color: #fff;
@@ -28,11 +30,14 @@
                 }
 
                 &:not(.active):hover {
+
+                    & span,
                     & a {
                         background-color: #edf1f5;
                     }
                 }
 
+                & span,
                 & a {
 
 
@@ -45,6 +50,7 @@
                     display: block;
                     min-width: 310px;
                     transition: 0.5s ease;
+                    cursor: pointer;
 
 
 
@@ -64,12 +70,17 @@
         @include size(12);
 
         margin-bottom: rem(40);
+        animation: slide-up 0.3s ease;
     }
 
     &__more {
         justify-content: center;
         display: flex;
         padding-top: 30px;
+
+        &.hide {
+            display: none;
+        }
 
         & .btn {
 

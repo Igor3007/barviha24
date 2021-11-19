@@ -171,8 +171,8 @@
             <div class="catalog-block__title">Дома и участки в <br> поселке “Барвиха 21”</div>
             <div class="catalog-block__nav">
               <ul>
-                <li class="active" data-filter="house"><a href="#">Дома</a></li>
-                <li data-filter="area"><a href="#">Yчастки</a></li>
+                <li class="active" data-filter="house"><span>Дома</span></li>
+                <li data-filter="area"><span>Участки</span></li>
               </ul>
             </div>
             <div class="catalog-block__list">
@@ -961,8 +961,8 @@
         </div>
       </section>
       <section class="section-yamaps-block" id="yamaps">
-        <div class="container">
-          <div class="yamaps-block">yamaps-block</div>
+        <div class="yamaps-block">
+          <div class="mapcontainer" id="mapcontainer"><span></span></div>
         </div>
       </section>
     </main>
@@ -1005,7 +1005,11 @@
       </div>
             <div class="main-menu">
               <div class="main-menu__wrp">
-                <div class="main-menu__close"></div>
+                <div class="main-menu__close">
+                  <svg width="25" height="25">
+                    <use xlink:href="/img/sprites/sprite.svg#ic_cross"></use>
+                  </svg>
+                </div>
                 <div class="main-menu__nav">
                   <nav>
                     <ul>
@@ -1022,7 +1026,9 @@
                 </div>
                 <div class="main-menu__phones">
                   <div class="main-menu__number"><a href="#">+7 495 799 34 99</a></div>
-                  <div class="main-menu__worktime"><span>Работаем с 9.00 до 19.00</span></div>
+                  <div class="main-menu__callback">
+                    <button class="btn btn-line">Заказать звонок</button>
+                  </div>
                 </div>
                 <div class="main-menu__msgr">
                   <ul>

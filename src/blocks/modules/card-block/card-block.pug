@@ -1,0 +1,9 @@
+include ../card-slider/card-slider.pug
+include ../card-data/card-data.pug
+
+mixin card-block()
+  section.section-card-block()
+    .container
+      .card-block
+        .card-block__slider: +card-slider()
+        .card-block__data: +card-data()

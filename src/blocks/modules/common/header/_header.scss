@@ -72,3 +72,48 @@ header {
         }
     }
 }
+
+
+header {
+
+    transition: 0.3s ease;
+
+    // &.open {
+    //     background-color: #fff !important;
+    // }
+
+
+    &.fixed {
+        background-color: #fff;
+        color: #000;
+        padding: 15px;
+        box-shadow: 0 0 9px -7px #000;
+
+        & a {
+            color: #000;
+            font-weight: 500;
+            font-size: 22px;
+        }
+
+        & .burger i {
+            background-color: #000;
+
+        }
+
+        & .header__mobile span {
+            color: #000;
+        }
+
+        & .btn.btn-line {
+            border-color: #000;
+            color: #000;
+            font-size: 18px;
+            height: 45px;
+        }
+
+        & .header__msgr svg {
+            fill: #000;
+            width: 20px;
+        }
+    }
+}

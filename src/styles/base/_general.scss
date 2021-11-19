@@ -23,6 +23,10 @@ html {
     }
 }
 
+[class*="ymaps-2-1"][class*="-ground-pane"] {
+    filter: grayscale(1);
+}
+
 
 button:active,
 button:hover,

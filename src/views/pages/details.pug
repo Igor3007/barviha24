@@ -1,0 +1,26 @@
+extends ../layouts/index
+
+include ../../blocks/modules/banner-presentation/banner-presentation.pug
+include ../../blocks/modules/card-block/card-block.pug
+include ../../blocks/components/breadcrumb/breadcrumb.pug
+
+block variables
+  include ../../data/data.pug
+
+
+block content
+
+  section.breadcrumb
+    .container
+      +breadcrumb([
+        'Главная',
+        'Дом Barvikha21-kp ID 9433'
+      ])
+  +card-block()
+  +banner-presentation()
+
+
+
+block scripts
+  script(src="js/main.js?v=1.52")
+  script(src="js/vendor.js")

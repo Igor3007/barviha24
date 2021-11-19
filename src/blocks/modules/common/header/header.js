@@ -29,3 +29,34 @@
 
    
 // })
+
+function $(elem){
+    return document.querySelector(elem)
+}
+
+$('.burger').addEventListener('click', function(event){
+
+    event.stopPropagation(true)
+
+    this.classList.toggle('open')
+    $('.main-menu').classList.toggle('open')
+    $('header').classList.toggle('open')
+    $('html').classList.toggle('hidden')
+})
+
+document.addEventListener("scroll", function(){
+    let scrollTop = document.querySelector('html').scrollTop;
+    let start = 350;
+
+    let p = (scrollTop/start)*100;
+
+    document.querySelector('header').style.backgroundColor = 'rgba(255,255,255,'+p+'%)' 
+
+    if(scrollTop > start){
+        document.querySelector('header').classList.add('fixed')
+        
+    }else{
+        document.querySelector('header').classList.remove('fixed')
+    }
+
+})

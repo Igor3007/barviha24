@@ -25,8 +25,10 @@ document.addEventListener('lazybeforeunveil', function(e){
 //Swiper.use([Pagination, Navigation]);
 
 document.addEventListener("DOMContentLoaded", function () {
+ 
 
-    /* inputmask */
+
+  /* inputmask */
 
   if(document.querySelector("input[type=tel]")){
     const IMaskPhone = new Inputmask("9(999)999-99-99")

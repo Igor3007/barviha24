@@ -1,0 +1,119 @@
+.card-data {
+    &__title {
+        & h1 {
+            font-weight: 600;
+            font-size: rem(36);
+            line-height: 140%;
+            text-transform: uppercase;
+            color: #322B2B;
+
+            @media screen and (max-width: $w760) {
+                display: none;
+            }
+        }
+    }
+
+    &__id {
+
+        padding-top: rem(10);
+
+        font-weight: 500;
+        font-size: rem(22);
+        line-height: 69px;
+        text-transform: uppercase;
+        color: rgba(50, 43, 43, 0.4);
+
+        padding-bottom: rem(30);
+
+        @media screen and (max-width: $w760) {
+            display: none;
+        }
+    }
+
+    &__props {
+
+        padding-bottom: rem(30);
+
+        & li {
+
+            font-size: rem(22);
+            line-height: 153%;
+            color: #322B2B;
+            font-weight: 600;
+
+            @media screen and (max-width: $w760) {
+                font-size: 16px;
+            }
+
+            & span {
+                font-weight: 300;
+            }
+
+
+        }
+    }
+
+    &__usd {
+
+
+        font-weight: 600;
+        font-size: rem(36);
+        line-height: 124%;
+        text-transform: uppercase;
+        color: #322B2B;
+
+        padding-bottom: rem(10);
+
+        @media screen and (min-width: $w760) {
+            padding-top: rem(20);
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 24px;
+        }
+    }
+
+    &__rub {
+        font-weight: 400;
+        font-size: rem(28);
+        line-height: 124%;
+        text-transform: uppercase;
+        color: #322B2B;
+
+        padding-bottom: rem(30);
+
+        @media screen and (max-width: $w760) {
+            font-size: 19px;
+        }
+    }
+
+    &__phone {
+        font-family: Gilroy;
+        font-style: normal;
+        font-weight: normal;
+        font-size: rem(22);
+        line-height: 26px;
+        color: rgba(44, 44, 44, 0.7);
+    }
+
+    &__number {
+
+        padding-bottom: rem(30);
+
+        & input {
+            height: rem(65);
+            border: none;
+            border-bottom: 1px solid #ccc;
+            font-size: rem(22);
+        }
+    }
+
+    &__wrp {
+        @media screen and (max-width: $w760) {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+    }
+}

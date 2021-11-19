@@ -59,6 +59,8 @@
         justify-content: space-between;
         align-items: center;
 
+        max-width: rem(400);
+
         & ul {
 
             display: flex;
@@ -67,11 +69,23 @@
 
                 margin: 0 rem(10);
 
+                &:hover {
+                    & svg {
+                        fill: $main;
+                    }
+                }
+
                 & svg {
                     width: rem(32);
                     height: rem(32);
+                    fill: #322B2B;
                 }
             }
+        }
+
+        & .btn {
+            border: 2px solid #322B2B;
+            color: #322B2B;
         }
     }
 }

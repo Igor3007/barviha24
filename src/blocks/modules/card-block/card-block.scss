@@ -1,0 +1,25 @@
+.section-card-block {
+    @include section-padding;
+}
+
+.card-block {
+
+    @include row-flex();
+
+    &__data,
+    &__slider {
+        @include col();
+        @include size-w940(6);
+        @include size(12);
+    }
+
+    &__data {
+        @media screen and (min-width: $w940) {
+            padding-left: rem(30);
+        }
+
+        @media screen and (max-width: $w940) {
+            padding-top: rem(40);
+        }
+    }
+}

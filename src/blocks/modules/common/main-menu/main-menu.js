@@ -11,3 +11,27 @@
 //     $('.burger').trigger('click')
 //     return false;
 // });
+
+function $(elem){
+    return document.querySelector(elem)
+}
+
+function closeMobileMenu() {
+    $('.burger').classList.remove('open')
+    $('.main-menu').classList.remove('open')
+    $('header').classList.remove('open')
+    $('html').classList.remove('hidden')
+}
+
+
+document.addEventListener('click', function(){
+    closeMobileMenu()
+})
+
+$('.main-menu__close').addEventListener('click', function(){
+    closeMobileMenu()
+})
+
+$('.main-menu').addEventListener('click', function(event){
+    event.stopPropagation(true)
+})

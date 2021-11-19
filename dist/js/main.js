@@ -155,6 +155,322 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./src/blocks/components/YMaps/YMaps.js":
+/*!**********************************************!*\
+  !*** ./src/blocks/components/YMaps/YMaps.js ***!
+  \**********************************************/
+/*! exports provided: YMaps */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "YMaps", function() { return YMaps; });
+function YMaps(option) {
+  this.map = null;
+  this.MyBalloonLayout = null;
+  this.MyBalloonContentLayout = null;
+  this.MyIconContentLayout = null;
+  this.isInit = false;
+  this.mapsParams = {
+    container: 'inmap',
+    params: {
+      center: [55.714225, 37.848540],
+      zoom: 14,
+      controls: ['zoomControl', 'fullscreenControl']
+    },
+    ballonMobileMode: false,
+    autoscale: false,
+    icons: {
+      'default': '/img/svg/ic_pen-empty.svg',
+      'active': '/img/svg/ic_pen-empty.svg'
+    },
+    points: []
+  };
+
+  this.init = function (onInitCallback) {
+    if (!this.isInit) {
+      this.isInit = !this.isInit;
+
+      var _this = this;
+
+      console.info('init Ymaps');
+      ymaps.ready(function () {
+        // Создание экземпляра карты и его привязка к созданному контейнеру.
+        _this.map = new ymaps.Map('' + _this.mapsParams.container + '', _this.mapsParams.params, {
+          suppressMapOpenBlock: true
+        }); // Создание макета балуна на основе Twitter Bootstrap.
+
+        _this.MyBalloonLayout = ymaps.templateLayoutFactory.createClass('<div class="sh-balloon"></div>'); // Создание вложенного макета содержимого балуна.
+
+        _this.MyBalloonContentLayout = ymaps.templateLayoutFactory.createClass('<div class="bln-scroll-offset" >$[properties.balloonContent]</div>');
+        _this.MyIconContentLayout = ymaps.templateLayoutFactory.createClass('<div class="pin-content" >$[properties.iconContent]</div>');
+
+        _this.map.behaviors.disable('scrollZoom');
+
+        onInitCallback(_this.isInit);
+      });
+    }
+  };
+
+  this.resizeContainer = function () {
+    var _this = this;
+
+    setTimeout(function () {
+      _this.map.container.fitToViewport(); //autoscale
+
+
+      if (_this.mapsParams.autoscale) {
+        _this.autoScale();
+      }
+    }, 500);
+  };
+
+  this.autoScale = function () {
+    var _this = this;
+
+    _this.map.setBounds(_this.map.geoObjects.getBounds(), {
+      checkZoomRange: true,
+      zoomMargin: 100
+    });
+  };
+
+  this.addPlacemark = function (arrayPoints) {
+    var _this = this;
+
+    var sizeIcons = [50, 70];
+    var placemarkOffset = [-25, -70];
+    var offsetIcons = [16, 15];
+    this.mapsParams.points = arrayPoints;
+    this.map.geoObjects.removeAll();
+
+    if (window.innerWidth < 769) {
+      sizeIcons = [30, 45];
+      offsetIcons = [8, 9];
+      placemarkOffset = [-15, -45];
+    }
+
+    try {
+      var PlacemarkArr = [];
+
+      for (var i = 0; i < _this.mapsParams.points.length; i++) {
+        // Создание метки  
+        PlacemarkArr[i] = new ymaps.Placemark(_this.mapsParams.points[i].coordinates.split(','), {
+          balloonContent: '',
+          iconContent: '' //hintContent: 'hint',
+
+        }, {
+          balloonShadow: false,
+          balloonLayout: _this.MyBalloonLayout,
+          balloonContentLayout: _this.MyBalloonContentLayout,
+          balloonPanelLayout: _this.MyBalloonLayout,
+          balloonPanelMaxMapArea: false,
+          // Не скрываем иконку при открытом балуне.
+          hideIconOnBalloonOpen: false,
+          // И дополнительно смещаем балун, для открытия над иконкой.
+          balloonOffset: [-15, 6],
+          // balloonContentLayout: LayoutActivatePoint,
+          iconLayout: 'default#imageWithContent',
+          iconImageHref: _this.mapsParams.points[i].markerImage,
+          iconImageSize: sizeIcons,
+          iconImageOffset: placemarkOffset,
+          pane: 'balloon',
+          iconContentOffset: offsetIcons,
+          iconContentLayout: _this.MyIconContentLayout,
+          draggable: false
+        });
+        PlacemarkArr[i].events.add('balloonopen', function (e) {// PlacemarkArr[i].properties.set('balloonContent', _this.mapsParams.points[i].balloonContent);
+          // e.get('target').options.set({
+          //     iconImageHref: _this.mapsParams.icons.active
+          // });
+          // app.renderMapPopupClick(_this.mapsParams.points[i].code, false)
+        });
+        PlacemarkArr[i].events.add('balloonclose', function (e) {// e.get('target').options.set({
+          //     iconImageHref: _this.mapsParams.icons.default
+          // });
+          // app.closeMapPopup()
+        });
+
+        _this.map.geoObjects.add(PlacemarkArr[i]);
+      } // endfor
+
+    } catch (err) {
+      console.error('error: YM addPlacemark ', err);
+    }
+  };
+}
+
+/***/ }),
+
+/***/ "./src/blocks/modules/card-slider/card-slider.js":
+/*!*******************************************************!*\
+  !*** ./src/blocks/modules/card-slider/card-slider.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
+/* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
+
+
+swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_0__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_0__["Thumbs"]]);
+
+if (document.querySelector('.card-slider__thumbs')) {
+  document.querySelector('.card-slider__gallery').addEventListener('click', function () {
+    var IMAGE_ARR = [];
+    var IMAGE = document.querySelectorAll('.card-slider__thumbs [data-gallery-src]');
+    console.log(IMAGE);
+    IMAGE.forEach(function (item, index) {
+      IMAGE_ARR.push({
+        src: item.dataset.gallerySrc,
+        type: "image"
+      });
+    });
+    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_1__["Fancybox"].show(IMAGE_ARR);
+  });
+}
+
+if (document.querySelector('[data-swiper-next="card-gallery"]')) {
+  document.querySelector('[data-swiper-next="card-gallery"]').addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+  document.querySelector('[data-swiper-prev="card-gallery"]').addEventListener('click', function (event) {
+    event.stopPropagation();
+  });
+}
+/* карточка */
+
+
+var galleryThumbs = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('[data-swiper="thumbs-gallery"]', {
+  spaceBetween: 28,
+  slidesPerView: 3,
+  freeMode: true,
+  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
+  breakpoints: {
+    0: {
+      slidesPerView: 3,
+      spaceBetween: 4
+    },
+    480: {
+      slidesPerView: 3,
+      spaceBetween: 7
+    },
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 10
+    },
+    1380: {
+      slidesPerView: 3
+    }
+  }
+});
+
+function initialSlideCard() {
+  if (!document.querySelector('.swiper-video')) {
+    return 0;
+  } else {
+    if (document.querySelectorAll('.card-slider__thumbs .swiper-wrapper > div').length <= 1) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+}
+
+var galleryTop = new swiper__WEBPACK_IMPORTED_MODULE_0__["default"]('[data-swiper="card-gallery"]', {
+  spaceBetween: 10,
+  initialSlide: initialSlideCard(),
+  navigation: {
+    nextEl: '[data-swiper-next="card-gallery"]',
+    prevEl: '[data-swiper-prev="card-gallery"]'
+  },
+  breakpoints: {
+    0: {
+      pagination: {
+        el: '.swiper-dots',
+        type: 'bullets'
+      }
+    }
+  },
+  thumbs: {
+    swiper: galleryThumbs
+  }
+}); // galleryTop.on('slideChange', function () {
+//     $('.video').removeClass('play');
+//     $('.video').find('iframe').remove();
+//     $('.swiper-topbar, .swiper-bottombar').show()
+// });
+
+/***/ }),
+
+/***/ "./src/blocks/modules/catalog-block/catalog-block.js":
+/*!***********************************************************!*\
+  !*** ./src/blocks/modules/catalog-block/catalog-block.js ***!
+  \***********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+if (document.querySelector('[data-filter]')) {
+  var $ = function $(elem) {
+    return document.querySelector(elem);
+  };
+
+  var filterItems = function filterItems(param) {
+    document.querySelectorAll('[data-card]').forEach(function (item, index) {
+      item.classList.remove('hide');
+
+      if (item.dataset.card != param) {
+        item.classList.add('hide');
+      }
+    });
+    pagination(param);
+  };
+
+  var pagination = function pagination(param) {
+    var hideElements = document.querySelectorAll('[data-card="' + param + '"]');
+    hideElements.forEach(function (item, index) {
+      item.classList.remove('hide');
+
+      if (index >= countElem) {
+        item.classList.add('hide');
+      }
+    });
+
+    if (!document.querySelectorAll('[data-card="' + param + '"].hide').length) {
+      $('.catalog-block__more').classList.add('hide');
+    } else {
+      $('.catalog-block__more').classList.remove('hide');
+    }
+  };
+
+  var countElem = 6;
+  var step = 1;
+  var activeTab = null;
+  document.querySelectorAll('[data-filter]').forEach(function (item, index) {
+    if (!index) {
+      item.classList.add('active');
+      filterItems(item.dataset.filter);
+      activeTab = item.dataset.filter;
+    }
+
+    item.addEventListener('click', function (event) {
+      $('.catalog-block__nav li.active').classList.remove('active');
+      this.classList.add('active');
+      activeTab = item.dataset.filter;
+      filterItems(item.dataset.filter);
+      countElem = 6;
+    });
+  });
+  $('.catalog-block__more').addEventListener('click', function (event) {
+    countElem += step;
+    pagination(activeTab);
+  });
+}
+
+/***/ }),
+
 /***/ "./src/blocks/modules/common/header/header.js":
 /*!****************************************************!*\
   !*** ./src/blocks/modules/common/header/header.js ***!
@@ -184,6 +500,29 @@
 //         }
 //     });
 // })
+function $(elem) {
+  return document.querySelector(elem);
+}
+
+$('.burger').addEventListener('click', function (event) {
+  event.stopPropagation(true);
+  this.classList.toggle('open');
+  $('.main-menu').classList.toggle('open');
+  $('header').classList.toggle('open');
+  $('html').classList.toggle('hidden');
+});
+document.addEventListener("scroll", function () {
+  var scrollTop = document.querySelector('html').scrollTop;
+  var start = 350;
+  var p = scrollTop / start * 100;
+  document.querySelector('header').style.backgroundColor = 'rgba(255,255,255,' + p + '%)';
+
+  if (scrollTop > start) {
+    document.querySelector('header').classList.add('fixed');
+  } else {
+    document.querySelector('header').classList.remove('fixed');
+  }
+});
 
 /***/ }),
 
@@ -204,6 +543,26 @@
 //     $('.burger').trigger('click')
 //     return false;
 // });
+function $(elem) {
+  return document.querySelector(elem);
+}
+
+function closeMobileMenu() {
+  $('.burger').classList.remove('open');
+  $('.main-menu').classList.remove('open');
+  $('header').classList.remove('open');
+  $('html').classList.remove('hidden');
+}
+
+document.addEventListener('click', function () {
+  closeMobileMenu();
+});
+$('.main-menu__close').addEventListener('click', function () {
+  closeMobileMenu();
+});
+$('.main-menu').addEventListener('click', function (event) {
+  event.stopPropagation(true);
+});
 
 /***/ }),
 
@@ -215,6 +574,82 @@
 /***/ (function(module, exports) {
 
 
+
+/***/ }),
+
+/***/ "./src/blocks/modules/yamaps-block/yamaps-block.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/modules/yamaps-block/yamaps-block.js ***!
+  \*********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_YMaps_YMaps__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/YMaps/YMaps */ "./src/blocks/components/YMaps/YMaps.js");
+
+
+if (document.querySelector('.section-yamaps-block')) {
+  var loadScript = function loadScript(url, callback) {
+    var script = document.createElement("script");
+
+    if (script.readyState) {
+      // IE
+      script.onreadystatechange = function () {
+        if (script.readyState == "loaded" || script.readyState == "complete") {
+          script.onreadystatechange = null;
+          callback();
+        }
+      };
+    } else {
+      // Другие браузеры
+      script.onload = function () {
+        callback();
+      };
+    }
+
+    script.src = url;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  };
+
+  var elementInViewport = function elementInViewport(el) {
+    var bounds = el.getBoundingClientRect();
+    return bounds.top + bounds.height > 0 && window.innerHeight - bounds.top > 0 && bounds.left + bounds.width > 0 && window.innerWidth - bounds.left > 0 // Левее правой
+    ;
+  };
+
+  var mapInit = function mapInit() {
+    YM.mapsParams.container = 'mapcontainer';
+    YM.mapsParams.params.center = [55.714225, 37.848540];
+    YM.init(function () {
+      YM.addPlacemark(pointsArray); //YM.autoScale()
+    });
+  };
+
+  document.addEventListener("scroll", function (e) {
+    var el = document.querySelector(".section-yamaps-block");
+    var inViewport = elementInViewport(el); //true если виден
+
+    if (inViewport && !window.inMapFilterViewport) {
+      window.inMapFilterViewport = true;
+
+      if (!window.ymaps) {
+        loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&loadByRequire=1", function () {
+          ymaps.load(mapInit());
+        });
+      } else {
+        if (!window.inMapFilter) {
+          mapInit();
+        }
+      }
+    }
+  });
+  var YM = new _components_YMaps_YMaps__WEBPACK_IMPORTED_MODULE_0__["YMaps"]();
+  var pointsArray = [{
+    'coordinates': '55.714225, 37.848540',
+    'markerImage': '/img/svg/ic_pen-ymaps.svg'
+  }];
+}
 
 /***/ }),
 
@@ -248,6 +683,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_common_main_menu_main_menu__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modules_common_main_menu_main_menu__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! %modules%/gallery-block/gallery-block.js */ "./src/blocks/modules/gallery-block/gallery-block.js");
 /* harmony import */ var _modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modules_gallery_block_gallery_block_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _modules_yamaps_block_yamaps_block_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! %modules%/yamaps-block/yamaps-block.js */ "./src/blocks/modules/yamaps-block/yamaps-block.js");
+/* harmony import */ var _modules_card_slider_card_slider_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/card-slider/card-slider.js */ "./src/blocks/modules/card-slider/card-slider.js");
+/* harmony import */ var _modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/catalog-block/catalog-block.js */ "./src/blocks/modules/catalog-block/catalog-block.js");
+/* harmony import */ var _modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
 
 
  // import "%modules%/video/video";

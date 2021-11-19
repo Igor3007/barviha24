@@ -1,0 +1,21 @@
+mixin card-data()
+  .card-data 
+    .card-data__title: h1 ДОМ BARVIKHA21-KP ID 9433
+    .card-data__id Дом ID 7625
+    .card-data__wrp
+      .card-data__props
+        ul
+          li <span>Отделка:</span> Без отделки 
+          li <span>Площадь:</span> 793 м2 
+          li <span>Участок:</span> 29 сот.
+      .card-data__price
+        .card-data__usd 9 700 000 $
+        .card-data__rub 680 261 000 руб
+
+    .card-data__form
+      form(action='#' method='POST')
+        .card-data__phone Номер телефона
+        .card-data__number: input(type="tel" placeholder="+7(___)___-__-__")
+        .card-data__submit
+          button.btn.btn-large Оставить заявку
+
