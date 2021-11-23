@@ -3,9 +3,20 @@
 }
 
 .location-block {
+
+    &>.location-block__title {
+        @media screen and (min-width: $w940) {
+            display: none;
+        }
+    }
+
     &__wrp {
         @include row-flex;
         align-items: center;
+
+        @media screen and (max-width: $w940) {
+            flex-direction: column-reverse;
+        }
     }
 
     &__right,
@@ -17,9 +28,20 @@
 
     &__left {
         padding-right: rem(50);
+
+        &>.location-block__title {
+            @media screen and (max-width: $w940) {
+                display: none;
+            }
+        }
     }
 
     &__right {
+
+        @media screen and (max-width: $w940) {
+            padding-bottom: rem(45);
+        }
+
         & .bgimage {
             padding-top: 100%;
             @include bgimage-cover;
@@ -35,6 +57,18 @@
         font-size: rem(28);
         padding-bottom: rem(45);
         line-height: 140%;
+
+        @media screen and (max-width: $w1376) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: $w580) {
+            font-size: 16px;
+        }
 
     }
 

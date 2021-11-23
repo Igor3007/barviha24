@@ -2,11 +2,21 @@
     @include section-padding;
 }
 
+
 .catalog-block {
     &__title {
         @include section-title;
         text-align: center;
         padding-bottom: rem(40);
+
+        @media screen and (max-width: $w480) {
+
+
+
+            & br {
+                display: none;
+            }
+        }
     }
 
     &__nav {
@@ -52,6 +62,11 @@
                     transition: 0.5s ease;
                     cursor: pointer;
 
+                    @media screen and (max-width: $w760) {
+                        min-width: 155px;
+                        font-size: 20px;
+                    }
+
 
 
                 }
@@ -86,9 +101,23 @@
 
             background-color: #F6F7F8;
 
+            @media screen and (max-width: $w1376) {
+                height: rem(70);
+                font-size: 16px;
+            }
+
             & svg {
                 fill: #000;
+
+                @media screen and (max-width: $w1376) {
+                    width: 16px;
+                }
             }
         }
     }
+}
+
+#dl-presentationt {
+    width: 100%;
+    background-color: transparent;
 }

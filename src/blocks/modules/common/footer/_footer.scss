@@ -16,15 +16,36 @@ footer {
     display: flex;
     align-items: center;
 
+    @media screen and (max-width: $w940) {
+        flex-direction: column;
+    }
+
     &__info {
         margin-left: auto;
         max-width: 360px;
+
+        @media screen and (max-width: $w940) {
+            margin-left: 0;
+            margin-right: auto;
+        }
     }
 
     &__help {
-        font-size: 25px;
+        font-size: rem(25);
         line-height: 146%;
         text-align: right;
+
+        @media screen and (max-width: $w1376) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: $w940) {
+            text-align: left;
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 16px;
+        }
     }
 
     &__contacts {
@@ -34,12 +55,25 @@ footer {
         justify-content: flex-end;
         padding-top: 15px;
 
+        @media screen and (max-width: $w940) {
+            justify-content: flex-start;
+        }
+
         &>a {
-            font-size: 28px;
+            font-size: rem(28);
             line-height: 39px;
             line-height: 141%;
             text-decoration: underline;
             margin-right: 25px;
+
+            @media screen and (max-width: $w1376) {
+                font-size: 20px;
+            }
+
+            @media screen and (max-width: $w940) {
+                font-size: 18px;
+            }
+
         }
 
         & ul {
@@ -59,16 +93,41 @@ footer {
 
     &__nav {
 
+        @media screen and (max-width: $w940) {
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+
         & ul {
 
             column-count: 2;
-            column-gap: 90px;
+            column-gap: rem(90);
+
+            @media screen and (max-width: $w760) {
+                column-gap: rem(40);
+            }
+
+            @media screen and (max-width: $w360) {
+                column-count: 1;
+            }
 
             & li {
                 font-size: rem(28);
                 line-height: 161%;
                 color: #FFFFFF;
-                padding: 10px 0;
+                padding: rem(10) 0;
+
+                @media screen and (max-width: $w1376) {
+                    font-size: 20px;
+                }
+
+                @media screen and (max-width: $w940) {
+                    font-size: 18px;
+                }
+
+                @media screen and (max-width: $w760) {
+                    font-size: 16px;
+                }
 
                 & a {
 
@@ -95,6 +154,87 @@ footer {
             border-color: #fff;
             color: #fff;
             margin-left: auto;
+
+            @media screen and (max-width: $w940) {
+                margin-left: 0;
+                margin-right: auto;
+            }
+        }
+    }
+}
+
+.popup-callback {
+
+    max-width: 480px;
+    background-color: #EAEAEB;
+    border-radius: 15px;
+
+    padding-top: rem(100);
+    padding-bottom: rem(70);
+
+    &__title {
+        font-weight: 600;
+        font-size: rem(30);
+        line-height: 128%;
+        text-align: center;
+        color: #322B2B;
+
+        padding-bottom: rem(30);
+    }
+
+    &__subtitle {
+        font-size: rem(24);
+        line-height: 160%;
+        text-align: center;
+        color: #322B2B;
+
+        padding-bottom: rem(40);
+    }
+
+    &__form {
+
+        position: relative;
+        z-index: 4;
+
+
+
+        & .form {
+
+            & .btn {
+                margin-top: rem(25);
+                height: 65px;
+                font-size: 24px;
+                min-width: 240px;
+                margin-left: auto;
+                margin-right: auto;
+
+
+                @media screen and (max-width: $w480) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            & input {
+                height: 63px;
+                border: none;
+                border-radius: rem(10);
+                background-color: #F4F4F4;
+                font-size: rem(22);
+                transition: 0.4s ease;
+
+                &:focus {
+                    background-color: #fff;
+                }
+
+                @media screen and (max-width: $w1376) {
+                    height: 45px;
+                }
+
+                @media screen and (max-width: $w580) {
+                    height: 45px;
+                }
+            }
         }
     }
 }

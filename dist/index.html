@@ -24,9 +24,17 @@
     <link rel="apple-touch-icon" sizes="167x167" href="img/favicons/apple-touch-icon-167x167.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png">
     <link rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png">
-    <link rel="stylesheet" href="styles/main.css?v=1.0">
+    <link rel="preload" href="/fonts/Gilroy/Gilroy-SemiBold.woff">
+    <link rel="preload" href="/fonts/Gilroy/Gilroy-Light.woff">
+    <link rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff">
+    <link rel="preload" href="/fonts/Gilroy/Gilroy-Medium.woff">
+    <link rel="preload" href="/fonts/Gilroy/Gilroy-Bold.woff">
+    <link rel="prefetch" href="/img/sprites/sprite.svg">
+    <link rel="dns-prefetch" href="//api-maps.yandex.ru">
+    <link rel="stylesheet" href="styles/critical.css">
+    <link rel="stylesheet" href="styles/main.css">
   </head>
-  <body>
+  <body class="perf-no-animation">
     <header>
       <div class="container">
         <div class="header">
@@ -37,7 +45,7 @@
             <ul>
               <li class="ic_wa"><a href="#">
                   <svg width="25" height="25">
-                    <use xlink:href="/img/sprites/sprite.svg#ic_wa-solid"></use>
+                    <use xlink:href="/img/sprites/sprite.svg#ic_wa"></use>
                   </svg></a></li>
               <li class="ic_tg"><a href="#">
                   <svg width="25" height="25">
@@ -47,9 +55,9 @@
           </div>
           <div class="header__phones">
             <div class="header__number"><a href="#"><span> +7 (495) 135-13-34</span></a></div>
-          </div>
-          <div class="header__callback">
-            <button class="btn btn-line">Заказать звонок</button>
+            <div class="header__callback">
+              <button class="btn btn-line" data-fancybox="" data-src="#callback">Заказать звонок</button>
+            </div>
           </div>
         </div>
       </div>
@@ -57,7 +65,7 @@
     <main>
       <section class="section-first-block">
         <div class="first-block">
-          <div class="first-block__bg"><span class="bgimage lazyload" data-bg="./img/common/fb-bg.jpg"></span>
+          <div class="first-block__bg"><span class="bgimage lazyload" data-bg="./img/common/fb-bg.webp"></span>
           </div>
           <div class="first-block__content">
             <div class="container animate">
@@ -72,7 +80,7 @@
                 </ul>
               </div>
               <div class="first-block__button">
-                <button class="btn btn-radius btn-large">Получить презентацию</button>
+                <button class="btn btn-radius btn-large" data-fancybox="" data-src="#dl-presentationt">Получить презентацию</button>
                 <div>Получите презентацию <br> объектов от наших экспертов</div>
               </div>
               <div class="first-block__inmap">
@@ -89,13 +97,13 @@
         </div>
         <div class="present-block">
           <div class="present-block__wrp">
-            <div class="present-block__bg lazyload" data-bg="./img/common/fb-bg.jpg"></div>
+            <div class="present-block__bg lazyload" data-bg="./img/common/fb-bg.webp"></div>
             <div class="present-block__content">
               <div class="container">
                 <div class="present-block__box"> 
                   <div class="present-block__text">Полная база объектов в поселке Барвиха-21</div>
                   <div class="present-block__btn">
-                    <button class="btn btn-large btn-blick">
+                    <button class="btn btn-large btn-blick" data-fancybox="" data-src="#dl-presentationt">
                       <svg width="45" height="45">
                         <use xlink:href="/img/sprites/sprite.svg#ic_file"></use>
                       </svg><span>Получить презентацию</span>
@@ -111,7 +119,7 @@
         <div class="container">
           <div class="about-block">
             <div class="about-block__wrp">
-              <div class="about-block__title">О посёлке <span>  "Барвиха 21" <span></div>
+              <div class="about-block__title">О посёлке <br> <span>  "Барвиха 21" <span></div>
               <div class="about-block__main">
                 <p>Элитный коттеджный поселок «Барвиха-XXI» располагается на 25 га с участками площадью от 27 до 45 соток. Специально посёлка были разработаны современные дома, с высокими потолками, свободной планировкой и большими площадями остекления в стиле Фрэнка Лойда Райта – знаменитого американского архитектора, совершившего революцию в проектировании загородного дома.</p>
                 <p>Всего возведено 64 коттеджа 2х и 3х уровневых, выдержанных в едином архитектурном стиле: четкие формы, элегантная отделка фасадов, удобство и комфорт внутреннего пространства. На 2/3 посёлок граничит с Барвихинским лесопарком, который издавна считается лёгкими Запада столицы. К застройке примыкает 20 га лесного массива, где организован уютный парк, площадки для отдыха и детский игровой городок. Поселок хорошо вписан в природное окружение.</p>
@@ -125,11 +133,11 @@
           <div class="gallery-block__bg">
             <div class="swiper-container" data-swiper="gallery">
               <div class="swiper-wrapper">
-                <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/gallery_1.webp"></span>
+                <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/bg-adv.webp"></span>
                 </div>
                 <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/gallery_1.webp"></span>
                 </div>
-                <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/gallery_1.webp"></span>
+                <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/bg-adv.webp"></span>
                 </div>
                 <div class="swiper-slide"><span class="bgimage lazyload" data-bg="./img/common/gallery_1.webp"></span>
                 </div>
@@ -181,13 +189,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -216,7 +224,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -225,13 +233,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -260,7 +268,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -269,13 +277,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -304,7 +312,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -313,13 +321,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -348,7 +356,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -357,13 +365,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -392,7 +400,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -401,13 +409,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -436,7 +444,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -445,13 +453,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -480,7 +488,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -489,13 +497,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -524,7 +532,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -533,13 +541,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -568,7 +576,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -577,13 +585,13 @@
                   <div class="minicard__image">
                     <div class="swiper-container" data-swiper="minicard">
                       <div class="swiper-wrapper">
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
-                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.jpg"></span>
+                        <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
                         </div>
                       </div>
                       <div class="swiper-nav-mini">
@@ -612,7 +620,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="minicard__link"><a href="/page-apartment.html">
+                  <div class="minicard__link"><a href="/details.html">
                       <button class="btn">Подробнее</button></a></div>
                 </div>
               </div>
@@ -765,6 +773,11 @@
                   <div class="advantages-block__counter"><span class="counter-current">01</span><span>/</span><span class="counter-total">4</span></div>
                 </div>
               </div>
+              <div class="container">
+                <div class="swiper-pagination-block">
+                  <div class="swiper-pagination"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -877,7 +890,7 @@
                     <div class="item-village">
                       <div class="item-village__name">Барвиха хиллс</div>
                       <div class="item-village__address">Рублево-Успенское шоссе, 10 км</div>
-                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_1.jpg"></span>
+                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_1.webp"></span>
                       </div>
                       <div class="item-village__btn"><a href="#" target="_blank">
                           <button class="btn btn-large">Смотреть поселок</button></a></div>
@@ -887,7 +900,7 @@
                     <div class="item-village">
                       <div class="item-village__name">Жуковка</div>
                       <div class="item-village__address">Ильинское шоссе, 9 км</div>
-                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_2.jpg"></span>
+                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_2.webp"></span>
                       </div>
                       <div class="item-village__btn"><a href="#" target="_blank">
                           <button class="btn btn-large">Смотреть поселок</button></a></div>
@@ -897,7 +910,7 @@
                     <div class="item-village">
                       <div class="item-village__name">Сады Майендорф, 6 км</div>
                       <div class="item-village__address">Рублево-Успенское шоссе, 6 км</div>
-                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_3.jpg"></span>
+                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_3.webp"></span>
                       </div>
                       <div class="item-village__btn"><a href="#" target="_blank">
                           <button class="btn btn-large">Смотреть поселок</button></a></div>
@@ -907,7 +920,7 @@
                     <div class="item-village">
                       <div class="item-village__name">Жуковка</div>
                       <div class="item-village__address">Ильинское шоссе, 9 км</div>
-                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_2.jpg"></span>
+                      <div class="item-village__img"><span class="bgimage lazyload" data-bg="./img/common/vl_2.webp"></span>
                       </div>
                       <div class="item-village__btn"><a href="#" target="_blank">
                           <button class="btn btn-large">Смотреть поселок</button></a></div>
@@ -934,6 +947,7 @@
       <section class="section-location-block" id="location">
         <div class="container">
           <div class="location-block">
+            <div class="location-block__title"><span> Расположение <br> </span> поселка</div>
             <div class="location-block__wrp">
               <div class="location-block__left">
                 <div class="location-block__title"><span> Расположение <br> </span> поселка</div>
@@ -941,7 +955,7 @@
                 <div class="location-block__phone">Круглосуточная горячая линия:</div>
                 <div class="location-block__number"><a href="tel:+7(495)-135-13-34">+7(495)-135-13-34</a></div>
                 <div class="location-block__callback">
-                  <button class="btn btn-line">Заказать звонок</button>
+                  <button class="btn btn-line" data-fancybox="" data-src="#callback">Заказать звонок</button>
                   <ul>
                     <li><a href="#">
                         <svg width="25" height="25">
@@ -975,10 +989,9 @@
                 <li><a href="#about">О поселке</a></li>
                 <li><a href="#gallery">Галерея</a></li>
                 <li><a href="#catalog">Дома/участки в поселке</a></li>
-                <li><a href="#presentation">Презентация</a></li>
-                <li><a href="#plans">Генплан поселка</a></li>
-                <li><a href="#infrastructure">Инфраструктура</a></li>
                 <li><a href="#team">Команда отдела продаж</a></li>
+                <li><a href="#infrastructure">Инфраструктура</a></li>
+                <li><a href="#surroundings">Окружение</a></li>
                 <li><a href="#location">Расположение поселка</a></li>
               </ul>
             </nav>
@@ -998,7 +1011,7 @@
               </ul>
             </div>
             <div class="footer__callback">
-              <button class="btn btn-line">Заказать звонок</button>
+              <button class="btn btn-line" data-fancybox="" data-src="#callback">Заказать звонок</button>
             </div>
           </div>
         </div>
@@ -1016,10 +1029,9 @@
                       <li><a href="#about">О поселке</a></li>
                       <li><a href="#gallery">Галерея</a></li>
                       <li><a href="#catalog">Дома/участки в поселке</a></li>
-                      <li><a href="#presentation">Презентация</a></li>
-                      <li><a href="#plans">Генплан поселка</a></li>
-                      <li><a href="#infrastructure">Инфраструктура</a></li>
                       <li><a href="#team">Команда отдела продаж</a></li>
+                      <li><a href="#infrastructure">Инфраструктура</a></li>
+                      <li><a href="#surroundings">Окружение</a></li>
                       <li><a href="#location">Расположение поселка</a></li>
                     </ul>
                   </nav>
@@ -1027,7 +1039,7 @@
                 <div class="main-menu__phones">
                   <div class="main-menu__number"><a href="#">+7 495 799 34 99</a></div>
                   <div class="main-menu__callback">
-                    <button class="btn btn-line">Заказать звонок</button>
+                    <button class="btn btn-line" data-fancybox="" data-src="#callback">Заказать звонок</button>
                   </div>
                 </div>
                 <div class="main-menu__msgr">
@@ -1044,6 +1056,61 @@
                 </div>
               </div>
             </div>
+      <div class="popup-callback" id="callback" style="display: none;">
+        <div class="popup-callback__wrp">
+          <div class="popup-callback__title">Закажите <br> обратный звонок</div>
+          <div class="popup-callback__subtitle">Оставьте Ваш номер телефона и мы перезвоним Вам</div>
+          <div class="popup-callback__form">
+            <form action="#" method="POST">
+              <div class="form">
+                <div class="form__item">
+                  <div class="form__subitem">
+                    <input type="tel" placeholder="Введите Ваш номер">
+                  </div>
+                </div>
+                <div class="form__item">
+                  <div class="form__subitem">
+                    <button class="btn btn-large"> Отправить</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="popup-presentation" id="dl-presentationt" style="display: none;">
+              <section class="section-banner-presentation">
+                <div class="container">
+                  <div class="banner-presentation">
+                    <div class="banner-presentation__left">
+                      <div class="banner-presentation__title">Получите презентацию</div>
+                      <div class="banner-presentation__desc">Дома с планировками, полным описанием и презентацией</div>
+                      <div class="banner-presentation__form">
+                        <form action="#" method="POST">
+                          <div class="form">
+                            <div class="form__item">
+                              <div class="form__subitem">
+                                <input type="text" placeholder="Имя">
+                              </div>
+                              <div class="form__subitem">
+                                <input type="text" placeholder="Телефон">
+                              </div>
+                            </div>
+                            <div class="form__item">
+                              <div class="form__subitem">
+                                <button class="btn btn-large" type="submit">Получить презентацию</button>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <div class="banner-presentation__right"><span class="bgimage lazyload" data-bg="/img/home/mk1.webp"></span>
+                    </div>
+                  </div>
+                </div>
+              </section>
+      </div>
     </footer>
     <script src="js/main.js?v=1.52"></script>
     <script src="js/vendor.js"></script>

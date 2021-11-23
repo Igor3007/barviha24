@@ -1,4 +1,19 @@
 mixin banner-presentation()
   section.section-banner-presentation()
     .container
-      .banner-presentation banner-presentation
+      .banner-presentation
+        .banner-presentation__left
+          .banner-presentation__title Получите презентацию
+          .banner-presentation__desc Дома с планировками, полным описанием и презентацией
+          .banner-presentation__form
+            form(action='#' method='POST')
+              .form
+                .form__item
+                  .form__subitem: input(type="text" placeholder="Имя")
+                  .form__subitem: input(type="text" placeholder="Телефон")
+                .form__item
+                  .form__subitem: button.btn.btn-large(type="submit") Получить презентацию
+
+
+        .banner-presentation__right
+          +bgimage('/img/home/mk1.webp')

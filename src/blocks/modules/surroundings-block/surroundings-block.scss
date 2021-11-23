@@ -16,6 +16,11 @@
         @media screen and (max-width: $w1376) {
             padding-bottom: rem(50);
         }
+
+        @media screen and (max-width: $w480) {
+            text-align: center;
+        }
+
     }
 
 
@@ -26,14 +31,39 @@
             margin-bottom: rem(80);
         }
 
+        @media screen and (max-width: $w760) {
+            margin-bottom: 3rem;
+        }
+
+        @media screen and (max-width: $w360) {
+            & .surroundings-item {
+                flex-direction: column-reverse;
+            }
+
+        }
+
         &:nth-child(even) {
             & .surroundings-item {
-                flex-direction: row-reverse;
+                @media screen and (min-width: $w360) {
+                    flex-direction: row-reverse;
+                }
 
                 &__img {
                     & .bgimage {
                         margin-right: 0;
                         margin-left: -34%;
+
+                        @media screen and (max-width: $w940) {
+                            margin-left: -22%;
+                        }
+
+                        @media screen and (max-width: $w480) {
+                            margin-left: -20%;
+                        }
+
+                        @media screen and (max-width: $w360) {
+                            margin: 0 rem(-15);
+                        }
                     }
                 }
             }
@@ -55,6 +85,8 @@
         @include u-row-flex($offset_1440);
     }
 
+
+
     &__img,
     &__main {
         @include u-col($offset);
@@ -75,15 +107,47 @@
     &__title {
         @include section-subtitle;
         padding-bottom: rem(40);
+
+        @media screen and (max-width: $w1100) {
+            font-size: 25px;
+        }
+
+
+        @media screen and (max-width: $w360) {
+            padding-top: rem(45);
+        }
     }
 
     &__desc {
         font-size: rem(28);
         line-height: 140%;
         max-width: 90%;
+
+        @media screen and (max-width: $w1376) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: $w1100) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 16px;
+        }
+
+
     }
 
     &__img {
+
+        @media screen and (max-width: $w940) {
+            padding-top: 45px;
+        }
+
+        @media screen and (max-width: $w360) {
+            padding-top: 0px;
+        }
+
         & .bgimage {
             padding-top: 97%;
             position: relative;
@@ -94,6 +158,18 @@
             transition: 0.3s ease;
             background-color: #eee;
             margin-right: -34%;
+
+            @media screen and (max-width: $w940) {
+                margin-right: -22%;
+            }
+
+            @media screen and (max-width: $w480) {
+                margin-right: -20%;
+            }
+
+            @media screen and (max-width: $w360) {
+                margin: 0 rem(-15);
+            }
         }
     }
 }

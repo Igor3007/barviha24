@@ -1,6 +1,25 @@
 .section-card-block {
     @include section-padding;
+    padding-top: rem(30) !important;
+
+    @media screen and (max-width: $w480) {
+        padding-top: rem(15) !important;
+    }
 }
+
+.section-breadcrumb {
+    padding-top: rem(130);
+
+    @media screen and (max-width: $w940) {
+        padding-top: rem(150);
+    }
+
+    @media screen and (max-width: $w480) {
+        padding-top: rem(130);
+    }
+}
+
+
 
 .card-block {
 

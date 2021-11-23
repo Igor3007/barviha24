@@ -16,21 +16,44 @@
     &__title {
         @include col();
         @include size-w1024(4);
+        @include size-w940(3);
+        @include size(12);
     }
 
     &__main {
         @include col();
         @include size-w1024(8);
+        @include size-w940(9);
+        @include size(12);
     }
 
     &__title {
         @include section-title;
+
+        @media screen and (max-width: $w940) {
+            padding-bottom: rem(30);
+            text-align: center;
+        }
+
+
     }
 
     &__main {
 
         font-size: rem(28);
         line-height: 129%;
+
+        @media screen and (max-width: $w1376) {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: $w940) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 16px;
+        }
 
         & p {
             margin-top: 0;

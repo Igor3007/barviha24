@@ -50,6 +50,10 @@
                 @include bgimage-cover;
                 min-height: rem(768);
 
+                @media screen and (max-width: $w580) {
+                    min-height: rem(900);
+                }
+
 
             }
         }
@@ -214,6 +218,10 @@
     padding-top: rem(100);
     display: none;
 
+    @media screen and (max-width: $w1376) {
+        padding-top: 25px;
+    }
+
     &__title {
         font-weight: 600;
         font-size: rem(36);
@@ -236,6 +244,40 @@
         color: #FFFFFF;
         max-width: 700px;
 
+        @include line-clamp(11);
+
+        @media screen and (max-width: $w1376) {
+            font-size: 18px;
+        }
+
+        @media screen and (max-width: $w760) {
+            font-size: 16px;
+        }
+
 
     }
+}
+
+.swiper-pagination-block {
+    position: relative;
+    height: 10px;
+    padding-bottom: rem(79);
+    width: 100%;
+
+    & .swiper-pagination-progressbar-fill {
+        background-color: #fff;
+        margin-top: -2px;
+        margin-bottom: -4px;
+        height: 6px;
+        border-radius: 100px;
+    }
+}
+
+.swiper-pagination-progressbar {
+    background: rgba(0, 0, 0, 0.25);
+    top: 0;
+    height: 3px;
+    background-color: #ffffff73;
+    width: 100%;
+    border-radius: 3px;
 }

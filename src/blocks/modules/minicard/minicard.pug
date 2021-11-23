@@ -5,15 +5,15 @@ mixin minicard(data, slider)
       if slider
         .swiper-container(data-swiper="minicard")
           .swiper-wrapper
-            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
-            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
-            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
-            .swiper-slide: +bgimage('/img/catalog/r'+data+'.jpg')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.webp')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.webp')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.webp')
+            .swiper-slide: +bgimage('/img/catalog/r'+data+'.webp')
           .swiper-nav-mini
             .swiper-nav-mini__prev(data-swiper-prev="minicard"): +icons('#ic_swiper-prev', 30)
             .swiper-nav-mini__next(data-swiper-next="minicard"): +icons('#ic_swiper-next', 30)
       else
-        +bgimage('/img/catalog/r'+data+'.jpg')
+        +bgimage('/img/catalog/r'+data+'.webp')
 
     .minicard__desc
       .minicard__price
@@ -27,5 +27,5 @@ mixin minicard(data, slider)
 
 
     .minicard__link
-      a(href='/page-apartment.html'): button.btn Подробнее
+      a(href='/details.html'): button.btn Подробнее
 

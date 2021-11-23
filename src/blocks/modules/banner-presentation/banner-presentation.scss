@@ -1,0 +1,153 @@
+.section-banner-presentation {
+    @include section-padding;
+}
+
+.banner-presentation {
+    @include row-flex;
+
+    padding: rem(70) 0 rem(70) 100px;
+    background-color: #EAEAEB;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+
+    @media screen and (max-width: $w940) {
+        padding: rem(60) rem(40);
+    }
+
+    &__left {
+        @include col();
+        @include size-w940(5);
+        @include size(12);
+    }
+
+    &__right {
+        @include col();
+        @include size-w940(7);
+        @include size(12);
+    }
+
+    &__title {
+        @include section-subtitle;
+        padding-bottom: rem(25);
+        position: relative;
+        z-index: 4;
+
+        @media screen and (max-width: $w940) {
+            text-align: center;
+        }
+
+    }
+
+    &__desc {
+        font-size: rem(20);
+        padding-bottom: rem(25);
+        position: relative;
+        z-index: 4;
+        line-height: 140%;
+
+        @media screen and (max-width: $w940) {
+            font-size: 18px;
+            text-align: center;
+
+        }
+
+        @media screen and (max-width: $w580) {
+            font-size: 16px;
+        }
+    }
+
+    &__form {
+
+        position: relative;
+        z-index: 4;
+
+
+
+        & .form {
+
+            & .btn {
+                margin-top: rem(25);
+                background-color: #fff;
+                color: #000;
+
+                @media screen and (max-width: $w480) {
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            & input {
+                height: 63px;
+                border: none;
+                border-radius: rem(10);
+                background-color: #F4F4F4;
+                font-size: rem(22);
+                transition: 0.4s ease;
+
+                &:focus {
+                    background-color: #fff;
+                }
+
+                @media screen and (max-width: $w1376) {
+                    height: 45px;
+                }
+
+                @media screen and (max-width: $w580) {
+                    height: 45px;
+                }
+            }
+        }
+    }
+
+    &__left {
+
+
+        z-index: 2;
+
+        &::before {
+            content: '';
+            background: linear-gradient(88.45deg, #EAEAEB 4.97%, #EAEAEB 78.13%, rgba(241, 241, 241, 0) 97.46%);
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 65%;
+            z-index: 3;
+
+            @media screen and (max-width: $w940) {
+                display: none;
+            }
+        }
+    }
+
+    &__right {
+
+
+
+        & .bgimage {
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50%;
+            background-size: cover;
+            background-position: left bottom;
+            background-repeat: no-repeat;
+
+            @media screen and (max-width: $w940) {
+                position: relative;
+                display: block;
+                padding-top: 60%;
+                width: auto;
+                margin: rem(60) rem(-80) rem(-60) rem(-80);
+            }
+
+            @media screen and (max-width: $w940) {
+                background-position-y: -55px;
+                background-position-x: -55px;
+            }
+        }
+    }
+}

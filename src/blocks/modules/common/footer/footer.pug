@@ -1,4 +1,5 @@
 include ../main-menu/main-menu.pug
+include ../../banner-presentation/banner-presentation.pug
 
 .container 
   .footer
@@ -16,9 +17,22 @@ include ../main-menu/main-menu.pug
           li.ic_wa: a(href='#'): +icons('#ic_wa-solid')
           li.ic_tg: a(href='#'): +icons('#ic_tg')
       .footer__callback
-        button.btn.btn-line Заказать звонок
+        button.btn.btn-line(data-fancybox="" data-src="#callback") Заказать звонок
+
 
 
 
 +main-menu(app.mainMenu)
 
+.popup-callback(id="callback" style="display: none;")
+  .popup-callback__wrp
+    .popup-callback__title Закажите <br> обратный звонок
+    .popup-callback__subtitle Оставьте Ваш номер телефона и мы перезвоним Вам
+    .popup-callback__form
+      form(action='#' method='POST')
+        .form
+          .form__item: .form__subitem: input(type="tel" placeholder="Введите Ваш номер")
+          .form__item: .form__subitem: button.btn.btn-large  Отправить
+
+.popup-presentation(id="dl-presentationt" style="display: none;")
+  +banner-presentation()

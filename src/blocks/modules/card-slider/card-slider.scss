@@ -28,10 +28,7 @@
 
         position: relative;
 
-        @media screen and (max-width: $w480) {
-            margin-left: rem(-15);
-            margin-right: rem(-15);
-        }
+
 
         &:hover {
 

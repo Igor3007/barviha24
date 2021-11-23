@@ -27,6 +27,10 @@ html {
     filter: grayscale(1);
 }
 
+.perf-no-animation * {
+    transition: none !important;
+    animation: none !important;
+}
 
 button:active,
 button:hover,
@@ -105,19 +109,21 @@ main {
     }
 
     @media screen and (max-width: $w1376) {
-        max-width: 1200px;
+        max-width: 1040px;
     }
 
-    @media screen and (max-width: $w1280) {
+    @media screen and (max-width: $w940) {
         padding: 0 rem(30);
+        max-width: 730px;
     }
 
-    @media screen and (max-width: $w1024) {
-        padding: 0 rem(25);
+    @media screen and (max-width: $w760) {
+        max-width: 580px;
     }
 
-    @media screen and (max-width: $w580) {
+    @media screen and (max-width: $w480) {
         padding: 0 rem(15);
+        max-width: 360px;
     }
 }
 
@@ -205,16 +211,16 @@ main {
 
 
     @media screen and (max-width: $w1376) {
-        font-size: rem(38);
-    }
-
-    @media screen and (max-width: $w1024) {
-        font-size: rem(36);
+        font-size: 36px;
     }
 
     @media screen and (max-width: $w480) {
-        font-size: rem(30);
+        font-size: 32px;
     }
+
+
+
+
 }
 
 @mixin section-subtitle {
@@ -224,20 +230,22 @@ main {
     line-height: 125%;
     color: #322B2B;
 
-    @media screen and (max-width: $w1280) {
-        font-size: rem(30);
+    @media screen and (max-width: $w1376) {
+        font-size: 36px;
     }
 
     @media screen and (max-width: $w1024) {
-        font-size: rem(24);
+        font-size: 28px;
     }
 }
 
 
 @mixin section-padding {
-    padding: rem(50) 0;
+    padding: 70px 0;
+
+
 
     @media screen and (max-width: $w580) {
-        padding: rem(30) 0;
+        padding: rem(70) 0;
     }
 }

@@ -4,8 +4,8 @@ mixin gallery-block()
       .gallery-block__bg
         .swiper-container(data-swiper="gallery")
           .swiper-wrapper
-            each item in [1,1,1,1] 
-              .swiper-slide: +bgimage('./img/common/gallery_1.webp')
+            each item in ['./img/common/bg-adv.webp','./img/common/gallery_1.webp','./img/common/bg-adv.webp','./img/common/gallery_1.webp'] 
+              .swiper-slide: +bgimage(item)
 
       .gallery-block__content
         .gallery-block__title: .container Галерея

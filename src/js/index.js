@@ -21,36 +21,33 @@ document.addEventListener('lazybeforeunveil', function(e){
 });
 
 
-//svgPolyfill(); 
-//Swiper.use([Pagination, Navigation]);
+svgPolyfill(); 
+ 
+window.onload = function() {
+  document.querySelector('body').classList.remove('perf-no-animation');
+};
 
 document.addEventListener("DOMContentLoaded", function () {
- 
-
 
   /* inputmask */
-
   if(document.querySelector("input[type=tel]")){
     const IMaskPhone = new Inputmask("9(999)999-99-99")
     IMaskPhone.mask(document.querySelector("input[type=tel]"))
   }
 
-
   /* swiper gallery */
 
   function updateFraction(slider) {
     const { params, activeIndex } = slider;
-  
     document.querySelector('.counter-current').innerText = String(activeIndex + 1).padStart(2, '0')
     document.querySelector('.counter-total').innerText = (slider.slides.length)
-  
-     
   }
 
   var swiper2 = new Swiper('[data-swiper="gallery"]', {
 
     slidesPerView: 1,
     spaceBetween: 0,
+    effect: 'fade',
     navigation: {
       nextEl: '[data-swiper-next="gallery"]',
       prevEl: '[data-swiper-prev="gallery"]',
@@ -74,9 +71,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const { params, activeIndex } = slider;
 
     let slideContent = slider.slides[activeIndex].querySelector('.adv-block-content').outerHTML
-
     document.querySelector('.advantages-block__slide .container').innerHTML = slideContent;
-  
     document.querySelector('.advantages-block__counter .counter-current').innerText = String(activeIndex + 1).padStart(2, '0')
     document.querySelector('.advantages-block__counter .counter-total').innerText = (slider.slides.length)
      
@@ -91,6 +86,10 @@ document.addEventListener("DOMContentLoaded", function () {
     navigation: {
       nextEl: '[data-swiper-next="advantages"]',
       prevEl: '[data-swiper-prev="advantages"]',
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      type: "progressbar",
     },
     
     on: {
@@ -126,6 +125,22 @@ document.addEventListener("DOMContentLoaded", function () {
       nextEl: '[data-swiper-next="team"]',
       prevEl: '[data-swiper-prev="team"]',
     },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+       
+      },
+      940: {
+        slidesPerView: 2,
+        spaceBetween: 50
+      },
+      1376: {
+        slidesPerView: 2,
+        spaceBetween: 100
+      }
+    }
+
+    
   });
 
   var swiperTeam2 = new Swiper('[data-swiper="similar"]', {
@@ -136,6 +151,19 @@ document.addEventListener("DOMContentLoaded", function () {
       nextEl: '[data-swiper-next="similar"]',
       prevEl: '[data-swiper-prev="similar"]',
     },
+    breakpoints: {
+      320: {
+        slidesPerView: 1,
+      },
+      480: {
+        slidesPerView: 1,
+      },
+      940: {
+        slidesPerView: 3,
+        spaceBetween: 30
+      }
+    }
+  
   });
 
   /* wewewewewe */

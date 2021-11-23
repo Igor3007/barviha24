@@ -10,7 +10,7 @@
 
     .header__msgr
       ul
-        li.ic_wa: a(href='#'): +icons('#ic_wa-solid')
+        li.ic_wa: a(href='#'): +icons('#ic_wa')
         li.ic_tg: a(href='#'): +icons('#ic_tg')
 
     .header__phones
@@ -18,8 +18,8 @@
         span  +7 (495) 135-13-34
 
 
-    .header__callback
-      button.btn.btn-line Заказать звонок
+      .header__callback
+        button.btn.btn-line(data-fancybox="" data-src="#callback") Заказать звонок
 
 
 

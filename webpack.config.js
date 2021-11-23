@@ -3,14 +3,14 @@ const webpack = require("webpack");
 
 module.exports = {
     plugins: [ 
-        new webpack.ProvidePlugin({ 
-            "jQuery": "jquery", 
-            "window.jQuery": "jquery", 
-            "jquery": "jquery", 
-            "window.jquery": "jquery", 
-            "$": "jquery", 
-            "window.$": "jquery" 
-        }) 
+        // new webpack.ProvidePlugin({ 
+        //     "jQuery": "jquery", 
+        //     "window.jQuery": "jquery", 
+        //     "jquery": "jquery", 
+        //     "window.jquery": "jquery", 
+        //     "$": "jquery", 
+        //     "window.$": "jquery" 
+        // }) 
     ],
     
     entry: {
