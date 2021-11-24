@@ -10,10 +10,33 @@ mixin banner-presentation()
               .form
                 .form__item
                   .form__subitem: input(type="text" placeholder="Имя")
-                  .form__subitem: input(type="text" placeholder="Телефон")
+                  .form__subitem: input(type="tel" placeholder="Телефон")
                 .form__item
                   .form__subitem: button.btn.btn-large(type="submit") Получить презентацию
 
 
         .banner-presentation__right
           +bgimage('/img/home/mk1.webp')
+
+mixin banner-presentation-popup()
+  section.section-banner-presentation()
+    .container
+      .banner-presentation
+        .banner-presentation__left
+          .banner-presentation__title Полная база объектов <br> в поселке Барвиха 21 - <br> получить презентацию
+          .banner-presentation__form
+            form(action='#' method='POST')
+              .form
+                .form__item: input(type="text" placeholder="Введите Ваше Имя")
+                .form__item: input(type="tel" placeholder="Телефон")
+                .form__item: button.btn(type="submit") Отправить
+                .form__item: +checkbox('Я соглашаюсь на обработку персональных данных')
+                .form__item
+                  .banner-presentation__note Получите презентацию объектов от наших экспертов
+
+
+
+
+        .banner-presentation__right
+          +bgimage('/img/home/mk1.webp')
+          a(href='#download'): +icons('#ic_dl', 37)

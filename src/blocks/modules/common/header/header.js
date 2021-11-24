@@ -62,7 +62,7 @@ function scrollToTargetAdjusted(elem){
     });
 }
 
-const anchors = document.querySelectorAll('.main-menu__nav a[href*="#"]')
+const anchors = document.querySelectorAll('.main-menu__nav a[href*="#"], .footer__nav a[href*="#"]')
 
 anchors.forEach(function(anchor, item) {
   anchor.addEventListener('click', function (e) {
@@ -74,4 +74,12 @@ anchors.forEach(function(anchor, item) {
 
   })
 })
+
+
+if($('.fb-inmap')){
+    $('.fb-inmap').addEventListener('click', function(){
+        scrollToTargetAdjusted('yamaps') 
+    })
+}
+
 

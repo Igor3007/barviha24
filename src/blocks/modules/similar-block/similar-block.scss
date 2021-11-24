@@ -34,8 +34,16 @@
         }
 
         @media screen and (max-width: $w480) {
-            left: -18.5%;
-            right: -18.5%;
+            position: static;
+            height: auto;
+            margin-top: 0;
+            justify-content: center;
+            margin-top: 25px;
+            margin-bottom: -25px;
+
+            &>div {
+                transform: none;
+            }
         }
 
         display: flex;

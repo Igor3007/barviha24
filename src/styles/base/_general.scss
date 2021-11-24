@@ -27,6 +27,10 @@ html {
     filter: grayscale(1);
 }
 
+.swiper-button-disabled {
+    opacity: 0.3 !important;
+}
+
 .perf-no-animation * {
     transition: none !important;
     animation: none !important;

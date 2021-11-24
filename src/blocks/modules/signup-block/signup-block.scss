@@ -79,6 +79,11 @@
         & .checkbox__text {
             color: #2C2C2C;
             font-size: rem(16);
+
+            @media screen and (max-width: $w580) {
+                max-width: 169px;
+                color: #767676;
+            }
         }
 
         & .form input {

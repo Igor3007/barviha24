@@ -3,7 +3,8 @@ import "./import/components";
 
 import svgPolyfill from "svg4everybody";
 import Inputmask from "inputmask";
-import lazysizes from "lazysizes"
+import lazysizes from "lazysizes";
+import { Fancybox } from "@fancyapps/ui";
 import Swiper, {
   Pagination,
   Navigation,
@@ -32,7 +33,11 @@ document.addEventListener("DOMContentLoaded", function () {
   /* inputmask */
   if(document.querySelector("input[type=tel]")){
     const IMaskPhone = new Inputmask("9(999)999-99-99")
-    IMaskPhone.mask(document.querySelector("input[type=tel]"))
+    
+
+    document.querySelectorAll("input[type=tel]").forEach(function(item, index){
+      IMaskPhone.mask(item)
+    })
   }
 
   /* swiper gallery */
@@ -166,49 +171,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
   });
 
-  /* wewewewewe */
+  //fancybox
 
-    /* ============================================================== */
-    /* ============================================================== */
+  Fancybox.bind("[data-fancybox]", {
+    autoFocus: false,
+  });
 
-    // function galleryShowMore(setmax){
-
-    //     var container = document.querySelector('.catalog-block__list')
-    //     var table = container.querySelector('ul')
-    //     var max = (setmax ? setmax : 30)
-
-    //     if(table.querySelectorAll('').length <= max){
-    //         $('[data-gallery="tmore"]').hide()
-    //     }
-
-    //     table.find('li').not('.li-show').each(function(index){
-    //         if(index < max ){
-    //             $(this).addClass('li-show')
-    //         }
-    //     })
-
-    //   }
-
-    //   $(document).on('click', '[data-gallery="tmore"]',function(event){
-    //       galleryShowMore(12)
-    //   })
-
-    //   galleryShowMore(12)
-
-    //   /* ================================================== */
-    //   /* ================================================== */
-
-    //   $(document).on('click', '[data-tabs="nav"] li', function(event){
-          
-    //       if($(this).index() == 4){
-    //           $('.leagues__arhive').show()
-    //       }else{
-    //           $('.leagues__arhive').hide()
-    //       }
-          
-    // })
-
+  
 
 
 });//DOMContentLoaded
 
+
+ 

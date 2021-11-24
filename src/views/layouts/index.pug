@@ -30,18 +30,18 @@ html(lang="ru")
     link(rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon-180x180.png")
     link(rel="apple-touch-icon" sizes="1024x1024" href="img/favicons/apple-touch-icon-1024x1024.png")
 
-    link(rel="preload" href="/fonts/Gilroy/Gilroy-SemiBold.woff")
-    link(rel="preload" href="/fonts/Gilroy/Gilroy-Light.woff")
-    link(rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff")
-    link(rel="preload" href="/fonts/Gilroy/Gilroy-Medium.woff")
-    link(rel="preload" href="/fonts/Gilroy/Gilroy-Bold.woff")
-
+    link(rel="preload" href="/fonts/Gilroy/Gilroy-SemiBold.woff2")
+    link(rel="preload" href="/fonts/Gilroy/Gilroy-Light.woff2")
+    link(rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff2")
+    link(rel="preload" href="/fonts/Gilroy/Gilroy-Medium.woff2")
+    link(rel="preload" href="/fonts/Gilroy/Gilroy-Bold.woff2")
+    link(rel="preload" href="/styles/main.min.css")
     link(rel="prefetch" href="/img/sprites/sprite.svg")
 
     link(rel="dns-prefetch" href="//api-maps.yandex.ru")
+    style
+      include ../../styles/base/_critical.scss
 
-    link(rel="stylesheet" href="styles/critical.css")
-    link(rel="stylesheet" href="styles/main.css")
 
   body.perf-no-animation
     header
@@ -54,6 +54,7 @@ html(lang="ru")
         include ../../blocks/modules/common/footer/footer.pug
     block scripts
       script(src="js/main.js")
-      script(src="js/vendor.js")
+      script(src="js/vendor.js") 
+    link(rel="stylesheet" href="/styles/main.css")
 
 

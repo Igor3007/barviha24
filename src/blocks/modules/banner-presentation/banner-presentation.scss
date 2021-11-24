@@ -1,5 +1,9 @@
 .section-banner-presentation {
     @include section-padding;
+
+    @media screen and (max-width: $w580) {
+        padding-top: 0;
+    }
 }
 
 .banner-presentation {
@@ -37,6 +41,7 @@
             text-align: center;
         }
 
+
     }
 
     &__desc {
@@ -55,6 +60,16 @@
         @media screen and (max-width: $w580) {
             font-size: 16px;
         }
+    }
+
+    &__note {
+        color: #000;
+
+        @media screen and (max-width: $w940) {
+            text-align: center;
+            width: 100%;
+        }
+
     }
 
     &__form {
@@ -123,7 +138,40 @@
 
     &__right {
 
+        @media screen and (max-width: $w940) {
+            position: relative;
+        }
 
+        & a {
+            width: rem(82);
+            height: rem(82);
+            display: block;
+            background: linear-gradient(180deg, #B4A775 0%, #E4DAB1 100%);
+            border-radius: 50%;
+            position: absolute;
+            right: 10%;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 0 rem(20) rgba(255, 255, 255, 0.288);
+            top: 20%;
+
+            @media screen and (max-width: $w940) {
+                top: auto;
+                bottom: 10%;
+
+            }
+
+            @media screen and (max-width: $w580) {
+                width: rem(60);
+                height: rem(60);
+
+                & svg {
+                    width: 15px;
+                }
+            }
+        }
 
         & .bgimage {
             position: absolute;
@@ -147,6 +195,96 @@
             @media screen and (max-width: $w940) {
                 background-position-y: -55px;
                 background-position-x: -55px;
+            }
+        }
+    }
+
+
+}
+
+.popup-presentation {
+
+    @media screen and (max-width: $w360) {
+        padding: 10px;
+    }
+
+    max-width: 1360px;
+    margin: 0 auto;
+    width: 100%;
+
+    & .banner-presentation {
+        @media screen and (min-width: $w1440) {
+            padding-top: rem(120);
+            padding-bottom: rem(120);
+        }
+    }
+
+    & .form {
+
+        @media screen and (max-width: $w940) {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 35px 0;
+        }
+
+        & input {
+            font-size: 16px;
+
+            @media screen and (min-width: $w940) {
+                max-width: rem(360);
+            }
+        }
+    }
+
+    & .banner-presentation__title {
+        font-size: rem(36);
+    }
+
+    & .form__item {
+        margin-bottom: rem(15);
+
+        & .checkbox {
+            padding: 10px 0;
+        }
+    }
+
+    & .form .btn {
+
+        background-color: $main;
+        color: #fff;
+        font-size: rem(20);
+
+        @media screen and (max-width: $w940) {
+            margin: 0 auto;
+        }
+
+    }
+
+    & .checkbox .checkbox__elem::after {
+        left: 3px;
+        top: 4px;
+    }
+
+    & .banner-presentation__title {
+        @media screen and (max-width: $w360) {
+            font-size: 21px;
+        }
+    }
+
+    & .banner-presentation__right {
+
+
+
+        & .bgimage {
+            background-position: 17% bottom;
+            top: 10%;
+
+            @media screen and (max-width: $w940) {
+                padding-top: 81%;
+            }
+
+            @media screen and (max-width: $w580) {
+                margin-top: 0;
             }
         }
     }

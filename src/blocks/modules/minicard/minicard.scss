@@ -184,6 +184,11 @@
             width: 100%;
             font-size: rem(20);
 
+            &:hover {
+                background-color: $main;
+                color: #fff;
+            }
+
             @media screen and (max-width: $w1376) {
                 max-width: 215px;
                 margin: 0 auto;
@@ -276,6 +281,10 @@
 
     & svg {
         fill: #fff;
+
+        @media screen and (max-width: $w580) {
+            width: 10px;
+        }
     }
 
     &>div {
@@ -284,12 +293,28 @@
     }
 
     &__prev {
-        transform: translateX(-10px);
-        opacity: 0;
+
+        opacity: 1;
+        transform: translateX(0);
+
+        @media screen and (min-width: $w760) {
+            transform: translateX(-10px);
+            opacity: 0;
+        }
+
+
     }
 
     &__next {
-        transform: translateX(10px);
-        opacity: 0;
+
+        opacity: 1;
+        transform: translateX(0);
+
+        @media screen and (min-width: $w760) {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+
+
     }
 }

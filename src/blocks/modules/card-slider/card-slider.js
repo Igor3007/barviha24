@@ -4,7 +4,7 @@ import Swiper, {
     Thumbs,
   } from 'swiper';
 
-import { Fancybox } from "@fancyapps/ui";
+//import { Fancybox } from "@fancyapps/ui";
 
 Swiper.use([Pagination, Navigation, Thumbs]);
 
