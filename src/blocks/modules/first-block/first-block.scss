@@ -14,7 +14,7 @@
         position: relative;
         z-index: 1;
 
-        @media screen and (max-width: $w1100) {
+        @media screen and (max-width: 1770px) {
             position: absolute;
             left: 0;
             right: 0;
@@ -28,7 +28,7 @@
             min-height: 90vh;
             background-color: #888;
 
-            @media screen and (max-width: $w1376) {
+            @media screen and (max-width: 1770px) {
                 min-height: auto;
                 height: 100%;
             }
@@ -50,7 +50,7 @@
         justify-content: center;
         align-items: center;
 
-        @media screen and (max-width: $w1100) {
+        @media screen and (max-width: 1770px) {
             position: relative;
             padding: rem(150) 0;
         }

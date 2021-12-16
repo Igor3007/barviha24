@@ -9,8 +9,8 @@ mixin banner-presentation()
             form(action='#' method='POST')
               .form
                 .form__item
-                  .form__subitem: input(type="text" placeholder="Имя")
-                  .form__subitem: input(type="tel" placeholder="Телефон")
+                  .form__subitem: input(type="text" placeholder="Ваше имя")
+                  .form__subitem: input(type="tel" placeholder="Ваш номер телефона")
                 .form__item
                   .form__subitem: button.btn.btn-large(type="submit") Получить презентацию
 
@@ -27,8 +27,8 @@ mixin banner-presentation-popup()
           .banner-presentation__form
             form(action='#' method='POST')
               .form
-                .form__item: input(type="text" placeholder="Введите Ваше Имя")
-                .form__item: input(type="tel" placeholder="Телефон")
+                .form__item: input(type="text" placeholder="Ваше имя")
+                .form__item: input(type="tel" placeholder="Ваш номер телефона")
                 .form__item: button.btn(type="submit") Отправить
                 .form__item: +checkbox('Я соглашаюсь на обработку персональных данных')
                 .form__item

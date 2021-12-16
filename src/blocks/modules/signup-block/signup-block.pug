@@ -10,7 +10,7 @@ mixin signup-block()
           .signup-block__form
             form(action='#' method='POST')
               .form
-                .form__item: .form__subitem: input(type="text" placeholder="Введите Ваше Имя")
-                .form__item: .form__subitem: input(type="tel" placeholder="Введите Ваш телефон")
+                .form__item: .form__subitem: input(type="text" placeholder="Ваше имя")
+                .form__item: .form__subitem: input(type="tel" placeholder="Ваш номер телефона")
                 .form__item: .form__subitem: button.btn.btn-large(type="submit") Отправить
                 .form__item: +checkbox('Я соглашаюсь на обработку персональных данных')
