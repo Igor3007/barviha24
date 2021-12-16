@@ -3,112 +3,90 @@
 }
 
 .location-block {
-
     &>.location-block__title {
         @media screen and (min-width: $w940) {
             display: none;
         }
     }
-
     &__wrp {
         @include row-flex;
-        align-items: center;
-
+        align-items: stretch;
         @media screen and (max-width: $w940) {
             flex-direction: column-reverse;
         }
     }
-
     &__right,
     &__left {
         @include col();
         @include size-w940(6);
         @include size(12);
     }
-
     &__left {
+        display: flex;
+        flex-direction: column;
         padding-right: rem(50);
-
         &>.location-block__title {
             @media screen and (max-width: $w940) {
                 display: none;
             }
         }
     }
-
     &__right {
-
         @media screen and (max-width: $w940) {
             padding-bottom: rem(45);
         }
-
         & .bgimage {
             padding-top: 100%;
             @include bgimage-cover;
         }
     }
-
     &__title {
         @include section-title;
         padding-bottom: rem(45);
     }
-
     &__desc {
         font-size: rem(28);
         padding-bottom: rem(45);
+        margin-bottom: auto;
         line-height: 140%;
-
         @media screen and (max-width: $w1376) {
             font-size: 20px;
         }
-
         @media screen and (max-width: $w760) {
             font-size: 18px;
         }
-
         @media screen and (max-width: $w580) {
             font-size: 16px;
         }
-
     }
-
     &__phone {
-        font-size: rem(24);
-        padding-bottom: rem(20);
+        font-size: rem(36);
+        line-height: 100%;
+        padding-bottom: rem(25);
     }
-
     &__number {
-
-        padding-bottom: rem(30);
-
+        font-size: rem(36);
+        line-height: 100%;
+        padding-bottom: rem(45);
         & a {
             font-size: rem(32);
             font-weight: 600;
         }
     }
-
     &__callback {
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         max-width: rem(450);
-
         & ul {
-
             display: flex;
-
             & li {
-
                 margin: 0 rem(10);
-
                 &:hover {
                     & svg {
                         fill: $main;
                     }
                 }
-
                 & svg {
                     width: rem(32);
                     height: rem(32);
@@ -116,7 +94,6 @@
                 }
             }
         }
-
         & .btn {
             border: 2px solid #322B2B;
             color: #322B2B;
