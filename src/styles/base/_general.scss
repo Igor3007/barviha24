@@ -7,6 +7,7 @@ html {
     background: #fff;
     color: #000;
     letter-spacing: normal;
+    overflow-x: hidden;
 
 
 
@@ -195,6 +196,10 @@ main {
     @media screen and (max-width: $w580) {
         display: none !important;
     }
+}
+
+.grecaptcha-badge {
+    display: none !important;
 }
 
 

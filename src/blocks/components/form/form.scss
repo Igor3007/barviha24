@@ -12,6 +12,11 @@ input {
     & input[type="text"],
     & input[type="email"],
     & input[type="tel"] {
+
+        &.error {
+            box-shadow: 0 0 5px 1px $red;
+        }
+
         height: rem(80);
         border: 1px solid $main;
         font-size: rem(18);

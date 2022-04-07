@@ -1,5 +1,6 @@
 .section-banner-presentation {
     @include section-padding;
+
     @media screen and (max-width: $w580) {
         padding-top: 0;
     }
@@ -12,62 +13,76 @@
     border-radius: 20px;
     position: relative;
     overflow: hidden;
+
     @media screen and (max-width: $w940) {
         padding: rem(60) rem(40);
     }
+
     &__left {
         @include col();
         @include size-w940(5);
         @include size(12);
     }
+
     &__right {
         @include col();
         @include size-w940(7);
         @include size(12);
     }
+
     &__title {
         @include section-subtitle;
         padding-bottom: rem(25);
         position: relative;
         z-index: 4;
+
         @media screen and (max-width: $w940) {
             text-align: center;
         }
     }
+
     &__desc {
         font-size: rem(20);
         padding-bottom: rem(25);
         position: relative;
         z-index: 4;
         line-height: 140%;
+
         @media screen and (max-width: $w940) {
             font-size: 18px;
             text-align: center;
         }
+
         @media screen and (max-width: $w580) {
             font-size: 16px;
         }
     }
+
     &__note {
         color: #000;
+
         @media screen and (max-width: $w940) {
             text-align: center;
             width: 100%;
         }
     }
+
     &__form {
         position: relative;
         z-index: 4;
+
         & .form {
             & .btn {
                 margin-top: rem(25);
                 background-color: #fff;
                 color: #000;
+
                 @media screen and (max-width: $w480) {
                     margin-left: auto;
                     margin-right: auto;
                 }
             }
+
             & input {
                 height: 63px;
                 border: none;
@@ -75,20 +90,25 @@
                 background-color: #F4F4F4;
                 font-size: rem(22);
                 transition: 0.4s ease;
+
                 &:focus {
                     background-color: #fff;
                 }
+
                 @media screen and (max-width: $w1376) {
                     height: 45px;
                 }
+
                 @media screen and (max-width: $w580) {
                     height: 45px;
                 }
             }
         }
     }
+
     &__left {
         z-index: 2;
+
         &::before {
             content: '';
             background: linear-gradient(88.45deg, #EAEAEB 4.97%, #EAEAEB 78.13%, rgba(241, 241, 241, 0) 97.46%);
@@ -98,15 +118,18 @@
             bottom: 0;
             width: 65%;
             z-index: 3;
+
             @media screen and (max-width: $w940) {
                 display: none;
             }
         }
     }
+
     &__right {
         @media screen and (max-width: $w940) {
             position: relative;
         }
+
         & a {
             width: rem(82);
             height: rem(82);
@@ -121,18 +144,22 @@
             align-items: center;
             box-shadow: 0 0 0 rem(20) rgba(255, 255, 255, 0.288);
             top: 20%;
+
             @media screen and (max-width: $w940) {
                 top: auto;
                 bottom: 10%;
             }
+
             @media screen and (max-width: $w580) {
                 width: rem(60);
                 height: rem(60);
+
                 & svg {
                     width: 15px;
                 }
             }
         }
+
         & .bgimage {
             position: absolute;
             z-index: 1;
@@ -143,6 +170,7 @@
             background-position: right;
             background-repeat: no-repeat;
             background-size: 175%;
+
             @media screen and (max-width: $w940) {
                 position: relative;
                 display: block;
@@ -152,6 +180,7 @@
                 background-size: cover;
                 background-image: url("../img/home/mk1.webp") !important;
             }
+
             @media screen and (max-width: $w940) {
                 background-position-y: -55px;
                 background-position-x: -55px;
@@ -191,7 +220,6 @@
 }
 
 .popup-presentation {
-<<<<<<< HEAD
 
     & .container {
         padding: 0;
@@ -236,66 +264,78 @@
     }
 
     @media screen and (max-width: $w480) {
-=======
-    @media screen and (max-width: $w360) {
->>>>>>> a9e0289ba540247843b3a148ab4e826209ee3f1e
         padding: 10px;
     }
+
     max-width: 1360px;
     margin: 0 auto;
     width: 100%;
+
     & .banner-presentation {
         @media screen and (min-width: $w1440) {
             padding-top: rem(120);
             padding-bottom: rem(120);
         }
     }
+
     & .form {
         @media screen and (max-width: $w940) {
             max-width: 350px;
             margin: 0 auto;
             padding: 35px 0;
         }
+
         & input {
             font-size: 16px;
+
             @media screen and (min-width: $w940) {
                 max-width: rem(360);
             }
         }
     }
+
     & .banner-presentation__title {
         font-size: rem(36);
     }
+
     & .form__item {
         margin-bottom: rem(15);
+
         & .checkbox {
             padding: 10px 0;
         }
     }
+
     & .form .btn {
         background-color: $main;
         color: #fff;
         font-size: rem(20);
+
         @media screen and (max-width: $w940) {
             margin: 0 auto;
         }
     }
+
     & .checkbox .checkbox__elem::after {
         left: 3px;
         top: 4px;
     }
+
     & .banner-presentation__title {
         @media screen and (max-width: $w360) {
             font-size: 21px;
         }
     }
+
     & .banner-presentation__right {
         & .bgimage {
             background-position: right;
+
             @media screen and (max-width: $w940) {
                 background-image: url("../img/home/mk1.webp") !important;
                 padding-top: 81%;
             }
+
             @media screen and (max-width: $w580) {
                 margin-top: 0;
             }

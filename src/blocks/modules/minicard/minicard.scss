@@ -10,12 +10,10 @@
     border-radius: rem(21);
     overflow: hidden;
 
-    &:hover {
-        & .swiper-nav-mini {
-            &>div {
-                transform: translateX(0);
-                opacity: 1;
-            }
+    & .swiper-nav-mini {
+        &>div {
+            transform: translateX(0);
+            opacity: 1;
         }
     }
 
@@ -29,7 +27,7 @@
             display: block;
             box-sizing: border-box;
             background-color: #dfdfdf;
-
+            border-radius: 1.3125rem 1.3125rem 0 0;
 
         }
 
@@ -115,7 +113,7 @@
             padding-bottom: rem(5);
             font-weight: 300;
             font-size: rem(22);
-            text-transform: capitalize;
+            text-transform: normal;
             color: #322B2B;
             line-height: 145%;
 
@@ -201,10 +199,13 @@
         font-weight: 600;
         color: $main;
         white-space: nowrap;
-        text-transform: uppercase;
         line-height: rem(32);
         color: $gold;
         font-size: rem(30);
+
+        & a {
+            color: $gold;
+        }
 
         @media screen and (max-width: $w1024) {
             margin-top: rem(0);

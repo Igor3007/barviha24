@@ -28,12 +28,43 @@
         right: -12%;
         height: 0px;
 
-        @media screen and (max-width: $w940) {
-            left: -18.5%;
-            right: -18.5%;
+        @media screen and (min-width: $w1376) and (max-width: 1810px) {
+            display: flex;
+            position: static;
+            height: auto;
+            justify-content: flex-end;
+            padding-top: 25px;
+
+            &>div {
+                transform: translateY(0%);
+            }
         }
 
-        @media screen and (max-width: $w480) {
+        @media screen and (max-width: $w1376) {
+            left: -14%;
+            right: -14%;
+        }
+
+        @media screen and (min-width: $w940) and (max-width: 1225px) {
+            display: flex;
+            position: static;
+            height: auto;
+            justify-content: flex-end;
+            padding-top: 25px;
+
+            &>div {
+                transform: translateY(0%);
+            }
+        }
+
+        @media screen and (max-width: $w940) {
+            left: -14%;
+            right: -14%;
+        }
+
+
+
+        @media screen and (max-width: 690px) {
             position: static;
             height: auto;
             margin-top: 0;
@@ -57,41 +88,38 @@
             align-items: center;
             transform: translateY(-50%);
 
-            @media screen and (max-width: $w1280) {
-                width: 50px;
-                height: 50px;
+            @media screen and (max-width: $w1376) {
+                width: rem(75);
+                height: rem(75);
+
+                & svg {
+                    fill: #5E5959;
+                    width: rem(25);
+                    height: rem(25);
+                }
             }
 
-            @media screen and (max-width: $w580) {
-                width: 45px;
-                height: 45px;
+            @media screen and (max-width: $w940) {
+                width: 55px;
+                height: 55px;
                 padding: 0;
 
                 & svg {
-                    width: 7px;
+                    fill: #5E5959;
+                    width: rem(25);
+                    height: rem(25);
                 }
             }
 
-            @media screen and (max-width: $w360) {
-                border: none !important;
-            }
+            @media screen and (max-width: $w760) {
+                width: 45px;
+                height: 45px;
 
-            @media screen and (max-width: $w360) {
-                width: rem(70);
-                height: rem(70);
-            }
-
-            & svg {
-                fill: #fff;
-                width: rem(50);
-                height: rem(50);
-
-                @media screen and (max-width: $w1280) {
-                    width: rem(35);
-                    height: rem(35);
+                & svg {
+                    fill: #5E5959;
+                    width: rem(22);
+                    height: rem(22);
                 }
-
-
             }
 
             &.swiper-button-disabled {

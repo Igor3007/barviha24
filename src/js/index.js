@@ -116,6 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     slidesPerView: 1,
     spaceBetween: 0,
+    observer: true,
+    observeParents: true,
+    loop: true,
     navigation: {
       nextEl: '[data-swiper-next="minicard"]',
       prevEl: '[data-swiper-prev="minicard"]',

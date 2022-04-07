@@ -1,7 +1,7 @@
 if(document.querySelector('[data-filter]')){
     
     var countElem = 6;
-    const step = 1;
+    const step = 3;
     var activeTab = null;
 
     function $(elem){
@@ -17,7 +17,6 @@ if(document.querySelector('[data-filter]')){
         } 
 
         item.addEventListener('click', function(event){
-
             $('.catalog-block__nav li.active').classList.remove('active')
             this.classList.add('active')
             activeTab = item.dataset.filter

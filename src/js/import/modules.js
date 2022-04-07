@@ -4,6 +4,7 @@ import "%modules%/gallery-block/gallery-block.js";
 import "%modules%/yamaps-block/yamaps-block.js";
 import "%modules%/card-slider/card-slider.js"; 
 import "%modules%/catalog-block/catalog-block.js"; 
+import "%modules%/bottom-popup/bottom-popup.js"; 
  
 // import "%modules%/video/video";
 // import "%modules%/catalog/minicard/minicard";

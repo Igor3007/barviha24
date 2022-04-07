@@ -20,10 +20,35 @@ $('.burger').addEventListener('click', function(event){
     $('html').classList.toggle('hidden')
 })
 
+ 
+
+function onScrollStopped(domElement, callback, timeout = 250) {
+    domElement.addEventListener('scroll', () => {
+
+        if(document.querySelector('.header-slide-up')){
+            document.querySelector('header.fixed').classList.remove('header-slide-up')
+        }
+
+        clearTimeout(callback.timeout);
+      callback.timeout = setTimeout(callback, timeout);
+    });
+  }
+  
+  onScrollStopped(window, () => {
+
+    let scrollTop = document.querySelector('html').scrollTop;
+    
+    if(document.querySelector('header.fixed') && scrollTop > 60){
+        document.querySelector('header.fixed').classList.add('header-slide-up')
+    }
+
+     // console.log('scroll stopped');
+  }, 1000);
+
 if(!$('header').classList.contains('header-layout-page')){
     document.addEventListener("scroll", function(){
         let scrollTop = document.querySelector('html').scrollTop;
-        let start = 350;
+        let start   = 350;
         let paddMin = 15;
         let paddMax = 30;
         let p = (scrollTop/start)*100;
@@ -32,7 +57,7 @@ if(!$('header').classList.contains('header-layout-page')){
 
         $('header').style.backgroundColor = 'rgba(255,255,255,'+p+'%)' 
     
-
+       
         if(paddingCurrent >= 15 ){
             $('header').style.padding = paddingCurrent+'px 0' 
         }
@@ -45,6 +70,13 @@ if(!$('header').classList.contains('header-layout-page')){
         }
 
     })
+
+    //===================
+
+     
+     
+   
+
 }
 
 
@@ -66,8 +98,12 @@ const anchors = document.querySelectorAll('.main-menu__nav a[href*="#"], .footer
 
 anchors.forEach(function(anchor, item) {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const blockID = this.getAttribute('href').substr(1);
+
+    if(window.location.pathname == '/'){
+        e.preventDefault();
+    }
+   
+    const blockID = this.getAttribute('href').substr(2);
 
     scrollToTargetAdjusted(blockID) 
     closeMobileMenu()
@@ -81,5 +117,25 @@ if($('.fb-inmap')){
         scrollToTargetAdjusted('yamaps') 
     })
 }
+
+
+//не скрывать меню при фокусе
+
+if(document.querySelector('header')){
+    var topBarContainer = document.querySelector('header')
+
+topBarContainer.addEventListener('mouseenter', function(){
+    this.classList.add('header-show-hover')
+})
+
+topBarContainer.addEventListener('mouseleave', function(){
+    this.classList.remove('header-show-hover')
+    this.classList.remove('header-slide-up')
+})
+
+
+
+}
+
 
 

@@ -62,17 +62,18 @@
         "postcss": "^8.3.7",
         "postcss-sort-media-queries": "^4.1.0",
         "require-dir": "^1.2.0",
+        "smart-grid": "^2.1.2",
         "stylelint": "^10.0.1",
         "stylelint-order": "^3.0.0",
         "stylelint-selector-bem-pattern": "^2.1.0",
         "webpack": "~4.35.0",
         "webpack-stream": "^5.2.1",
-        "yargs": "~13.2.4",
-        "smart-grid": "^2.1.2"
+        "yargs": "~13.2.4"
     },
     "dependencies": {
         "@fancyapps/ui": "^4.0.4",
         "inputmask": "^5.0.5",
+        "js-cookie": "^3.0.1",
         "lazysizes": "^5.3.2",
         "svg4everybody": "^2.1.9",
         "swiper": "^6.4.10"

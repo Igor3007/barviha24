@@ -199,3 +199,11 @@ header {
         }
     }
 }
+
+.fixed.header-show-hover {
+    transform: translateY(0) !important;
+}
+
+.fixed.header-slide-up {
+    transform: translateY(-100%);
+}

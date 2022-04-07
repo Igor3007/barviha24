@@ -1,5 +1,12 @@
 mixin yamaps-block()
   section.section-yamaps-block(id="yamaps")
+    script.
+      window.MAP_PARAMS = [
+        {
+          'coordinates':'53.894548, 30.330654',
+          'markerImage':'/img/svg/ic_pen-ymaps.svg',
+        },
+      ]
     .yamaps-block
       .mapcontainer(id="mapcontainer")
         span

@@ -10,7 +10,7 @@
 /******/ 		var moduleId, chunkId, i = 0, resolves = [];
 /******/ 		for(;i < chunkIds.length; i++) {
 /******/ 			chunkId = chunkIds[i];
-/******/ 			if(installedChunks[chunkId]) {
+/******/ 			if(Object.prototype.hasOwnProperty.call(installedChunks, chunkId) && installedChunks[chunkId]) {
 /******/ 				resolves.push(installedChunks[chunkId][0]);
 /******/ 			}
 /******/ 			installedChunks[chunkId] = 0;
@@ -301,6 +301,39 @@ function YMaps(option) {
 
 /***/ }),
 
+/***/ "./src/blocks/modules/bottom-popup/bottom-popup.js":
+/*!*********************************************************!*\
+  !*** ./src/blocks/modules/bottom-popup/bottom-popup.js ***!
+  \*********************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_js_cookie_dist_js_cookie_min_mjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/js-cookie/dist/js.cookie.min.mjs */ "./node_modules/js-cookie/dist/js.cookie.min.mjs");
+
+
+if (document.querySelector('.bottom-popup')) {
+  document.addEventListener("scroll", function () {
+    var scrollTop = document.querySelector('html').scrollTop;
+    var start = 750;
+    var container = document.querySelector('.bottom-popup');
+
+    if (scrollTop >= start && !_node_modules_js_cookie_dist_js_cookie_min_mjs__WEBPACK_IMPORTED_MODULE_0__["default"].get('popup-present')) {
+      container.classList.add('view');
+    } else {
+      if (container.classList.contains('view')) {
+        container.classList.remove('view');
+      }
+    }
+  });
+  document.querySelector('.bottom-popup__btn').addEventListener('click', function () {
+    _node_modules_js_cookie_dist_js_cookie_min_mjs__WEBPACK_IMPORTED_MODULE_0__["default"].set('popup-present', true);
+  });
+}
+
+/***/ }),
+
 /***/ "./src/blocks/modules/card-slider/card-slider.js":
 /*!*******************************************************!*\
   !*** ./src/blocks/modules/card-slider/card-slider.js ***!
@@ -311,7 +344,8 @@ function YMaps(option) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper */ "./node_modules/swiper/swiper.esm.js");
- //import { Fancybox } from "@fancyapps/ui";
+/* harmony import */ var _fancyapps_ui__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fancyapps/ui */ "./node_modules/@fancyapps/ui/dist/fancybox.esm.js");
+
 
 swiper__WEBPACK_IMPORTED_MODULE_0__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_0__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_0__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_0__["Thumbs"]]);
 
@@ -326,7 +360,7 @@ if (document.querySelector('.card-slider__thumbs')) {
         type: "image"
       });
     });
-    Fancybox.show(IMAGE_ARR);
+    _fancyapps_ui__WEBPACK_IMPORTED_MODULE_1__["Fancybox"].show(IMAGE_ARR);
   });
 }
 
@@ -445,7 +479,7 @@ if (document.querySelector('[data-filter]')) {
   };
 
   var countElem = 6;
-  var step = 1;
+  var step = 3;
   var activeTab = null;
   document.querySelectorAll('[data-filter]').forEach(function (item, index) {
     if (!index) {
@@ -496,6 +530,27 @@ $('.burger').addEventListener('click', function (event) {
   $('html').classList.toggle('hidden');
 });
 
+function onScrollStopped(domElement, callback) {
+  var timeout = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 250;
+  domElement.addEventListener('scroll', function () {
+    if (document.querySelector('.header-slide-up')) {
+      document.querySelector('header.fixed').classList.remove('header-slide-up');
+    }
+
+    clearTimeout(callback.timeout);
+    callback.timeout = setTimeout(callback, timeout);
+  });
+}
+
+onScrollStopped(window, function () {
+  var scrollTop = document.querySelector('html').scrollTop;
+
+  if (document.querySelector('header.fixed') && scrollTop > 60) {
+    document.querySelector('header.fixed').classList.add('header-slide-up');
+  } // console.log('scroll stopped');
+
+}, 1000);
+
 if (!$('header').classList.contains('header-layout-page')) {
   document.addEventListener("scroll", function () {
     var scrollTop = document.querySelector('html').scrollTop;
@@ -515,7 +570,7 @@ if (!$('header').classList.contains('header-layout-page')) {
     } else {
       $('header').classList.remove('fixed');
     }
-  });
+  }); //===================
 } //scroll to view
 
 
@@ -533,8 +588,11 @@ function scrollToTargetAdjusted(elem) {
 var anchors = document.querySelectorAll('.main-menu__nav a[href*="#"], .footer__nav a[href*="#"]');
 anchors.forEach(function (anchor, item) {
   anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    var blockID = this.getAttribute('href').substr(1);
+    if (window.location.pathname == '/') {
+      e.preventDefault();
+    }
+
+    var blockID = this.getAttribute('href').substr(2);
     scrollToTargetAdjusted(blockID);
     closeMobileMenu();
   });
@@ -543,6 +601,18 @@ anchors.forEach(function (anchor, item) {
 if ($('.fb-inmap')) {
   $('.fb-inmap').addEventListener('click', function () {
     scrollToTargetAdjusted('yamaps');
+  });
+} //не скрывать меню при фокусе
+
+
+if (document.querySelector('header')) {
+  var topBarContainer = document.querySelector('header');
+  topBarContainer.addEventListener('mouseenter', function () {
+    this.classList.add('header-show-hover');
+  });
+  topBarContainer.addEventListener('mouseleave', function () {
+    this.classList.remove('header-show-hover');
+    this.classList.remove('header-slide-up');
   });
 }
 
@@ -636,16 +706,13 @@ if (document.querySelector('.section-yamaps-block')) {
 
   var elementInViewport = function elementInViewport(el) {
     var bounds = el.getBoundingClientRect();
-    return bounds.top + bounds.height > 0 && // Елемент ниже верхней границы
-    window.innerHeight - bounds.top > 0 && // Выше нижней
-    bounds.left + bounds.width > 0 && // Правее левой
-    window.innerWidth - bounds.left > 0 // Левее правой
+    return bounds.top + bounds.height > 0 && window.innerHeight - bounds.top > 0 && bounds.left + bounds.width > 0 && window.innerWidth - bounds.left > 0 // Левее правой
     ;
   };
 
   var mapInit = function mapInit() {
     YM.mapsParams.container = 'mapcontainer';
-    YM.mapsParams.params.center = [55.714225, 37.848540];
+    YM.mapsParams.params.center = pointsArray[0].coordinates.split(',');
     YM.init(function () {
       YM.addPlacemark(pointsArray); //YM.autoScale()
     });
@@ -674,6 +741,10 @@ if (document.querySelector('.section-yamaps-block')) {
     'coordinates': '55.714225, 37.848540',
     'markerImage': '/img/svg/ic_pen-ymaps.svg'
   }];
+
+  if (typeof window.MAP_PARAMS != 'undefined') {
+    pointsArray = window.MAP_PARAMS;
+  }
 }
 
 /***/ }),
@@ -712,6 +783,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_card_slider_card_slider_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! %modules%/card-slider/card-slider.js */ "./src/blocks/modules/card-slider/card-slider.js");
 /* harmony import */ var _modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! %modules%/catalog-block/catalog-block.js */ "./src/blocks/modules/catalog-block/catalog-block.js");
 /* harmony import */ var _modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_modules_catalog_block_catalog_block_js__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _modules_bottom_popup_bottom_popup_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! %modules%/bottom-popup/bottom-popup.js */ "./src/blocks/modules/bottom-popup/bottom-popup.js");
+
 
 
 
@@ -847,6 +920,9 @@ document.addEventListener("DOMContentLoaded", function () {
   var swiperMinicard = new swiper__WEBPACK_IMPORTED_MODULE_6__["default"]('[data-swiper="minicard"]', {
     slidesPerView: 1,
     spaceBetween: 0,
+    observer: true,
+    observeParents: true,
+    loop: true,
     navigation: {
       nextEl: '[data-swiper-next="minicard"]',
       prevEl: '[data-swiper-prev="minicard"]'

@@ -42,16 +42,22 @@
                 z-index: 2;
 
                 @media screen and (max-width: $w760) {
-                padding-top: 95%
+                    padding-top: 95%
                 }
             }
 
             & .bgimage {
-                padding-top: 48.8%;
+                // padding-top: 48.8%;
                 @include bgimage-cover;
                 min-height: rem(768);
+                height: 100vh;
 
-                 
+                @media screen and (max-width: $w480) {
+                    height: 100vh;
+                    padding-top: 0;
+                }
+
+
             }
         }
     }
@@ -190,8 +196,8 @@
                 width: rem(35);
                 height: rem(35);
             }
-             
-            
+
+
         }
     }
 

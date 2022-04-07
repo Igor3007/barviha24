@@ -1,5 +1,6 @@
 include ../main-menu/main-menu.pug
 include ../../banner-presentation/banner-presentation.pug
+include ../../bottom-popup/bottom-popup.pug
 
 .container 
   .footer
@@ -23,6 +24,7 @@ include ../../banner-presentation/banner-presentation.pug
 
 
 +main-menu(app.mainMenu)
++bottom-popup()
 
 .popup-callback(id="callback" style="display: none;")
   .popup-callback__wrp
@@ -36,3 +38,4 @@ include ../../banner-presentation/banner-presentation.pug
 
 .popup-presentation(id="dl-presentationt" style="display: none;")
   +banner-presentation-popup()
+

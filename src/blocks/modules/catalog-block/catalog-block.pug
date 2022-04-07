@@ -4,13 +4,13 @@ mixin catalog-block()
   section.section-catalog-block(id="catalog")
     .container
       .catalog-block 
-        .catalog-block__title Дома и участки в <br> поселке “Барвиха 21”
+        .catalog-block__title Дома и участки в <br> поселке “Барвиха&nbsp21”
         .catalog-block__nav
           ul
             li(data-filter="house").active: span Дома
             li(data-filter="area"): span Участки
         .catalog-block__list
-          each item in [1,1,0,1,0,1,1,0,1,1]
+          each item in [1,1,0,1,0,1,1,0,1,1,1,0,1,1,0,1,1]
             .catalog-block__item(data-card=""+(item ? 'house':'area')+""): +minicard('1', true)
         .catalog-block__more
           button.btn.btn-white.btn-large

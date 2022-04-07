@@ -54,16 +54,20 @@ if(document.querySelector('.section-yamaps-block')){
     })
 
     const YM = new YMaps()
-    const pointsArray = [
+    let pointsArray = [
         {
             'coordinates':'55.714225, 37.848540',
             'markerImage':'/img/svg/ic_pen-ymaps.svg',
         },
     ]
 
+    if( typeof window.MAP_PARAMS != 'undefined' ){
+        pointsArray = window.MAP_PARAMS;
+    }
+
     function mapInit (){
         YM.mapsParams.container = 'mapcontainer';
-        YM.mapsParams.params.center = [55.714225, 37.848540]
+        YM.mapsParams.params.center = pointsArray[0].coordinates.split(',')
 
         YM.init(function(){
             YM.addPlacemark(pointsArray)

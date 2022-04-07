@@ -10,12 +10,15 @@
         padding-bottom: rem(40);
 
         @media screen and (max-width: $w480) {
-
-
+            font-size: 29px;
 
             & br {
                 display: none;
             }
+        }
+
+        @media screen and (max-width: $w360) {
+            font-size: 27px;
         }
     }
 
@@ -61,6 +64,11 @@
                     min-width: 310px;
                     transition: 0.5s ease;
                     cursor: pointer;
+
+                    @media screen and (max-width: $w1440) {
+                        min-width: rem(300);
+                        font-size: 22px;
+                    }
 
                     @media screen and (max-width: $w760) {
                         min-width: 155px;
