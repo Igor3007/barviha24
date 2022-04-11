@@ -1,0 +1,239 @@
+.section-inmap-block {
+    @include section-padding;
+    background-color: #F4F4F4;
+    padding-bottom: 0;
+}
+
+.inmap-block {
+
+    position: relative;
+
+    &__title {
+        @include section-title;
+        padding-bottom: 30px;
+    }
+
+    &__mapcontainer {
+        padding-top: 49%;
+        background-color: #ddd;
+        position: relative;
+        z-index: 1;
+        min-height: 95vh;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding-top: 3%;
+            background: linear-gradient(180deg, #F4F4F4 0%, rgba(244, 244, 244, 0) 100%);
+            z-index: 4;
+        }
+    }
+
+    &__filter {
+        position: absolute;
+        top: 25%;
+        right: 0;
+        left: 0;
+        height: 0;
+        z-index: 2;
+
+        & .container {
+            height: 0;
+        }
+    }
+}
+
+.inmap-filter {
+
+    background-color: #F2F3F5;
+    border-radius: 25px;
+    width: 100%;
+    filter: drop-shadow(0px 6.56119px 36.0866px rgba(78, 78, 78, 0.25));
+    overflow: hidden;
+    max-width: 500px;
+
+    @media screen and (max-width: $w1440) {
+        max-width: 355px;
+        border-radius: 20px;
+    }
+
+    @media screen and (max-width: $w1200) {
+        border-radius: 17px;
+    }
+
+    @media screen and (max-width: $w940) {
+        max-width: 100%;
+        border-radius: 15px;
+    }
+
+    @media screen and (max-width: $w480) {
+        border-radius: 10px;
+    }
+
+
+    &__find {
+        background-color: #fff;
+        padding: 25px 30px;
+        position: relative;
+
+        @media screen and (max-width: $w1440) {
+            padding: 15px 30px;
+        }
+
+        @media screen and (max-width: $w1200) {
+            padding: 12px 30px;
+        }
+
+        @media screen and (max-width: $w480) {
+            padding: 8px 20px;
+        }
+
+        & span {
+            position: absolute;
+            right: 32px;
+            width: 25px;
+            height: 25px;
+            display: block;
+            top: 50%;
+            z-index: 2;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            transform: translateY(-50%);
+
+            @media screen and (max-width: 1440px) {
+                width: 20px;
+                height: 20px;
+                right: 30px;
+            }
+
+            @media screen and (max-width: $w480) {
+                width: 18px;
+                height: 18px;
+                right: 20px;
+            }
+
+
+        }
+
+        & input {
+            border: none;
+            font-weight: 600;
+            font-size: 26.2448px;
+            line-height: 32px;
+            width: 90%;
+
+            @media screen and (max-width: $w1440) {
+                font-size: 18px;
+            }
+
+            @media screen and (max-width: $w480) {
+                font-size: 16px;
+            }
+
+
+        }
+    }
+
+    &__result {
+        background-color: #F2F3F5;
+        padding: 25px 42px;
+        max-height: 72vh;
+        overflow-y: auto;
+
+        @media screen and (max-width: $w1440) {
+            padding: 25px 30px;
+        }
+
+        @media screen and (max-width: $w940) {
+            &:not(.open) {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: $w480) {
+            padding: 10px 20px;
+            max-height: 60vh;
+        }
+
+        & ul {
+
+            margin: 7px -6px;
+            display: flex;
+            flex-wrap: wrap;
+
+            @media screen and (max-width: $w1440) {
+                margin: 4px -4px;
+            }
+
+            & li {
+                margin: 7px 6px;
+
+                @media screen and (max-width: $w1440) {
+                    margin: 4px 4px;
+                }
+            }
+
+            & label {
+                display: inline-flex;
+
+
+                & input {
+                    display: none;
+
+                    &:checked {
+                        &~span {
+                            background-color: #0b7f8f;
+                            color: #fff;
+                        }
+                    }
+
+                }
+
+                & span {
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 27px;
+                    color: #272727;
+                    background: #FFFFFF;
+                    box-shadow: 0px 3.2806px 9.84179px #C1C4CA;
+                    border-radius: 164.03px;
+                    padding: 0.5em 1.1em;
+                    cursor: pointer;
+                    transition: 0.3s ease;
+                    user-select: none;
+
+                    @media screen and (max-width: $w1440) {
+                        font-size: 16px;
+                        padding: 0.3em 1.1em;
+                    }
+
+                    @media screen and (max-width: $w1200) {
+                        font-size: 14px;
+                    }
+
+                    @media screen and (max-width: $w480) {
+                        padding: 0.2em 1.1em;
+                        font-size: 13px;
+                    }
+
+                    &:hover {
+                        box-shadow: 0px 3.2806px 3.84179px #C1C4CA;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#inmap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}

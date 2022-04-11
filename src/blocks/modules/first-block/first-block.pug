@@ -1,40 +1,40 @@
 mixin first-block ()
   section.section-first-block
     .first-block
-      .first-block__bg: +bgimage('./img/common/fb-bg.webp')
+      .first-block__bg
+        .bgimage
+          +picture('./img/common/fb-bg')
       .first-block__content
-        .container.animate
-          .first-block__title: h1 Барвиха&nbsp21 - 
-          .first-block__subtitle Kоттеджный поселок на Рублево-Успенском шоссе
-          .first-block__props
-            ul
-              li
-                span 49 домов в поселке
-                span Цены от 215 млн. ₽
-              li
-                span Площадь от 478 до 700 м²
-                span Площадь поселка 25 Га
-          .first-block__button
-            button.btn.btn-radius.btn-large(data-fancybox="" data-src="#dl-presentationt") Получить презентацию
-            div Получите презентацию <br> объектов от наших экспертов
-
-          .first-block__inmap
-            .fb-inmap
-              .fb-inmap__icon: span: +icons('#ic_pen', 57)
-              .fb-inmap__text Расположение на карте
-
-
-    .present-block
-
-      .present-block__wrp
-        .present-block__bg.lazyload(data-bg="./img/common/fb-bg.webp")
-        .present-block__content
+        .first-block__main
           .container
-            .present-block__box 
-              .present-block__text Полная база объектов в поселке Барвиха-21
-              .present-block__btn
-                button.btn.btn-large.btn-blick(data-fancybox="" data-src="#dl-presentationt")
-                  +icons('#ic_file', 45)
-                  span Получить презентацию
+            .first-block__title:   h1 Дома <br> и участки
+            .first-block__subtitle на Новорижском шоссе
+            .first-block__present: +get-present()
+        .first-block__slider
+          .container
+            .swiper-container(data-swiper="vilages")
+              .swiper-wrapper
+                each item in app.vilages
+                  .swiper-slide: +card-vilage(item)
+            .swiper-nav-default
+              .swiper-nav-default__prev(data-swiper-prev="vilages"): +icons('#ic_swiper-prev', 22)
+              .swiper-nav-default__next(data-swiper-next="vilages"): +icons('#ic_swiper-next', 22) 
 
 
+
+
+mixin get-present()
+  .get-present
+    .get-present__text: +bgimage('/img/common/present-text.svg')
+    .get-present__btn
+      a(href='#' )
+        +icons('#ic_doc', 43)
+        span Получить презентацию
+
+mixin card-vilage(data)
+  .card-vilage
+    .card-vilage__image
+      a(href='#' title=data.link)
+        +picture('/img/home/card-vilage')
+    .card-vilage__link
+      a(href='#')= data.link

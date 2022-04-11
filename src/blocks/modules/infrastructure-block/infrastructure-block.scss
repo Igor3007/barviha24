@@ -1,0 +1,106 @@
+.section-infrastructure-block {
+    @include section-padding;
+}
+
+.infrastructure-block {
+    @media screen and (min-width: $w940) {
+        @include row-flex;
+
+        &__left {
+            @include col;
+            @include size(4.5);
+        }
+
+        &__right {
+            @include col;
+            @include size(7.5);
+            padding-left: 6%
+        }
+    }
+
+    &__title {
+        @include section-title;
+        text-align: center;
+        padding-bottom: 20px;
+
+        @media screen and (min-width: $w940) {
+            text-align: left;
+        }
+    }
+
+    &__desc {
+        font-size: 18px;
+        line-height: 140%;
+
+        @media screen and (min-width: $w1440) {
+            font-size: 25px;
+        }
+    }
+
+    &__right {
+        padding-top: 35px;
+
+        @media screen and (min-width: $w940) {
+            padding-top: 0;
+        }
+    }
+}
+
+.infrastructure-list {
+
+    margin: -30px 0;
+
+    @media screen and (min-width: $w760) {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -30px;
+    }
+
+    &__item {
+
+        padding: 30px;
+        border-bottom: 1px solid #0B6D7A;
+
+        @media screen and (min-width: $w760) {
+            width: calc(50% - 60px);
+            padding: 30px 0;
+            margin: 0 30px;
+        }
+
+        & ul {
+            & li {
+                font-size: 16px;
+                line-height: 130%;
+                padding-bottom: 5px;
+                padding-left: 1.5em;
+                position: relative;
+
+                @media screen and (min-width: $w1440) {
+                    font-size: 20px;
+                }
+
+                @media screen and (min-width: $w940) {
+                    font-size: 14px;
+                }
+
+                &::before {
+                    left: 0;
+                    position: absolute;
+                    content: '';
+                    width: 0.44em;
+                    min-width: 0.44em;
+                    max-width: 0.44em;
+                    height: 0.44em;
+                    min-height: 0.44em;
+                    max-height: 0.44em;
+                    border-radius: 50%;
+                    background-color: #B4A775;
+                    top: 0.44em;
+                    display: block;
+                }
+            }
+        }
+    }
+
+
+}

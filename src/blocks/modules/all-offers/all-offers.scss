@@ -1,0 +1,148 @@
+.section-all-offers {
+    @include section-padding;
+    background-color: #F4F4F4;
+}
+
+.all-offers {
+
+    @media screen and (min-width: $w940) {
+        @include row-flex;
+        align-items: center;
+    }
+
+    &__right,
+    &__left {
+        @media screen and (min-width: $w940) {
+            @include col;
+            @include size(6);
+        }
+    }
+
+    &__title {
+        @include section-title;
+        padding-bottom: 40px;
+
+        @media screen and (max-width: $w480) {
+            font-size: 24px;
+        }
+
+        @media screen and (max-width: $w940) {
+            text-align: center;
+
+            & span {
+                display: block;
+            }
+        }
+
+
+
+        & br {
+            display: none;
+
+            @media screen and (min-width: $w940) {
+                display: inline;
+            }
+        }
+    }
+
+    &__btn {
+        display: none;
+
+        @media screen and (min-width: $w940) {
+            display: block;
+        }
+    }
+
+    &__getpresent {
+
+        display: flex;
+        justify-content: center;
+        padding-top: 30px;
+
+        @media screen and (min-width: $w940) {
+            display: none;
+        }
+    }
+
+    &__list {
+        justify-content: center;
+
+        @media screen and (min-width: $w480) {
+            @include row-flex;
+        }
+
+        @media screen and (min-width: $w940) {
+            margin-bottom: -24px;
+        }
+    }
+
+    &__item {
+        max-width: 215px;
+        margin: 0 auto;
+        margin-bottom: 24px;
+
+
+        @media screen and (min-width: $w480) {
+            @include col;
+            @include size(6);
+        }
+
+        @media screen and (min-width: $w940) {
+            max-width: auto;
+        }
+
+        @media screen and (min-width: $w1440) {
+            max-width: 350px;
+        }
+    }
+}
+
+.item-offers {
+
+    border-radius: 21.0896px;
+    background-color: #fff;
+    padding: 27px 25px;
+
+    @media screen and (min-width: $w1440) {
+        padding: 40px 25px;
+        margin: 10px;
+    }
+
+    &__image {
+        & .bgimage {
+            @include box-square;
+            @include bgimage-contain;
+        }
+
+        max-width: 94px;
+        margin: 0 auto;
+        margin-bottom: 20px;
+
+        @media screen and (min-width: $w1440) {
+            max-width: 147px;
+            margin-bottom: 30px;
+        }
+    }
+
+    &__title {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 133%;
+        text-align: center;
+        color: #242424;
+        margin-bottom: 5px;
+
+        @media screen and (min-width: $w1440) {
+            font-size: 28px;
+        }
+    }
+
+    &__desc {
+        font-size: 18px;
+        text-align: center;
+
+        @media screen and (min-width: $w1440) {
+            font-size: 28px;
+        }
+    }
+}

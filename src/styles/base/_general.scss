@@ -217,14 +217,20 @@ main {
         color: #B4A775;
     }
 
-
+    @media screen and (max-width: $w1440) {
+        font-size: 46px;
+    }
 
     @media screen and (max-width: $w1376) {
         font-size: 36px;
     }
 
     @media screen and (max-width: $w480) {
-        font-size: 32px;
+        font-size: 24px;
+    }
+
+    @media screen and (max-width: $w375) {
+        font-size: 22px;
     }
 
 
@@ -250,11 +256,13 @@ main {
 
 
 @mixin section-padding {
-    padding: 70px 0;
+    padding: rem(110) 0;
 
-
+    @media screen and (max-width: $w940) {
+        padding: rem(90) 0;
+    }
 
     @media screen and (max-width: $w580) {
-        padding: rem(70) 0;
+        padding: rem(90) 0;
     }
 }

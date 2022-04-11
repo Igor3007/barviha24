@@ -1,0 +1,28 @@
+mixin infrastructure-block
+  section.section-infrastructure-block
+    .container
+      .infrastructure-block
+        .infrastructure-block__left
+          .infrastructure-block__title <span>ИНФРАСТРУКТУРА</span> <br> ЛОКАЦИИ
+          .infrastructure-block__desc Новорижское шоссе — одна из самых престижных локаций Москвы. В ее окрестностях несколько парковых зон: Нескучный сад, Парк Мандельштама, Новодевичьи пруды, Лужники. Рядом Москва-река с прекрасными набережными и целых шесть станций метро. Лучшие школы и студии, изысканные рестораны, гастробары, фитнес-студии и набережные для пробежек не позволят скучать жителям.
+        .infrastructure-block__right
+          .infrastructure-list
+            each item in [1,2,3,4]
+              +infrastructure
+
+
+mixin infrastructure
+    .infrastructure-list__item
+      ul
+        li Офис Яндекс
+        li Универ. клиническая больница №3
+        li ФГБНУ НИИ Глазных болезней
+        li НИИ по изысканию новых антибиотиков
+        li Фитнес X-Fit фьюжн Premium
+        li Стоматология Дентал фентези
+        li Ветклиника «Бетховен»
+        li Спа салон Deluxe Thai Spa
+
+
+
+

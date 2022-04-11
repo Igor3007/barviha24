@@ -1,17 +1,11 @@
 extends layouts/index
 
 include ../blocks/modules/first-block/first-block.pug
-include ../blocks/modules/about-block/about-block.pug
-include ../blocks/modules/gallery-block/gallery-block.pug
-include ../blocks/modules/catalog-block/catalog-block.pug
-include ../blocks/modules/team-block/team-block.pug
-include ../blocks/modules/form-block/form-block.pug
-include ../blocks/modules/advantages-block/advantages-block.pug
-include ../blocks/modules/signup-block/signup-block.pug
-include ../blocks/modules/surroundings-block/surroundings-block.pug
-include ../blocks/modules/similar-block/similar-block.pug
-include ../blocks/modules/location-block/location-block.pug
-include ../blocks/modules/yamaps-block/yamaps-block.pug
+include ../blocks/modules/all-offers/all-offers
+include ../blocks/modules/catalog-filter/catalog-filter
+include ../blocks/modules/quiz-block/quiz-block
+include ../blocks/modules/inmap-block/inmap-block
+include ../blocks/modules/infrastructure-block/infrastructure-block
 
 block variables
   include ../data/data.pug
@@ -19,20 +13,13 @@ block variables
 
 block content
 
-  +first-block()
-  +about-block()
-  +gallery-block()
-  +catalog-block()
-  +team-block()
-  +form-block()
-  +advantages-block()
-  +signup-block()
-  +surroundings-block()
-  +similar-block()
-  +location-block()
-  +yamaps-block()
-
+  +first-block() 
+  +all-offers()
+  +catalog-filter()
+  +quiz-block()
+  +inmap-block()
+  +infrastructure-block()
 
 block scripts
   script(src="js/main.js?v=1.6")
-  script(src="js/vendor.js")
+  script(src="js/vendor.js") 

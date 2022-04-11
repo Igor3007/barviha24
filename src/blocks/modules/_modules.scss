@@ -4,21 +4,30 @@
 @import "common/main-menu/main-menu.scss";
 @import "first-block/first-block.scss";
 
-@import "about-block/about-block.scss";
-@import "gallery-block/gallery-block.scss";
-@import "catalog-block/catalog-block.scss";
-@import "team-block/team-block.scss";
-@import "form-block/form-block.scss";
-@import "advantages-block/advantages-block.scss";
-@import "signup-block/signup-block.scss";
-@import "surroundings-block/surroundings-block.scss";
-@import "similar-block/similar-block.scss";
-@import "location-block/location-block.scss";
-@import "yamaps-block/yamaps-block.scss";
-@import "minicard/minicard.scss";
+// @import "about-block/about-block.scss";
+// @import "gallery-block/gallery-block.scss";
+// @import "catalog-block/catalog-block.scss";
+// @import "team-block/team-block.scss";
+// @import "form-block/form-block.scss";
+// @import "advantages-block/advantages-block.scss";
+// @import "signup-block/signup-block.scss";
+// @import "surroundings-block/surroundings-block.scss";
+// @import "similar-block/similar-block.scss";
+// @import "location-block/location-block.scss";
+// @import "yamaps-block/yamaps-block.scss";
 
+@import "minicard/minicard.scss";
 @import "card-slider/card-slider.scss";
 @import "card-data/card-data.scss";
 @import "banner-presentation/banner-presentation.scss";
 @import "card-block/card-block.scss";
 @import "bottom-popup/bottom-popup.scss";
+
+
+@import "all-offers/all-offers";
+@import "catalog-filter/catalog-filter";
+@import "quiz-block/quiz-block";
+@import "inmap-block/inmap-block";
+@import "infrastructure-block/infrastructure-block";
+
+

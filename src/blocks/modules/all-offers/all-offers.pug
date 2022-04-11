@@ -1,0 +1,23 @@
+mixin all-offers
+  section.section-all-offers
+    .container
+      .all-offers
+        .all-offers__left
+          .all-offers__title Мы собрали <br> все предложения <br> <span>в элитных поселках Подмосковья<span>
+          .all-offers__btn
+            button.btn.btn-blue Получить презентацию
+
+        .all-offers__right
+          .all-offers__list
+            each item in app.offers
+              .all-offers__item: +item-offers(item)
+      .all-offers__getpresent
+        button.btn.btn-blue Получить презентацию
+
+
+mixin item-offers(data)
+  .item-offers
+    .item-offers__image
+      +bgimage(data.image)
+    .item-offers__title= data.title
+    .item-offers__desc= data.desc

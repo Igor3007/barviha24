@@ -1,0 +1,30 @@
+mixin inmap-block
+  section.section-inmap-block
+     
+      .inmap-block
+        .inmap-block__head
+          .container
+            .inmap-block__title РАСПОЛОЖЕНИЕ ПОСЕЛКОВ <br> <span>на Новорижском шоссе</span>
+        .inmap-block__map
+          .inmap-block__mapcontainer
+            div(id="inmap")
+          .inmap-block__filter
+            .container
+              +inmap-filter()
+
+
+mixin inmap-filter()
+  .inmap-filter
+    .inmap-filter__find
+      input(type="text" placeholder="Введите название поселка")
+      +bgimage('/img/common/loupe.webp')
+    .inmap-filter__result
+      ul
+        each item in app.maptags
+          li: +tag-label(item)
+      
+          
+mixin tag-label(data)
+  label
+    input(type="checkbox")
+    span= data.name

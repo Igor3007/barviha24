@@ -1,0 +1,84 @@
+include ../minicard/minicard.pug
+
+
+
+mixin catalog-filter
+  section.section-catalog-filter
+    .container
+      .catalog-filter__title  ПОДБЕРИТЕ ДОМ <br> <span>на Новорижском шоссе <span>
+      .catalog-filter
+        .catalog-filter__aside
+
+          .filter-box
+            .filter-box__wrp
+              .filter-box__item: +filter-checkbox(app.filter.type)
+              .filter-box__item: +filter-range-price(app.filter.price)
+              .filter-box__item: +filter-range(app.filter.square)
+              .filter-box__item: +filter-range(app.filter.mkad)
+              .filter-box__item: +filter-checkbox(app.filter.vilage)
+              .filter-box__item: +filter-range(app.filter.area)
+              .filter-box__item: +filter-range(app.filter.level)
+              .filter-box__item: +filter-checkbox(app.filter.finish)
+
+        .catalog-filter__content
+          .catalog-filter__topbar
+            .catalog-filter__count Найдено объектов: 86
+            .catalog-filter__sort
+              +sortable-box
+          .catalog-filter__list
+            each item in app.homeCat
+              .catalog-filter__item: +minicard(item)
+
+mixin filter-checkbox(data)
+  .filter-checkbox
+    .filter-checkbox__head(data-filter="show")= data.title
+    .filter-checkbox__prop
+      each prop in data.value
+        label
+          input(type="checkbox")
+          span(data-count="(10)")= prop 
+        
+
+
+
+mixin filter-range-price(data)
+  .filter-range-price
+    .filter-range-price__head(data-filter="show")= data.title
+    .filter-range-price__range
+      .filter-range-price__slider
+      .filter-range-price__fields
+        .filter-range-price__input: input(type="text" placeholder=data.minValue)
+        .filter-range-price__sp -
+        .filter-range-price__input: input(type="text" placeholder=data.maxValue)
+
+
+
+
+
+mixin filter-range(data)
+  .filter-range
+    .filter-range__head(data-filter="show")= data.title
+    .filter-range__range
+      .filter-range__slider
+      .filter-range__fields
+        .filter-range__input: input(type="text" placeholder=data.minValue)
+        .filter-range__sp —
+        .filter-range__input: input(type="text" placeholder=data.maxValue)
+
+
+mixin sortable-box
+  .sortable-box
+    .sortable-box__type
+      label
+        input(type="radio" name="type-sort" checked)
+        span по цене
+      label
+        input(type="radio" name="type-sort")
+        span по дате
+    .sortable-box__direction
+      label
+        input(type="radio" name="direction-sort" checked)
+        +icons('#ic_arr-up')
+      label
+        input(type="radio" name="direction-sort")
+        +icons('#ic_arr-down')

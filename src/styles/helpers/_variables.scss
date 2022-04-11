@@ -20,9 +20,11 @@ $lightGray: #f3f3f3;
 
 /* media breakpoints */
 
+$w1720: 1720px;
 $w1660: 1660px;
 $w1440: 1440px;
 $w1376: 1376px;
+$w1200: 1200px;
 $w1280: 1280px;
 $w1100: 1100px;
 $w1024: 1025px;
@@ -30,7 +32,8 @@ $w940: 940px;
 $w760: 769px;
 $w680: 679px;
 $w580: 580px;
-$w480: 480px;
+$w480: 480.98px;
+$w375: 375.98px;
 $w360: 375.98px;
 
 $cubick: transform .3s cubic-bezier(.1, .82, .25, 1),

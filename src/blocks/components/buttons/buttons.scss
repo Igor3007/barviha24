@@ -39,11 +39,12 @@
 
     @media screen and (max-width: $w1440) {
         height: 50px;
-        font-size: 13px;
+        font-size: 15px;
     }
 
-    @media screen and (max-width: $w1280) {
+    @media screen and (max-width: $w480) {
         height: 45px;
+        font-size: 14px;
     }
 
 
