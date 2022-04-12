@@ -66,6 +66,14 @@ const requireDir = require("require-dir"),
             src: "./src/img/favicon/*.{jpg,jpeg,png,gif,tiff}",
             dist: "./dist/img/favicons/",
         },
+        libs: {
+            src: "./src/js/lib/*.js",
+            dist: "./dist/js/lib/",
+            watch: [
+                "./src/blocks/**/*.js",
+                "./src/js/**/*.js"
+            ]
+        },
         gzip: {
             src: "./src/.htaccess",
             dist: "./dist/"
@@ -79,10 +87,10 @@ export {
 };
 
 export const development = gulp.series("clean", "smart-grid",
-    gulp.parallel(["views", "styles", "scripts", "images", "webp", "sprites", "fonts", "favicons"]),
+    gulp.parallel(["views", "styles", "scripts", "images", "webp", "libs", "sprites", "fonts", "favicons"]),
     gulp.parallel("serve"));
 
 export const prod = gulp.series("clean",
-    gulp.series(["views", "styles", "scripts", "images", "webp", "sprites", "fonts", "favicons", "gzip"]));
+    gulp.series(["views", "styles", "scripts", "images", "webp", "sprites", "libs", "fonts", "favicons", "gzip"]));
 
 export default development;

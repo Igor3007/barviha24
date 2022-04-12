@@ -30,6 +30,12 @@
         padding-bottom: 40px;
 
 
+        @media screen and (max-width: $w940) {
+            text-align: center;
+            padding-bottom: 40px;
+            margin: 0 auto;
+        }
+
         @media screen and (max-width: $w480) {
             font-size: 24px;
             margin: 0 -20px;
@@ -39,10 +45,6 @@
             margin: 0;
         }
 
-        @media screen and (max-width: $w940) {
-            text-align: center;
-            padding-bottom: 40px;
-        }
     }
 
     &__subtitle {
@@ -50,6 +52,8 @@
         font-size: 20px;
         line-height: 130%;
         max-width: 590px;
+        color: #fff;
+        display: none;
 
 
         @media screen and (min-width: $w1440) {
@@ -62,10 +66,8 @@
 
         @media screen and (min-width: $w940) {
             font-size: 20px;
-        }
 
-        color: #fff;
-        display: none;
+        }
 
         @media screen and (min-width: $w480) {
             display: block;
@@ -74,6 +76,7 @@
         @media screen and (max-width: $w940) {
             text-align: center;
             padding-bottom: 30px;
+            margin: 0 auto;
         }
 
     }
@@ -117,7 +120,7 @@
     }
 
     @media screen and (max-width: $w1376) {
-        max-width: 332px;
+        max-width: 400px;
     }
 
     @media screen and (max-width: $w940) {
@@ -125,8 +128,6 @@
     }
 
     &__wrp {
-
-        padding-top: 120%;
-        background-color: #444;
+        background-color: #1F1E1E;
     }
 }

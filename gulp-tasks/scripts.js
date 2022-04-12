@@ -1,6 +1,8 @@
 "use strict";
 
-import { paths } from "../gulpfile.babel";
+import {
+    paths
+} from "../gulpfile.babel";
 import webpack from "webpack";
 import webpackStream from "webpack-stream";
 import gulp from "gulp";
@@ -26,6 +28,19 @@ gulp.task("scripts", () => {
         .pipe(gulp.dest(paths.scripts.dist))
         .pipe(debug({
             "title": "JS files"
+        }))
+        .on("end", browsersync.reload);
+});
+
+gulp.task("libs", () => {
+    return gulp.src(paths.libs.src)
+        // .pipe(webpackStream(webpackConfig), webpack)
+        // .pipe(gulpif(production, rename({
+        //     suffix: ".min"
+        // })))
+        .pipe(gulp.dest(paths.libs.dist))
+        .pipe(debug({
+            "title": "libs"
         }))
         .on("end", browsersync.reload);
 });

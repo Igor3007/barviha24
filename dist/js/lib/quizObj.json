@@ -1,0 +1,75 @@
+[{
+    "id": 1,
+    "question": "Какой дом вы хотите приобрести?",
+    "desc": false,
+    "type": "text",
+    "multiple": true,
+    "skip": false,
+    "option": [{
+        "title": "Под ключ"
+    }, {
+        "title": "Чтобы сразу жить "
+    }, {
+        "title": "Под отделку: буду делать ремонт "
+    }, {
+        "title": "Не важно / еще не решил"
+    }]
+}, {
+    "id": 2,
+    "question": "Какое расположение дома для вас предпочтительно?",
+    "desc": false,
+    "type": "text",
+    "multiple": true,
+    "skip": false,
+    "option": [{
+        "title": "В тихом месте "
+    }, {
+        "title": "Ближе к лесу "
+    }, {
+        "title": "Рядом с детской площадкой "
+    }, {
+        "title": ""
+    }]
+}, {
+    "id": 3,
+    "question": "На какой примерный бюджет вы рассчитываете?",
+    "desc": "От 50 миллионов рублей до более 200 миллионов рублей",
+    "type": "text",
+    "multiple": true,
+    "skip": false,
+    "option": [{
+        "title": "50-70 млн рублей"
+    }, {
+        "title": "70-100 млн рублей"
+    }, {
+        "title": "100-150 млн рублей"
+    }, {
+        "title": "150-200 млн рублей"
+    }, {
+        "title": "Более 200 млн рублей"
+    }]
+}, {
+    "id": 4,
+    "question": "Напишите комментарий, если он у вас есть",
+    "type": "text",
+    "desc": false,
+    "multiple": true,
+    "skip": true,
+    "option": [{
+        "title": ""
+    }]
+}, {
+    "id": 5,
+    "question": "Куда прислать подборку?",
+    "type": "text",
+    "desc": false,
+    "multiple": true,
+    "skip": true,
+    "option": [{
+        "title": "Звонок "
+    }, {
+        "title": "WhatsApp "
+    }, {
+        "title": "Telegram "
+    }]
+}]

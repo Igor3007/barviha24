@@ -823,7 +823,47 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-swiper__WEBPACK_IMPORTED_MODULE_6__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_6__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_6__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_6__["EffectFade"]]); //add simple support for background images:
+swiper__WEBPACK_IMPORTED_MODULE_6__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_6__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_6__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_6__["EffectFade"]]);
+var URL_VUE = '/js/lib/vue.js';
+var URL_QUIZ = '/js/lib/common.js';
+/*=====================================================
+loadScript
+=====================================================*/
+
+window.loadScript = function (url, callback) {
+  var script = document.createElement("script");
+
+  if (script.readyState) {
+    // IE
+    script.onreadystatechange = function () {
+      if (script.readyState == "loaded" || script.readyState == "complete") {
+        script.onreadystatechange = null;
+        callback();
+      }
+    };
+  } else {
+    script.onload = function () {
+      callback();
+    };
+  }
+
+  script.src = url;
+  document.getElementsByTagName("head")[0].appendChild(script);
+};
+
+window.loadVue = function (callback) {
+  if (!window.VueLoaded) {
+    window.VueLoaded = true;
+    window.loadScript(URL_VUE, function () {
+      callback();
+      console.info('load facybox UI');
+    });
+  } else {
+    callback();
+    console.info('fancybox loaded UI');
+  }
+}; //add simple support for background images:
+
 
 document.addEventListener('lazybeforeunveil', function (e) {
   var bg = e.target.getAttribute('data-bg');
@@ -1008,7 +1048,7 @@ document.addEventListener("DOMContentLoaded", function () {
         spaceBetween: 30
       }
     }
-  }); //================================
+  }); //================================  
 
   document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
     document.querySelector('.inmap-filter__result').classList.add('open');
@@ -1027,6 +1067,37 @@ document.addEventListener("DOMContentLoaded", function () {
     item.addEventListener('click', function () {
       this.parentNode.classList.toggle('open');
     });
+  }); //============================================================================
+  //============================================================================
+  //============================================================================
+
+  function elementInViewport(el) {
+    var bounds = el.getBoundingClientRect();
+    return bounds.top + bounds.height > 0 && window.innerHeight - bounds.top > 0 && bounds.left + bounds.width > 0 && window.innerWidth - bounds.left > 0 // Левее правой
+    ;
+  }
+
+  function quizInit() {
+    window.loadScript(URL_QUIZ, function () {
+      console.log('quize loaded');
+    });
+  }
+
+  document.addEventListener("scroll", function (e) {
+    var el = document.querySelector(".section-quiz-block");
+    var inViewport = elementInViewport(el); //true если виден
+
+    if (inViewport && !window.quizLoad) {
+      window.quizLoad = true;
+
+      if (!window.Vue) {
+        window.loadVue(function () {
+          quizInit();
+        });
+      } else {
+        quizInit();
+      }
+    }
   });
 }); //DOMContentLoaded
 
