@@ -67,10 +67,10 @@ const requireDir = require("require-dir"),
             dist: "./dist/img/favicons/",
         },
         libs: {
-            src: "./src/js/lib/*.js",
+            src: "./src/js/lib/*.{js,json}",
             dist: "./dist/js/lib/",
             watch: [
-                "./src/blocks/**/*.js",
+                "./src/blocks/**/*.{js,json}",
                 "./src/js/**/*.js"
             ]
         },

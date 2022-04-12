@@ -1135,9 +1135,8 @@ p {
 }
 
 .pf-quiz__nav {
-  border-top: 1px solid #3D3D3D;
   display: flex;
-  background-color: 131212;
+  background-color: #131212;
   padding: 1.25rem 3.75rem;
   align-items: center;
 }
@@ -1490,6 +1489,10 @@ p {
   color: #888;
 }
 
+.pf-form__phone {
+  display: none;
+}
+
 .pf-form__phone a {
   display: flex;
   align-items: center;
@@ -1666,13 +1669,6 @@ p {
     Navigation plugin
 */
 
-.not-selectable {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
 .carousel {
   position: relative;
   box-sizing: border-box;
@@ -1714,9 +1710,6 @@ p {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-  -webkit-overflow-scrolling: touch;
-  /* https://github.com/andreszs/jquery.events.swipe#pointer-event-remarks */
-  touch-action: pan-y;
 }
 
 .has-dots {
@@ -1827,6 +1820,10 @@ p {
   Toolbar plugin
 */
 
+html.with-fancybox {
+  scroll-behavior: auto;
+}
+
 body.compensate-for-scrollbar {
   overflow: hidden !important;
   touch-action: none;
@@ -1865,11 +1862,11 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox__container :focus {
-  outline: thin dotted;
+  outline: none;
 }
 
-body.is-using-mouse .fancybox__container :focus {
-  outline: none;
+body:not(.is-using-mouse) .fancybox__container :focus {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
 }
 
 .fancybox__backdrop {
@@ -1920,7 +1917,6 @@ body.is-using-mouse .fancybox__container :focus {
   flex-direction: column;
   outline: 0;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
   --carousel-button-width: 36px;
   --carousel-button-height: 36px;
   --carousel-button-svg-width: 22px;
@@ -1944,6 +1940,11 @@ body.is-using-mouse .fancybox__container :focus {
   display: flex;
   flex-direction: column;
   z-index: 20;
+}
+
+.fancybox__content :focus:not(.carousel__button.is-close) {
+  outline: thin dotted;
+  box-shadow: none;
 }
 
 .fancybox__caption {
@@ -1993,7 +1994,7 @@ body.is-using-mouse .fancybox__container :focus {
 
 .fancybox__content > .carousel__button.is-close {
   position: absolute;
-  top: -36px;
+  top: -40px;
   right: 0;
   color: var(--fancybox-color, #fff);
 }
@@ -2224,7 +2225,6 @@ body.is-using-mouse .fancybox__container :focus {
 
 .fancybox__image {
   transform-origin: 0 0;
-  touch-action: none;
   user-select: none;
   transition: none;
 }
@@ -2242,6 +2242,12 @@ body.is-using-mouse .fancybox__container :focus {
 .has-image[data-image-fit="contain"] {
   overflow: visible;
   touch-action: none;
+  /* Fix Mac OS Safari 11 - 13 */
+}
+
+.has-image[data-image-fit="contain"] .fancybox__content {
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .has-image[data-image-fit="contain"] .fancybox__image {
@@ -2285,6 +2291,7 @@ body.is-using-mouse .fancybox__container :focus {
 .fancybox__carousel .fancybox__slide.has-pdf .fancybox__content,
 .fancybox__carousel .fancybox__slide.has-video .fancybox__content,
 .fancybox__carousel .fancybox__slide.has-html5video .fancybox__content {
+  max-width: 100%;
   flex-shrink: 1;
   min-height: 1px;
   overflow: visible;
@@ -2374,7 +2381,9 @@ body.is-using-mouse .fancybox__container :focus {
   left: 0;
   right: 0;
   bottom: 0;
-  border: 5px solid var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--fancybox-accent-color, rgba(34, 213, 233, 0.96));
   opacity: 0;
   transition: opacity 0.15s ease;
   border-radius: var(--fancybox-thumbs-border-radius, 4px);
@@ -2455,7 +2464,7 @@ body.is-using-mouse .fancybox__container :focus {
 }
 
 .fancybox__progress {
-  background: var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
+  background: var(--fancybox-accent-color, rgba(34, 213, 233, 0.96));
   height: 3px;
   left: 0;
   position: absolute;
@@ -4711,6 +4720,7 @@ footer a {
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: #FFFFFF;
+  text-align: left;
 }
 
 .first-block__subtitle {
@@ -5465,6 +5475,7 @@ footer a {
 }
 
 .popup-presentation {
+  padding: 0;
   padding-top: 0;
   padding-bottom: 0;
   border-radius: 1.3125rem;
@@ -6250,6 +6261,198 @@ footer a {
   display: block;
 }
 
+.vilages-block__bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #646464;
+}
+
+.vilages-block__bg picture {
+  position: relative;
+  display: block;
+}
+
+.vilages-block__bg picture::before {
+  content: '';
+  background: white;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #646464 95%);
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 2;
+  height: 50%;
+}
+
+.vilages-block__bg picture img {
+  position: relative;
+  z-index: 1;
+}
+
+.vilages-block__content {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 6.875rem 0;
+}
+
+.vilages-block__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.6875rem;
+}
+
+.vilages-block__item {
+  width: 100%;
+}
+
+.vilages-block__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em 0 2.5em 0;
+  font-size: 28px;
+  color: #fff;
+  align-items: center;
+}
+
+.vilages-block__breadcrumbs ul {
+  display: flex;
+}
+
+.vilages-block__breadcrumbs ul li {
+  display: flex;
+  align-items: center;
+}
+
+.vilages-block__breadcrumbs ul li a {
+  color: #fff;
+}
+
+.vilages-block__breadcrumbs ul li a:hover {
+  text-decoration: underline;
+}
+
+.vilages-block__breadcrumbs ul li::after {
+  content: '/';
+  margin: 0 0.3em;
+  margin-bottom: -2px;
+}
+
+.vilages-block__breadcrumbs ul li:last-child::after {
+  display: none;
+}
+
+.vilages-block__find {
+  width: 100%;
+}
+
+.vilages-block__find input {
+  font-size: 22px;
+  border-radius: 100px;
+  padding: 0.5em 1.5em;
+  border: none;
+  border: 2px solid #fff;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+}
+
+.sr-item {
+  padding: 0.6875rem;
+  position: relative;
+}
+
+.sr-item:hover .sr-item__link {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.sr-item:hover .sr-item__link a span {
+  transform: translateY(-0.3em);
+}
+
+.sr-item__image {
+  position: relative;
+  z-index: 1;
+}
+
+.sr-item__image .bgimage {
+  padding-top: 65%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  transition: 0.3s ease;
+  background-color: #757575;
+}
+
+.sr-item__link {
+  background: rgba(0, 0, 0, 0.5);
+  left: 0.6875rem;
+  top: 0.6875rem;
+  right: 0.6875rem;
+  bottom: 0.6875rem;
+  position: absolute;
+  z-index: 2;
+  transition: 0.3s ease-in;
+}
+
+.sr-item__link a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-item__link a span {
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: 0.2s ease-in;
+  display: block;
+  max-width: 90%;
+  text-align: center;
+  line-height: 120%;
+}
+
+.section-quiz-popup {
+  padding: 6.875rem 0;
+}
+
+.quiz-popup__title {
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 125%;
+  text-align: center;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding-bottom: 1.8em;
+}
+
+.quiz-popup__title span {
+  color: #B4A775;
+}
+
+.quiz-popup__btn .btn {
+  font-size: 28px;
+  height: auto;
+  margin: 0 auto;
+  padding-left: 1.8em;
+  padding-right: 1.8em;
+}
+
+.container-quiz-popup .fancybox__content {
+  padding: 0;
+  max-width: 655px;
+  background-color: #1f1e1e;
+}
+
 @media screen and (min-width: 480.98px) {
   .all-offers__list {
     display: flex;
@@ -6268,6 +6471,10 @@ footer a {
 
   .quiz-block__subtitle {
     display: block;
+  }
+
+  .vilages-block__item {
+    width: 50%;
   }
 }
 
@@ -6441,6 +6648,10 @@ footer a {
   .infrastructure-list__item ul li {
     font-size: 14px;
   }
+
+  .vilages-block__item {
+    width: 33.33%;
+  }
 }
 
 @media all and (min-width: 1024px) {
@@ -6494,6 +6705,12 @@ footer a {
   .minicard.hover .minicard__image,
   .minicard.hover .minicard__desc {
     filter: blur(3px);
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .vilages-block__item {
+    width: 25%;
   }
 }
 
@@ -6698,6 +6915,27 @@ footer a {
   .infrastructure-block__title {
     font-size: 46px;
   }
+
+  .vilages-block__head {
+    font-size: 18px;
+  }
+
+  .vilages-block__find input {
+    font-size: 18px;
+    max-width: 350px;
+  }
+
+  .sr-item__link a span {
+    font-size: 18px;
+  }
+
+  .quiz-popup__title {
+    font-size: 32px;
+  }
+
+  .quiz-popup__btn .btn {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 1376px) {
@@ -6898,6 +7136,14 @@ footer a {
 
   .inmap-filter__result ul label span {
     font-size: 14px;
+  }
+
+  .quiz-popup__title {
+    font-size: 30px;
+  }
+
+  .quiz-popup__btn .btn {
+    font-size: 18px;
   }
 }
 
@@ -7156,6 +7402,30 @@ footer a {
   .section-infrastructure-block {
     padding: 5.625rem 0;
   }
+
+  .vilages-block__content {
+    padding: 5.625rem 0;
+  }
+
+  .vilages-block__head {
+    padding: 2.5em 0 2em 0;
+  }
+
+  .sr-item__link a span {
+    font-size: 16px;
+  }
+
+  .section-quiz-popup {
+    padding: 5.625rem 0;
+  }
+
+  .quiz-popup__title {
+    font-size: 28px;
+  }
+
+  .quiz-popup__btn .btn {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 769px) {
@@ -7287,6 +7557,23 @@ footer a {
     align-items: flex-start;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .vilages-block__head {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 3.5em 0 1.5em 0;
+  }
+
+  .vilages-block__find {
+    padding-top: 25px;
+  }
+
+  .vilages-block__find input {
+    margin-right: auto;
+    margin-left: 0;
+    max-width: 100%;
   }
 }
 
@@ -7463,6 +7750,14 @@ footer a {
   }
 
   .section-infrastructure-block {
+    padding: 5.625rem 0;
+  }
+
+  .vilages-block__content {
+    padding: 5.625rem 0;
+  }
+
+  .section-quiz-popup {
     padding: 5.625rem 0;
   }
 }
@@ -7694,6 +7989,29 @@ footer a {
 
   .infrastructure-block__title {
     font-size: 24px;
+  }
+
+  .vilages-block__list {
+    margin: 0 -0.5rem;
+  }
+
+  .sr-item {
+    padding: 0.5rem;
+  }
+
+  .sr-item__link {
+    left: 0.5rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
+  }
+
+  .quiz-popup__title {
+    font-size: 24px;
+  }
+
+  .quiz-popup__btn .btn {
+    font-size: 18px;
   }
 }
 

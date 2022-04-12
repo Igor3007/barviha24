@@ -699,7 +699,10 @@ if (document.querySelector('.section-inmap-block')) {
 
   var elementInViewport = function elementInViewport(el) {
     var bounds = el.getBoundingClientRect();
-    return bounds.top + bounds.height > 0 && window.innerHeight - bounds.top > 0 && bounds.left + bounds.width > 0 && window.innerWidth - bounds.left > 0 // Левее правой
+    return bounds.top + bounds.height > 0 && // Елемент ниже верхней границы
+    window.innerHeight - bounds.top > 0 && // Выше нижней
+    bounds.left + bounds.width > 0 && // Правее левой
+    window.innerWidth - bounds.left > 0 // Левее правой
     ;
   };
 
@@ -826,6 +829,7 @@ __webpack_require__.r(__webpack_exports__);
 swiper__WEBPACK_IMPORTED_MODULE_6__["default"].use([swiper__WEBPACK_IMPORTED_MODULE_6__["Pagination"], swiper__WEBPACK_IMPORTED_MODULE_6__["Navigation"], swiper__WEBPACK_IMPORTED_MODULE_6__["EffectFade"]]);
 var URL_VUE = '/js/lib/vue.js';
 var URL_QUIZ = '/js/lib/common.js';
+var URL_MASKA = '/js/lib/maska.js';
 /*=====================================================
 loadScript
 =====================================================*/
@@ -856,11 +860,11 @@ window.loadVue = function (callback) {
     window.VueLoaded = true;
     window.loadScript(URL_VUE, function () {
       callback();
-      console.info('load facybox UI');
+      console.info('Vue loaded');
     });
   } else {
     callback();
-    console.info('fancybox loaded UI');
+    console.info('Vue loaded');
   }
 }; //add simple support for background images:
 
@@ -1050,54 +1054,88 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }); //================================  
 
-  document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
-    document.querySelector('.inmap-filter__result').classList.add('open');
-    document.querySelector('.inmap-filter__find').scrollIntoView({
-      block: "start",
-      behavior: "smooth"
+  if (document.querySelector('.inmap-filter__find')) {
+    document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
+      document.querySelector('.inmap-filter__result').classList.add('open');
+      document.querySelector('.inmap-filter__find').scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
     });
-  });
-  document.querySelector('.inmap-filter').addEventListener('click', function (e) {
-    e.stopPropagation();
-  });
-  document.querySelector('.section-inmap-block').addEventListener('click', function () {
-    document.querySelector('.inmap-filter__result').classList.remove('open');
-  });
-  document.querySelectorAll('[data-filter="show"]').forEach(function (item) {
-    item.addEventListener('click', function () {
-      this.parentNode.classList.toggle('open');
+    document.querySelector('.inmap-filter').addEventListener('click', function (e) {
+      e.stopPropagation();
     });
-  }); //============================================================================
+    document.querySelector('.section-inmap-block').addEventListener('click', function () {
+      document.querySelector('.inmap-filter__result').classList.remove('open');
+    });
+    document.querySelectorAll('[data-filter="show"]').forEach(function (item) {
+      item.addEventListener('click', function () {
+        this.parentNode.classList.toggle('open');
+      });
+    });
+  } //============================================================================
   //============================================================================
   //============================================================================
 
+
   function elementInViewport(el) {
     var bounds = el.getBoundingClientRect();
-    return bounds.top + bounds.height > 0 && window.innerHeight - bounds.top > 0 && bounds.left + bounds.width > 0 && window.innerWidth - bounds.left > 0 // Левее правой
+    return bounds.top + bounds.height > 0 && // Елемент ниже верхней границы
+    window.innerHeight - bounds.top > 0 && // Выше нижней
+    bounds.left + bounds.width > 0 && // Правее левой
+    window.innerWidth - bounds.left > 0 // Левее правой
     ;
   }
 
   function quizInit() {
+    window.loadScript(URL_MASKA, function () {
+      console.log('maska loaded');
+    });
     window.loadScript(URL_QUIZ, function () {
       console.log('quize loaded');
     });
   }
 
-  document.addEventListener("scroll", function (e) {
-    var el = document.querySelector(".section-quiz-block");
-    var inViewport = elementInViewport(el); //true если виден
+  if (document.querySelector(".section-quiz-block")) {
+    document.addEventListener("scroll", function (e) {
+      var el = document.querySelector(".section-quiz-block");
+      var inViewport = elementInViewport(el); //true если виден
 
-    if (inViewport && !window.quizLoad) {
-      window.quizLoad = true;
+      if (inViewport && !window.quizLoad) {
+        window.quizLoad = true;
 
-      if (!window.Vue) {
-        window.loadVue(function () {
+        if (!window.Vue) {
+          window.loadVue(function () {
+            quizInit();
+          });
+        } else {
           quizInit();
-        });
-      } else {
-        quizInit();
+        }
       }
-    }
+    });
+  }
+  /* ======================================================================= */
+
+  /* ======================================================================= */
+
+  /* ======================================================================= */
+
+  /* ======================================================================= */
+
+
+  document.querySelector('[data-popup="quiz"]').addEventListener('click', function () {
+    var ITEMS = [{
+      src: '<div class="box-quiz-popup" ><div id="app-quiz" ></div></div>',
+      type: "html"
+    }];
+    var fancyboxInstanseQuiz = new _fancyapps_ui__WEBPACK_IMPORTED_MODULE_5__["Fancybox"](ITEMS, {
+      mainClass: 'container-quiz-popup'
+    });
+    fancyboxInstanseQuiz.on("done", function (fancybox, slide) {
+      window.loadVue(function () {
+        quizInit();
+      });
+    });
   });
 }); //DOMContentLoaded
 

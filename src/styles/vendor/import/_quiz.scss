@@ -115,9 +115,9 @@ $gray: #3D3D3D;
     }
 
     &__nav {
-        border-top: 1px solid $gray;
+        // border-top: 1px solid $gray;
         display: flex;
-        background-color: 131212;
+        background-color: #131212;
         padding: rem(20) rem($padding-main);
         align-items: center;
 
@@ -615,6 +615,8 @@ $gray: #3D3D3D;
     }
 
     &__phone {
+        display: none;
+
         & a {
 
             display: flex;

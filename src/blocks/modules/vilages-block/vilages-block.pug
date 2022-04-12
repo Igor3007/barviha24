@@ -1,0 +1,26 @@
+mixin vilages-block
+  section.section-vilages-block
+    .vilages-block
+      .vilages-block__bg
+        +picture('./img/common/fb-bg')
+      .vilages-block__content
+        .container
+          .vilages-block
+            .vilages-block__head
+              .vilages-block__breadcrumbs
+                ul
+                  li: a(href='/') Главная
+                  li Поселки
+              .vilages-block__find
+                input(type="text" placeholder="Поиск")
+            .vilages-block__list
+              each item in [1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+                .vilages-block__item
+                  +sr-item()
+
+mixin sr-item(item)
+  .sr-item
+    .sr-item__wrp
+      .sr-item__image: +bgimage('/img/common/gallery_1.webp')
+      .sr-item__link
+        a(href='/page-jk.html'): span ДОМ BARVIKHA21

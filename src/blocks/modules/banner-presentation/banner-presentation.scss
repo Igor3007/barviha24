@@ -221,6 +221,8 @@
 
 .popup-presentation {
 
+    padding: 0;
+
     & .container {
         padding: 0;
         max-width: none;
@@ -244,6 +246,7 @@
         @media screen and (max-width: $w480) {
             top: 20px;
             right: 20px;
+
         }
 
         & svg {

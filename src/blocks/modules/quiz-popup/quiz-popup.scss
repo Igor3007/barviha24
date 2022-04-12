@@ -1,0 +1,67 @@
+.section-quiz-popup {
+    @include section-padding;
+}
+
+.quiz-popup {
+    &__title {
+        font-weight: 600;
+        font-size: 45px;
+        line-height: 125%;
+        text-align: center;
+        max-width: 1250px;
+        margin: 0 auto;
+        padding-bottom: 1.8em;
+
+        @media screen and (max-width: $w1440) {
+            font-size: 32px;
+        }
+
+        @media screen and (max-width: $w1200) {
+            font-size: 30px;
+        }
+
+        @media screen and (max-width: $w940) {
+            font-size: 28px;
+        }
+
+        @media screen and (max-width: $w480) {
+            font-size: 24px;
+        }
+
+        & span {
+            color: #B4A775;
+        }
+    }
+
+    &__btn {
+        & .btn {
+            font-size: 28px;
+            height: auto;
+            margin: 0 auto;
+            padding-left: 1.8em;
+            padding-right: 1.8em;
+
+            @media screen and (max-width: $w1440) {
+                font-size: 20px;
+            }
+
+            @media screen and (max-width: $w1200) {
+                font-size: 18px;
+            }
+
+            @media screen and (max-width: $w940) {
+                font-size: 20px;
+            }
+
+            @media screen and (max-width: $w480) {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.container-quiz-popup .fancybox__content {
+    padding: 0;
+    max-width: 655px;
+    background-color: #1f1e1e;
+}

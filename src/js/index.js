@@ -17,6 +17,7 @@ Swiper.use([Pagination, Navigation, EffectFade]);
 
 const URL_VUE = '/js/lib/vue.js'
 const URL_QUIZ = '/js/lib/common.js'
+const URL_MASKA = '/js/lib/maska.js'
 
 
 /*=====================================================
@@ -48,12 +49,12 @@ window.loadVue = function (callback) {
     window.VueLoaded = true;
     window.loadScript(URL_VUE, function () {
       callback();
-      console.info('load facybox UI')
+      console.info('Vue loaded')
     })
 
   } else {
     callback();
-    console.info('fancybox loaded UI')
+    console.info('Vue loaded')
   }
 }
 
@@ -280,30 +281,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
   //================================  
 
+  if (document.querySelector('.inmap-filter__find')) {
 
-  document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
-    document.querySelector('.inmap-filter__result').classList.add('open')
-    document.querySelector('.inmap-filter__find').scrollIntoView({
-      block: "start",
-      behavior: "smooth"
-    });
-  })
-
-  document.querySelector('.inmap-filter').addEventListener('click', function (e) {
-    e.stopPropagation()
-  })
-
-
-
-  document.querySelector('.section-inmap-block').addEventListener('click', function () {
-    document.querySelector('.inmap-filter__result').classList.remove('open')
-  })
-
-  document.querySelectorAll('[data-filter="show"]').forEach(function (item) {
-    item.addEventListener('click', function () {
-      this.parentNode.classList.toggle('open')
+    document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
+      document.querySelector('.inmap-filter__result').classList.add('open')
+      document.querySelector('.inmap-filter__find').scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+      });
     })
-  })
+
+    document.querySelector('.inmap-filter').addEventListener('click', function (e) {
+      e.stopPropagation()
+    })
+
+
+
+    document.querySelector('.section-inmap-block').addEventListener('click', function () {
+      document.querySelector('.inmap-filter__result').classList.remove('open')
+    })
+
+    document.querySelectorAll('[data-filter="show"]').forEach(function (item) {
+      item.addEventListener('click', function () {
+        this.parentNode.classList.toggle('open')
+      })
+    })
+  }
+
+
 
   //============================================================================
   //============================================================================
@@ -320,30 +325,61 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function quizInit() {
+    window.loadScript(URL_MASKA, function () {
+      console.log('maska loaded')
+    })
     window.loadScript(URL_QUIZ, function () {
       console.log('quize loaded')
     })
   }
 
-  document.addEventListener("scroll", (e) => {
-    var el = document.querySelector(".section-quiz-block");
-    var inViewport = elementInViewport(el); //true если виден
+  if (document.querySelector(".section-quiz-block")) {
+    document.addEventListener("scroll", (e) => {
+      var el = document.querySelector(".section-quiz-block");
+      var inViewport = elementInViewport(el); //true если виден
 
-    if (inViewport && !window.quizLoad) {
-      window.quizLoad = true;
-      if (!window.Vue) {
+      if (inViewport && !window.quizLoad) {
+        window.quizLoad = true;
+        if (!window.Vue) {
 
-        window.loadVue(function () {
+          window.loadVue(function () {
+            quizInit()
+          })
+
+        } else {
           quizInit()
-        })
-
-      } else {
-        quizInit()
+        }
       }
-    }
+
+    })
+  }
+
+
+
+  /* ======================================================================= */
+  /* ======================================================================= */
+  /* ======================================================================= */
+  /* ======================================================================= */
+
+  document.querySelector('[data-popup="quiz"]').addEventListener('click', function () {
+
+    const ITEMS = [{
+      src: '<div class="box-quiz-popup" ><div id="app-quiz" ></div></div>',
+      type: "html",
+    }]
+    const fancyboxInstanseQuiz = new Fancybox(ITEMS, {
+      mainClass: 'container-quiz-popup'
+    });
+
+    fancyboxInstanseQuiz.on("done", function (fancybox, slide) {
+
+      window.loadVue(function () {
+        quizInit()
+      })
+
+    })
 
   })
-
 
 
 }); //DOMContentLoaded
