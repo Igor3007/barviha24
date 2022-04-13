@@ -1,7 +1,7 @@
-mixin minicard(data, slider)
-  .minicard
+mixin v-minicard(data, slider)
+  .v-minicard
 
-    .minicard__image
+    .v-minicard__image
       if slider
         .swiper-container(data-swiper="minicard")
           .swiper-wrapper
@@ -15,26 +15,17 @@ mixin minicard(data, slider)
       else
         +bgimage('/img/catalog/r'+data+'.webp')
 
-    .minicard__desc
-      
+    .v-minicard__desc
+      .v-minicard__price
+        .v-minicard__rub  250 000 000 руб
 
-      .minicard__title
-        a(href='details.html' target="_blank") ДОМ BARVIKHA
-        span id 657345
-      .minicard__subtitle
-        a(href='vilage.html' target="_blank") Поселок: BARVIKHA
-
-      .minicard__props
+      .v-minicard__props
         ul
-          li Дом: <span>1120 м<sup>2<sup></span>
+          li Дом: <span>1120 м2</span>
           li Спален: <span>3</span>
-          li Отделка: <span>Под ключ</span>
-          li Площаль участка: <span>3000 м2</span>
-
-      .minicard__price
-        .minicard__rub  250 000 000 руб
+          li Отделка: <span>Под ключ с мебелью</span>
 
 
-    .minicard__link
+    .v-minicard__link
       a(href='/details.html'): button.btn Подробнее
 

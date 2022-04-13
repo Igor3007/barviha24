@@ -1,13 +1,13 @@
 mixin inmap-block
   section.section-inmap-block
      
-      .inmap-block
+      .inmap-block(id="villages-inmap")
         .inmap-block__head
           .container
             .inmap-block__title РАСПОЛОЖЕНИЕ ПОСЕЛКОВ <br> <span>на Новорижском шоссе</span>
         .inmap-block__map
           .inmap-block__mapcontainer
-            div(id="inmap")
+            div(id="inmap" class="snipet-load")
           .inmap-block__filter
             .container
               +inmap-filter()

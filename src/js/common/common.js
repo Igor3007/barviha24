@@ -42,260 +42,211 @@ window.loadVue = function (callback) {
     }
 }
 
+window.elementInViewport = function (el) {
+    var bounds = el.getBoundingClientRect();
+    return (
+        (bounds.top + bounds.height > 0) && // Елемент ниже верхней границы
+        (window.innerHeight - bounds.top > 0) && // Выше нижней
+        (bounds.left + bounds.width > 0) && // Правее левой
+        (window.innerWidth - bounds.left > 0) // Левее правой
+    );
+}
+
 //scroll to view
 
-function scrollToTargetAdjusted(elem) {
+window.scrollToTargetAdjusted = function (elem) {
+
+    console.log(elem)
+
     var element = document.getElementById(elem);
     var headerOffset = 70;
     var elementPosition = element.offsetTop
     var offsetPosition = elementPosition - headerOffset;
 
     window.scrollTo({
+        top: offsetPosition - 100
+    });
+    window.scrollTo({
         top: offsetPosition,
         behavior: "smooth"
     });
 }
 
-/* =======================================================
-header
-======================================================= */
-function $(elem) {
-    return document.querySelector(elem)
-}
-
-function closeMobileMenu() {
-    $('.burger').classList.remove('open')
-    $('.main-menu').classList.remove('open')
-    $('header').classList.remove('open')
-    $('html').classList.remove('hidden')
-}
-
-$('.burger').addEventListener('click', function (event) {
-
-    event.stopPropagation(true)
-    this.classList.toggle('open')
-    $('.main-menu').classList.toggle('open')
-    $('header').classList.toggle('open')
-    $('html').classList.toggle('hidden')
-})
-
-document.addEventListener('click', function () {
-    closeMobileMenu()
-})
-
-$('.main-menu__close').addEventListener('click', function () {
-    closeMobileMenu()
-})
-
-$('.main-menu').addEventListener('click', function (event) {
-    event.stopPropagation(true)
-})
-
-function onScrollStopped(domElement, callback, timeout = 250) {
-    domElement.addEventListener('scroll', () => {
-
-        if (document.querySelector('.header-slide-up')) {
-            document.querySelector('header.fixed').classList.remove('header-slide-up')
-        }
-
-        clearTimeout(callback.timeout);
-        callback.timeout = setTimeout(callback, timeout);
-    });
-}
-
-onScrollStopped(window, () => {
-
-    let scrollTop = document.querySelector('html').scrollTop;
-
-    if (document.querySelector('header.fixed') && scrollTop > 60) {
-        document.querySelector('header.fixed').classList.add('header-slide-up')
-    }
-
-    // console.log('scroll stopped');
-}, 1000);
-
-if (!$('header').classList.contains('header-layout-page')) {
-    document.addEventListener("scroll", function () {
-        let scrollTop = document.querySelector('html').scrollTop;
-        let start = 350;
-        let paddMin = 15;
-        let paddMax = 30;
-        let p = (scrollTop / start) * 100;
-
-        let paddingCurrent = (paddMax - ((scrollTop / start) * paddMin))
-
-        $('header').style.backgroundColor = 'rgba(255,255,255,' + p + '%)'
-
-
-        if (paddingCurrent >= 15) {
-            $('header').style.padding = paddingCurrent + 'px 0'
-        }
-
-        if (scrollTop > start) {
-            $('header').classList.add('fixed')
-
-        } else {
-            $('header').classList.remove('fixed')
-        }
-
-    })
-
-}
-
-
-const anchors = document.querySelectorAll('.main-menu__nav a[href*="#"], .footer__nav a[href*="#"]')
-
-anchors.forEach(function (anchor, item) {
-    anchor.addEventListener('click', function (e) {
-
-        if (window.location.pathname == '/') {
-            e.preventDefault();
-        }
-
-        const blockID = this.getAttribute('href').substr(2);
-
-        scrollToTargetAdjusted(blockID)
-        closeMobileMenu()
-
-    })
-})
-
-
-if ($('.fb-inmap')) {
-    $('.fb-inmap').addEventListener('click', function () {
-        scrollToTargetAdjusted('yamaps')
-    })
-}
-
-
-//не скрывать меню при фокусе
-
-if (document.querySelector('header')) {
-    var topBarContainer = document.querySelector('header')
-
-    topBarContainer.addEventListener('mouseenter', function () {
-        this.classList.add('header-show-hover')
-    })
-
-    topBarContainer.addEventListener('mouseleave', function () {
-        this.classList.remove('header-show-hover')
-        this.classList.remove('header-slide-up')
-    })
-
-
-
-}
-/*=====================================================
-Maska
-=====================================================*/
-
-function initMaska() {
-    var mask = Maska.create("input[type=tel]", {
-        mask: '#(###)###-##-##'
-    });
-
-    var masknumber = Maska.create("input[data-masked=number]", {
-        mask: '#*'
-    });
-}
-
-if (window.Maska) {
-    initMaska()
-}
-
-//add simple support for background images:
-document.addEventListener('lazybeforeunveil', function (e) {
-    var bg = e.target.getAttribute('data-bg');
-    if (bg) {
-        e.target.style.backgroundImage = 'url(' + bg + ')';
-    }
-});
-
-
-window.onload = function () {
-    document.querySelector('body').classList.remove('perf-no-animation');
-};
 
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    /* swiper gallery */
-
-    function updateFraction(slider) {
-        const {
-            params,
-            activeIndex
-        } = slider;
-        document.querySelector('.counter-current').innerText = String(activeIndex + 1).padStart(2, '0')
-        document.querySelector('.counter-total').innerText = (slider.slides.length)
+    /* =======================================================
+    header
+    ======================================================= */
+    function $(elem) {
+        return document.querySelector(elem)
     }
 
-    var swiper2 = new Swiper('[data-swiper="gallery"]', {
+    function closeMobileMenu() {
+        $('.burger').classList.remove('open')
+        $('.main-menu').classList.remove('open')
+        $('header').classList.remove('open')
+        $('html').classList.remove('hidden')
+    }
 
-        slidesPerView: 1,
-        spaceBetween: 0,
-        effect: 'fade',
-        navigation: {
-            nextEl: '[data-swiper-next="gallery"]',
-            prevEl: '[data-swiper-prev="gallery"]',
-        },
+    $('.burger').addEventListener('click', function (event) {
 
-        on: {
-            init() {
-                setTimeout(updateFraction, 0, this);
-            },
-            slideChange() {
-                updateFraction(this);
-            },
-            resize() {
-                updateFraction(this);
-            },
-        },
+        event.stopPropagation(true)
+        this.classList.toggle('open')
+        $('.main-menu').classList.toggle('open')
+        $('header').classList.toggle('open')
+        $('html').classList.toggle('hidden')
+    })
 
-    });
+    document.addEventListener('click', function () {
+        closeMobileMenu()
+    })
 
-    function updateFraction2(slider) {
-        const {
-            params,
-            activeIndex
-        } = slider;
+    $('.main-menu__close').addEventListener('click', function () {
+        closeMobileMenu()
+    })
 
-        let slideContent = slider.slides[activeIndex].querySelector('.adv-block-content').outerHTML
-        document.querySelector('.advantages-block__slide .container').innerHTML = slideContent;
-        document.querySelector('.advantages-block__counter .counter-current').innerText = String(activeIndex + 1).padStart(2, '0')
-        document.querySelector('.advantages-block__counter .counter-total').innerText = (slider.slides.length)
+    $('.main-menu').addEventListener('click', function (event) {
+        event.stopPropagation(true)
+    })
+
+    function onScrollStopped(domElement, callback, timeout = 250) {
+        domElement.addEventListener('scroll', () => {
+
+            if (document.querySelector('.header-slide-up')) {
+                document.querySelector('header.fixed').classList.remove('header-slide-up')
+            }
+
+            clearTimeout(callback.timeout);
+            callback.timeout = setTimeout(callback, timeout);
+        });
+    }
+
+    onScrollStopped(window, () => {
+
+        let scrollTop = document.querySelector('html').scrollTop;
+
+        if (document.querySelector('header.fixed') && scrollTop > 60) {
+            document.querySelector('header.fixed').classList.add('header-slide-up')
+        }
+
+        // console.log('scroll stopped');
+    }, 1000);
+
+    if (!$('header').classList.contains('header-layout-page')) {
+        document.addEventListener("scroll", function () {
+            let scrollTop = document.querySelector('html').scrollTop;
+            let start = 350;
+            let paddMin = 15;
+            let paddMax = 30;
+            let p = (scrollTop / start) * 100;
+
+            let paddingCurrent = (paddMax - ((scrollTop / start) * paddMin))
+
+            $('header').style.backgroundColor = 'rgba(255,255,255,' + p + '%)'
+
+
+            if (paddingCurrent >= 15) {
+                $('header').style.padding = paddingCurrent + 'px 0'
+            }
+
+            if (scrollTop > start) {
+                $('header').classList.add('fixed')
+
+            } else {
+                $('header').classList.remove('fixed')
+            }
+
+        })
 
     }
 
 
-    var swiperAdv = new Swiper('[data-swiper="advantages"]', {
+    /* ===================================================
+    click in mobile menu
+    ===================================================*/
 
-        slidesPerView: 1,
-        spaceBetween: 0,
-        effect: 'fade',
-        navigation: {
-            nextEl: '[data-swiper-next="advantages"]',
-            prevEl: '[data-swiper-prev="advantages"]',
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            type: "progressbar",
-        },
+    const anchors = document.querySelectorAll('.main-menu__nav a[href*="#"], .footer__nav a[href*="#"]')
 
-        on: {
-            init() {
-                setTimeout(updateFraction2, 0, this);
-            },
-            slideChange() {
-                updateFraction2(this);
-            },
-            resize() {
-                updateFraction2(this);
-            },
-        },
+    anchors.forEach(function (anchor, index) {
+        anchor.addEventListener('click', function (e) {
 
+            e.preventDefault();
+
+            const blockID = anchor.getAttribute('href')
+
+            window.scrollToTargetAdjusted(blockID.substr(1))
+            closeMobileMenu()
+
+        })
+    })
+
+
+    if ($('.fb-inmap')) {
+        $('.fb-inmap').addEventListener('click', function () {
+            window.scrollToTargetAdjusted('yamaps')
+        })
+    }
+
+
+    //не скрывать меню при фокусе
+
+    if (document.querySelector('header')) {
+        var topBarContainer = document.querySelector('header')
+
+        topBarContainer.addEventListener('mouseenter', function () {
+            this.classList.add('header-show-hover')
+        })
+
+        topBarContainer.addEventListener('mouseleave', function () {
+            this.classList.remove('header-show-hover')
+            this.classList.remove('header-slide-up')
+        })
+
+
+
+    }
+    /*=====================================================
+    Maska
+    =====================================================*/
+
+    function initMaska() {
+        var mask = Maska.create("input[type=tel]", {
+            mask: '#(###)###-##-##'
+        });
+
+        var masknumber = Maska.create("input[data-masked=number]", {
+            mask: '#*'
+        });
+    }
+
+    if (window.Maska) {
+        initMaska()
+    }
+
+    /*=====================================================
+    lazysizes bgimage
+    =====================================================*/
+
+    document.addEventListener('lazybeforeunveil', function (e) {
+        var bg = e.target.getAttribute('data-bg');
+        if (bg) {
+            e.target.style.backgroundImage = 'url(' + bg + ')';
+        }
     });
 
+
+    window.onload = function () {
+        document.querySelector('body').classList.remove('perf-no-animation');
+    };
+
+
+
+
+    /*=====================================================
+    swiper minicard
+    =====================================================*/
 
     var swiperMinicard = new Swiper('[data-swiper="minicard"]', {
 
@@ -310,56 +261,11 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 
-    var swiperTeam = new Swiper('[data-swiper="team"]', {
-
-        slidesPerView: 2,
-        spaceBetween: 100,
-        navigation: {
-            nextEl: '[data-swiper-next="team"]',
-            prevEl: '[data-swiper-prev="team"]',
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-
-            },
-            940: {
-                slidesPerView: 2,
-                spaceBetween: 50
-            },
-            1376: {
-                slidesPerView: 2,
-                spaceBetween: 100
-            }
-        }
 
 
-    });
-
-    var swiperTeam2 = new Swiper('[data-swiper="similar"]', {
-
-        slidesPerView: 3,
-        spaceBetween: 30,
-        navigation: {
-            nextEl: '[data-swiper-next="similar"]',
-            prevEl: '[data-swiper-prev="similar"]',
-        },
-        breakpoints: {
-            320: {
-                slidesPerView: 1,
-            },
-            480: {
-                slidesPerView: 1,
-            },
-            940: {
-                slidesPerView: 3,
-                spaceBetween: 30
-            }
-        }
-
-    });
-
-    //fancybox
+    /*=====================================================
+    init fancybox
+    =====================================================*/
 
     Fancybox.bind("[data-fancybox]", {
         autoFocus: false,
@@ -374,8 +280,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 src: this.dataset.src,
                 type: 'inline'
             }]
+
             const fancyboxInstanse = new Fancybox(ITEM, {
-                //mainClass: 'container-quiz-popup'
+                click: 'close'
             });
 
             fancyboxInstanse.on("done", function (fancybox, slide) {
@@ -384,7 +291,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     })
 
-    //sdsdsds
+    /*=====================================================
+    swiper vilages first-block
+    =====================================================*/
 
     var sliderVilages = new Swiper('[data-swiper="vilages"]', {
 
@@ -431,16 +340,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    //================================  
+    /*=====================================================
+    inmap filter villages
+    =====================================================*/
 
     if (document.querySelector('.inmap-filter__find')) {
 
         document.querySelector('.inmap-filter__find input').addEventListener('focus', function (e) {
             document.querySelector('.inmap-filter__result').classList.add('open')
-            document.querySelector('#inmap').scrollIntoView({
-                block: "start",
-                behavior: "smooth"
-            });
+
+            //window.scrollToTargetAdjusted('villages-inmap')
+
         })
 
         document.querySelector('.inmap-filter').addEventListener('click', function (e) {
@@ -458,21 +368,61 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    // map
 
+    if (document.querySelector('.section-inmap-block')) {
 
-    //============================================================================
-    //============================================================================
-    //============================================================================
+        document.addEventListener("scroll", (e) => {
+            var el = document.querySelector(".section-inmap-block");
+            var inViewport = window.elementInViewport(el); //true если виден
 
-    function elementInViewport(el) {
-        var bounds = el.getBoundingClientRect();
-        return (
-            (bounds.top + bounds.height > 0) && // Елемент ниже верхней границы
-            (window.innerHeight - bounds.top > 0) && // Выше нижней
-            (bounds.left + bounds.width > 0) && // Правее левой
-            (window.innerWidth - bounds.left > 0) // Левее правой
-        );
+            if (inViewport && !window.inMapFilterViewport) {
+                window.inMapFilterViewport = true;
+                if (!window.ymaps) {
+                    window.loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&loadByRequire=1", function () {
+                        ymaps.load(mapInit());
+                    });
+                } else {
+                    if (!window.inMapFilter) {
+                        mapInit()
+                    }
+                }
+            }
+
+        })
+
+        function mapInit() {
+
+            window.loadScript(URL_YMAPS, function () {
+
+                const YM = new YMaps()
+                let pointsArray = [{
+                    'coordinates': '55.714225, 37.848540',
+                    'markerImage': '/img/svg/ic_pen-ymaps.svg',
+                }, ]
+
+                if (typeof window.MAP_PARAMS != 'undefined') {
+                    pointsArray = window.MAP_PARAMS;
+                }
+
+                YM.mapsParams.container = 'inmap';
+                YM.mapsParams.params.center = pointsArray[0].coordinates.split(',')
+
+                YM.init(function () {
+                    YM.addPlacemark(pointsArray)
+                    //YM.autoScale()
+                })
+
+            })
+        }
     }
+
+
+
+    /*=====================================================
+    init quiz 
+    =====================================================*/
+
 
     function quizInit() {
 
@@ -487,7 +437,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (document.querySelector(".section-quiz-block")) {
         document.addEventListener("scroll", (e) => {
             var el = document.querySelector(".section-quiz-block");
-            var inViewport = elementInViewport(el); //true если виден
+            var inViewport = window.elementInViewport(el); //true если виден
 
             if (inViewport && !window.quizLoad) {
                 window.quizLoad = true;
@@ -505,12 +455,10 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
+    /*=====================================================
+    init quiz in popup
+    =====================================================*/
 
-
-    /* ======================================================================= */
-    /* ======================================================================= */
-    /* ======================================================================= */
-    /* ======================================================================= */
 
     if (document.querySelector('[data-popup="quiz"]')) {
         document.querySelector('[data-popup="quiz"]').addEventListener('click', function (event) {
@@ -536,65 +484,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     }
 
-    /* ======================================================
-    inmaap
-    ====================================================== */
-    if (document.querySelector('.section-inmap-block')) {
-
-        document.addEventListener("scroll", (e) => {
-            var el = document.querySelector(".section-inmap-block");
-            var inViewport = elementInViewport(el); //true если виден
-
-            if (inViewport && !window.inMapFilterViewport) {
-                window.inMapFilterViewport = true;
-                if (!window.ymaps) {
-                    window.loadScript("https://api-maps.yandex.ru/2.1/?lang=ru_RU&loadByRequire=1", function () {
-                        ymaps.load(mapInit());
-                    });
-                } else {
-                    if (!window.inMapFilter) {
-                        mapInit()
-                    }
-                }
-            }
-
-        })
-
-
-
-        function mapInit() {
-
-            window.loadScript(URL_YMAPS, function () {
-
-                const YM = new YMaps()
-                let pointsArray = [{
-                    'coordinates': '55.714225, 37.848540',
-                    'markerImage': '/img/svg/ic_pen-ymaps.svg',
-                }, ]
-
-                if (typeof window.MAP_PARAMS != 'undefined') {
-                    pointsArray = window.MAP_PARAMS;
-                }
-
-                YM.mapsParams.container = 'inmap';
-                YM.mapsParams.params.center = pointsArray[0].coordinates.split(',')
-
-                YM.init(function () {
-                    YM.addPlacemark(pointsArray)
-                    //YM.autoScale()
-                })
-
-            })
-
-
-        }
-
-
-
-
-    }
-
-    //nouislider
+    /*=====================================================
+    nouislider from filter 
+    =====================================================*/
 
     document.querySelectorAll('[data-noui="range"]').forEach(function (slider) {
         noUiSlider.create(slider, {
@@ -622,7 +514,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-    //open filter in mobile
+    /*=====================================================
+    open filter in mobile 
+    =====================================================*/
+
 
     if (document.querySelector('.filter-toggle')) {
         document.querySelector('.filter-toggle .btn').addEventListener('click', function () {
@@ -640,106 +535,6 @@ document.addEventListener("DOMContentLoaded", function () {
         })
 
     }
-
-    //card slider
-
-
-    if (document.querySelector('.card-slider__thumbs')) {
-        document.querySelector('.card-slider__gallery').addEventListener('click', function () {
-            const IMAGE_ARR = [];
-            const IMAGE = document.querySelectorAll('.card-slider__thumbs [data-gallery-src]');
-
-            console.log(IMAGE)
-
-            IMAGE.forEach(function (item, index) {
-
-                IMAGE_ARR.push({
-                    src: item.dataset.gallerySrc,
-                    type: "image",
-                })
-
-            })
-
-            Fancybox.show(IMAGE_ARR)
-        })
-
-
-        if (document.querySelector('[data-swiper-next="card-gallery"]')) {
-            document.querySelector('[data-swiper-next="card-gallery"]')
-                .addEventListener('click', function (event) {
-                    event.stopPropagation()
-                })
-            document.querySelector('[data-swiper-prev="card-gallery"]')
-                .addEventListener('click', function (event) {
-                    event.stopPropagation()
-                })
-        }
-
-        /* карточка */
-
-        const galleryThumbs = new Swiper('[data-swiper="thumbs-gallery"]', {
-            spaceBetween: 28,
-            slidesPerView: 3,
-            freeMode: true,
-            watchSlidesVisibility: true,
-            watchSlidesProgress: true,
-
-            breakpoints: {
-                0: {
-                    slidesPerView: 3,
-                    spaceBetween: 4,
-                },
-                480: {
-                    slidesPerView: 3,
-                    spaceBetween: 7,
-                },
-                768: {
-                    slidesPerView: 3,
-                    spaceBetween: 10,
-                },
-                1380: {
-                    slidesPerView: 3,
-                }
-            }
-        });
-
-
-        function initialSlideCard() {
-            if (!document.querySelector('.swiper-video')) {
-                return 0;
-            } else {
-                if (document.querySelectorAll('.card-slider__thumbs .swiper-wrapper > div').length <= 1) {
-                    return 0;
-                } else {
-                    return 1;
-                }
-            }
-        }
-
-
-        const galleryTop = new Swiper('[data-swiper="card-gallery"]', {
-            spaceBetween: 10,
-            initialSlide: initialSlideCard(),
-
-            navigation: {
-                nextEl: '[data-swiper-next="card-gallery"]',
-                prevEl: '[data-swiper-prev="card-gallery"]',
-            },
-            breakpoints: {
-                0: {
-                    pagination: {
-                        el: '.swiper-dots',
-                        type: 'bullets',
-                    }
-                }
-            },
-            thumbs: {
-                swiper: galleryThumbs
-            }
-        });
-    }
-
-
 
 
 

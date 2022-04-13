@@ -53,8 +53,18 @@ gulp.task('vendor', function () {
         .pipe(gulp.dest('./dist/js/'));
 });
 
-gulp.task('common', function () {
+// gulp.task('common', function () {
+//     return gulp.src('./src/js/common/*.js')
+//         .pipe(concat('common.js'))
+//         .pipe(gulp.dest('./dist/js/'));
+// });
+
+gulp.task("common", () => {
     return gulp.src('./src/js/common/*.js')
-        .pipe(concat('common.js'))
-        .pipe(gulp.dest('./dist/js/'));
+
+        .pipe(gulp.dest('./dist/js/'))
+        .pipe(debug({
+            "title": "common"
+        }))
+        .on("end", browsersync.reload);
 });

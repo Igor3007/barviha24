@@ -30,6 +30,8 @@ function YMaps(option) {
             var _this = this
             console.info('init Ymaps')
 
+
+
             ymaps.ready(function () {
 
                 // Создание экземпляра карты и его привязка к созданному контейнеру.
@@ -54,6 +56,8 @@ function YMaps(option) {
                 _this.map.behaviors.disable('scrollZoom')
 
                 onInitCallback(_this.isInit);
+
+                document.getElementById(_this.mapsParams.container).classList.add('loaded')
             })
         }
 

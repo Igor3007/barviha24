@@ -29,13 +29,13 @@
     <link rel="preload" href="/styles/main.css">
     <link rel="prefetch" href="/img/sprites/sprite.svg">
     <link rel="dns-prefetch" href="//api-maps.yandex.ru">
-    <style>@import "helpers/variables";
+    <style>/* @import "helpers/variables";
 @import "helpers/mixins";
 @import "helpers/functions";
 @import "base/fonts";
 @import "base/general";
 @import "../../blocks/modules/common/header/header";
-@import "../../blocks/modules/first-block/first-block";
+@import "../../blocks/modules/first-block/first-block"; */
     </style>
   </head>
   <body class="perf-no-animation">
@@ -471,8 +471,8 @@
                       </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
-                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
+                      <div class="minicard__title"><a href="details.html" target="_blank">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="vilage.html" target="_blank">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
@@ -518,8 +518,8 @@
                       </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
-                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
+                      <div class="minicard__title"><a href="details.html" target="_blank">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="vilage.html" target="_blank">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
@@ -565,8 +565,8 @@
                       </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
-                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
+                      <div class="minicard__title"><a href="details.html" target="_blank">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="vilage.html" target="_blank">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
@@ -612,8 +612,8 @@
                       </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
-                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
+                      <div class="minicard__title"><a href="details.html" target="_blank">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="vilage.html" target="_blank">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
@@ -659,8 +659,8 @@
                       </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
-                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
+                      <div class="minicard__title"><a href="details.html" target="_blank">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="vilage.html" target="_blank">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
@@ -709,7 +709,7 @@
         </div>
       </section>
       <section class="section-inmap-block">
-        <div class="inmap-block">
+        <div class="inmap-block" id="villages-inmap">
           <div class="inmap-block__head">
             <div class="container">
               <div class="inmap-block__title">РАСПОЛОЖЕНИЕ ПОСЕЛКОВ <br> <span>на Новорижском шоссе</span></div>
@@ -717,7 +717,7 @@
           </div>
           <div class="inmap-block__map">
             <div class="inmap-block__mapcontainer">
-              <div id="inmap"></div>
+              <div class="snipet-load" id="inmap"></div>
             </div>
             <div class="inmap-block__filter">
               <div class="container">

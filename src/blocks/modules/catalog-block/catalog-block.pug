@@ -1,4 +1,4 @@
-include ../minicard/minicard.pug
+include ../v-minicard/v-minicard.pug
 
 mixin catalog-block()
   section.section-catalog-block(id="catalog")
@@ -11,7 +11,7 @@ mixin catalog-block()
             li(data-filter="area"): span Участки
         .catalog-block__list
           each item in [1,1,0,1,0,1,1,0,1,1,1,0,1,1,0,1,1]
-            .catalog-block__item(data-card=""+(item ? 'house':'area')+""): +minicard('1', true)
+            .catalog-block__item(data-card=""+(item ? 'house':'area')+""): +v-minicard('1', true)
         .catalog-block__more
           button.btn.btn-white.btn-large
             span Смотреть еще объекты

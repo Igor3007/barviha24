@@ -1,0 +1,41 @@
+extends ../layouts/index
+
+include ../../blocks/modules/v-first-block/v-first-block.pug
+include ../../blocks/modules/about-block/about-block.pug
+include ../../blocks/modules/gallery-block/gallery-block.pug
+include ../../blocks/modules/catalog-block/catalog-block.pug
+include ../../blocks/modules/team-block/team-block.pug
+include ../../blocks/modules/form-block/form-block.pug
+include ../../blocks/modules/advantages-block/advantages-block.pug
+include ../../blocks/modules/signup-block/signup-block.pug
+include ../../blocks/modules/surroundings-block/surroundings-block.pug
+include ../../blocks/modules/similar-block/similar-block.pug
+include ../../blocks/modules/location-block/location-block.pug
+include ../../blocks/modules/yamaps-block/yamaps-block.pug
+
+block variables
+  include ../../data/dataVillage.pug
+
+  
+
+
+block content
+
+  +v-first-block()
+  +about-block()
+  +gallery-block()
+  +catalog-block()
+  +team-block()
+  +form-block()
+  +advantages-block()
+  +signup-block()
+  +surroundings-block()
+  +similar-block()
+  +location-block()
+  +yamaps-block()
+
+
+block scripts
+  script(src="js/vendor.js")
+  script(src="js/common.js")
+  script(src="js/page-village.js")
