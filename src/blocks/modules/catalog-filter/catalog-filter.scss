@@ -8,12 +8,16 @@
 
     &__aside {
         @include col;
-        @include size(4);
+        @include size-w940(4);
+        @include size(12);
+
+
     }
 
     &__content {
         @include col;
-        @include size(8);
+        @include size-w940(8);
+        @include size(12);
     }
 
     &__list {
@@ -22,20 +26,49 @@
 
     &__item {
         @include col;
-        @include size(6);
-        padding: 15px;
+        @include size-w480(6);
+        @include size(12);
+        padding: 5px;
         margin-bottom: 25px;
+
+        @media screen and (max-width: $w1376) {
+            padding: 0;
+        }
     }
 
     &__title {
         @include section-title;
-        padding-bottom: 50px;
+        padding-bottom: 100px;
+
+        @media screen and (min-width: $w1440) {
+            padding-bottom: 80px;
+        }
+
+        @media screen and (max-width: $w760) {
+            padding-bottom: 60px;
+        }
+
+        @media screen and (max-width: $w760) {
+            text-align: center;
+        }
+
+
+
     }
 
     &__topbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        padding-bottom: rem(45);
+
+        @media screen and (max-width: $w760) {
+            flex-direction: column;
+
+            &>div {
+                width: 100%;
+            }
+        }
     }
 
     &__count {
@@ -43,8 +76,26 @@
         font-size: 28px;
         text-transform: uppercase;
         color: #0B6D7A;
+
+        @media screen and (max-width: $w1440) {
+            font-size: 20px;
+        }
+
+        @media screen and (max-width: $w760) {
+            padding-bottom: 25px;
+        }
+    }
+
+    &__sort {
+        border: 2px solid $main;
+        border-radius: 10px;
+        padding-left: 1em;
+        padding-right: 1em;
+
+        @media screen and (max-width: $w1440) {}
     }
 }
+
 
 .sortable-box {
 
@@ -56,6 +107,14 @@
         align-items: center;
         margin-left: 15px;
 
+        @media screen and (max-width: $w1376) {
+            margin-bottom: -4px;
+        }
+
+        @media screen and (max-width: $w760) {
+            margin-left: auto;
+        }
+
         & label {
 
             cursor: pointer;
@@ -63,6 +122,11 @@
             & svg {
                 filter: grayscale(1);
                 opacity: 0.3;
+
+                @media screen and (max-width: $w1440) {
+                    width: 20px;
+                    height: 20px;
+                }
             }
 
             & input {
@@ -89,12 +153,19 @@
             align-items: center;
 
             & span {
-                font-size: 16px;
                 text-transform: uppercase;
                 font-weight: 600;
-                font-size: 22.4955px;
+                font-size: 22px;
                 color: #C2C3C4;
                 cursor: pointer;
+
+                @media screen and (max-width: $w1440) {
+                    font-size: 18px;
+                }
+
+                @media screen and (max-width: $w1376) {
+                    font-size: 16px;
+                }
             }
 
             & input {
@@ -127,9 +198,31 @@
     }
 }
 
+.filetr-clear {
+    padding: 30px 40px;
+    text-align: center;
+    font-style: normal;
+    font-size: 22px;
+    line-height: 39px;
+    color: #242424;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+
+    @media screen and (max-width: $w1440) {
+        padding: 10px 30px;
+        font-size: 16px;
+    }
+}
+
+
 .filter-checkbox {
     padding: 0 40px;
     border-bottom: 1px solid #ccc;
+
+    @media screen and (max-width: $w1440) {
+        padding: 0 30px;
+    }
 
     &.open {
         & .filter-checkbox {
@@ -153,6 +246,14 @@
         padding: 25px 0px;
         position: relative;
 
+        @media screen and (max-width: $w1440) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $w480) {
+            padding: 20px 0px;
+        }
+
 
         &::after {
             content: '';
@@ -169,6 +270,11 @@
             top: 50%;
             margin-top: -8px;
             transition: 0.3s ease;
+
+            @media screen and (max-width: $w480) {
+                width: 17px;
+                height: 17px;
+            }
         }
 
     }
@@ -181,35 +287,76 @@
 
         & label {
             display: block;
-            padding: 4px 0;
+            padding: 4px 0 8px 0;
             position: relative;
             padding-left: 2em;
+            cursor: pointer;
 
             & input {
                 display: none;
+
+                &:checked {
+                    &~.checkbox-elem {
+                        &::after {
+                            content: '';
+                            width: 9px;
+                            height: 4px;
+                            background-color: transparent;
+                            display: block;
+                            position: absolute;
+                            left: 50%;
+                            top: 50%;
+                            margin-left: -5px;
+                            margin-top: -5px;
+                            border-left: 2px solid $main;
+                            border-bottom: 2px solid $main;
+                            transform: rotate(-45deg);
+
+                            @media screen and (max-width: $w1376) {
+                                width: 8px;
+                                height: 3px;
+                                margin-left: -4px;
+                                margin-top: -4px;
+                            }
+                        }
+                    }
+                }
             }
 
             & span {
                 display: block;
                 font-size: 16px;
 
-                &::after {
-                    content: attr(data-count);
-                    color: #999;
-                    margin-left: 0.2em;
+                @media screen and (max-width: $w1376) {
+                    font-size: 15px;
                 }
 
-                &::before {
+                &.checkbox-text {
+                    &::after {
+                        content: attr(data-count);
+                        color: #999;
+                        margin-left: 0.2em;
+                    }
+                }
+
+                &.checkbox-elem {
                     position: absolute;
                     left: 0;
                     top: 0.3em;
                     content: '';
-                    width: 1.1em;
-                    height: 1.1em;
+                    width: 1.2em;
+                    min-width: 1.2em;
+                    height: 1.2em;
                     border: 1px solid #0B6D7A;
                     border-radius: 3px;
                     display: block;
+
+                    @media screen and (max-width: $w1376) {
+                        font-size: 14px;
+                    }
                 }
+
+
             }
         }
     }
@@ -219,6 +366,10 @@
 .filter-range {
     padding: 0 40px;
     border-bottom: 1px solid #ccc;
+
+    @media screen and (max-width: $w1440) {
+        padding: 0 30px;
+    }
 
     &.open {
 
@@ -238,13 +389,74 @@
         }
     }
 
+    &__slider {
+        margin-bottom: 24px;
+        padding-top: 15px;
 
+        & .noUi-horizontal {
+            height: 6px;
+            border: none;
+            background: #dfdfdf;
+            box-shadow: none;
+        }
+
+        & .noUi-connect {
+            background: $main;
+        }
+
+        & .noUi-handle.noUi-handle-lower,
+        & .noUi-handle.noUi-handle-upper {
+            font-size: 10px;
+            width: 2.5em;
+            height: 2.5em;
+            right: -1.25em;
+            top: calc(-1.25em + 3px);
+            background-color: #A6CFD4;
+            box-shadow: none;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+
+            @media screen and (max-width: $w1376) {
+                font-size: 8px;
+            }
+
+            &::before {
+                display: none;
+            }
+
+            &::after {
+                width: 1em;
+                height: 1em;
+                border-radius: 50%;
+                background: linear-gradient(180deg, #0B6D7A -27.78%, #309FAD 67.46%);
+                box-shadow: 0px 2.32827px 2.32827px rgba(0, 0, 0, 0.25);
+                left: calc(50% - (1em/2));
+                top: calc(50% - (1em/2));
+            }
+        }
+    }
+
+    &__select {
+        font-size: 20px;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: flex-end;
+    }
 
     &__head {
         font-weight: 600;
         font-size: 22px;
         padding: 25px 0px;
         position: relative;
+
+        @media screen and (max-width: $w1440) {
+            font-size: 16px;
+        }
+
+        @media screen and (max-width: $w480) {
+            padding: 20px 0px;
+        }
 
 
         &::after {
@@ -262,6 +474,11 @@
             top: 50%;
             margin-top: -8px;
             transition: 0.3s ease;
+
+            @media screen and (max-width: $w480) {
+                width: 17px;
+                height: 17px;
+            }
         }
 
     }
@@ -304,11 +521,99 @@
     box-sizing: border-box;
     border-radius: 25px;
 
+    &.open {
+        @media screen and (max-width: $w940) {
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 10;
+            background-color: #fff;
+            animation: slideup 0.3s ease forwards;
+            display: block;
+            border-radius: 0;
+            overflow-y: auto;
+            max-width: 100%;
+
+
+            & .filter-box {
+                &__wrp {
+                    margin: 0px 20px 20px 20px;
+                    background-color: #F4F4F4;
+                    border-radius: 20px;
+
+                }
+
+                &__close {
+
+                    padding: 10px 20px;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    &::before {
+                        content: '+';
+                        font-size: 55px;
+                        transform: rotate(-45deg);
+                        line-height: 100%;
+                        font-weight: 100;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+    }
+
+
+    @media screen and (max-width: $w940) {
+        display: none;
+    }
+
     &__item {
         &:last-child {
             &>div {
                 border-bottom: none;
             }
         }
+    }
+
+
+}
+
+
+
+.filter-toggle {
+
+    display: none;
+
+    @media screen and (max-width: $w940) {
+        display: block;
+    }
+
+    margin-bottom: 35px;
+
+    & .btn {
+        width: 100%;
+    }
+}
+
+
+
+
+label.price-toggle {
+    display: inline-block;
+    margin-left: auto;
+
+    & input {
+        display: none;
+    }
+
+    & span {
+        background-color: $main;
+        color: #fff;
+        font-size: 0.7em;
+        line-height: 100%;
+        padding: 0.4em 0.8em;
+        border-radius: 6px;
     }
 }

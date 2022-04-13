@@ -32,7 +32,14 @@
     <link rel="preload" href="/styles/main.min.css">
     <link rel="prefetch" href="/img/sprites/sprite.svg">
     <link rel="dns-prefetch" href="//api-maps.yandex.ru">
-    <style></style>
+    <style>@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "base/fonts";
+@import "base/general";
+@import "../../blocks/modules/common/header/header";
+@import "../../blocks/modules/first-block/first-block";
+    </style>
   </head>
   <body class="perf-no-animation">
     <header>
@@ -86,7 +93,7 @@
                     <div class="get-present__btn"><a href="#">
                         <svg width="43" height="43">
                           <use xlink:href="/img/sprites/sprite.svg#ic_doc"></use>
-                        </svg><span>Получить презентацию</span></a></div>
+                        </svg><span data-fancybox="" data-src="#dl-presentationt">Получить презентацию</span></a></div>
                   </div>
                 </div>
               </div>
@@ -245,29 +252,36 @@
               <div class="filter-box">
                 <div class="filter-box__wrp">
                   <div class="filter-box__item">
-                    <div class="filter-checkbox">
+                    <div class="filter-checkbox open">
                       <div class="filter-checkbox__head" data-filter="show">Тип недвижимости</div>
                       <div class="filter-checkbox__prop">
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Коттедж</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Коттедж</span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Таунхаус</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Таунхаус</span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Участок</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Участок</span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Квартира</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Квартира</span>
                         </label>
                       </div>
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-range-price">
+                    <div class="filter-range-price open">
                       <div class="filter-range-price__head" data-filter="show">Цена</div>
                       <div class="filter-range-price__range">
-                        <div class="filter-range-price__slider"></div>
+                        <div class="filter-range-price__select">
+                          <label class="price-toggle">
+                            <input type="checkbox"/><span>за объект</span>
+                          </label>
+                        </div>
+                        <div class="filter-range-price__slider">
+                          <div data-noui="range"></div>
+                        </div>
                         <div class="filter-range-price__fields">
                           <div class="filter-range-price__input">
                             <input type="text" placeholder="55 000 000"/>
@@ -281,10 +295,12 @@
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-range">
+                    <div class="filter-range open">
                       <div class="filter-range__head" data-filter="show">Площадь</div>
                       <div class="filter-range__range">
-                        <div class="filter-range__slider"></div>
+                        <div class="filter-range__slider">
+                          <div data-noui="range"></div>
+                        </div>
                         <div class="filter-range__fields">
                           <div class="filter-range__input">
                             <input type="text" placeholder="10"/>
@@ -298,10 +314,12 @@
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-range">
+                    <div class="filter-range open">
                       <div class="filter-range__head" data-filter="show">Удаленность от МКАД</div>
                       <div class="filter-range__range">
-                        <div class="filter-range__slider"></div>
+                        <div class="filter-range__slider">
+                          <div data-noui="range"></div>
+                        </div>
                         <div class="filter-range__fields">
                           <div class="filter-range__input">
                             <input type="text" placeholder="4"/>
@@ -315,29 +333,31 @@
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-checkbox">
+                    <div class="filter-checkbox open">
                       <div class="filter-checkbox__head" data-filter="show">Поселок</div>
                       <div class="filter-checkbox__prop">
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Поселок 1 </span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Поселок 1 </span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Поселок 2 </span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Поселок 2 </span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Поселок 3 </span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Поселок 3 </span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Поселок 4 </span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Поселок 4 </span>
                         </label>
                       </div>
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-range">
+                    <div class="filter-range open">
                       <div class="filter-range__head" data-filter="show">Удаленность от МКАД</div>
                       <div class="filter-range__range">
-                        <div class="filter-range__slider"></div>
+                        <div class="filter-range__slider">
+                          <div data-noui="range"></div>
+                        </div>
                         <div class="filter-range__fields">
                           <div class="filter-range__input">
                             <input type="text" placeholder="0"/>
@@ -351,10 +371,12 @@
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-range">
+                    <div class="filter-range open">
                       <div class="filter-range__head" data-filter="show">Количество этажей</div>
                       <div class="filter-range__range">
-                        <div class="filter-range__slider"></div>
+                        <div class="filter-range__slider">
+                          <div data-noui="range"></div>
+                        </div>
                         <div class="filter-range__fields">
                           <div class="filter-range__input">
                             <input type="text" placeholder="0"/>
@@ -368,20 +390,23 @@
                     </div>
                   </div>
                   <div class="filter-box__item">
-                    <div class="filter-checkbox">
+                    <div class="filter-checkbox open">
                       <div class="filter-checkbox__head" data-filter="show">Отделка</div>
                       <div class="filter-checkbox__prop">
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">С мебелью</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">С мебелью</span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">Без отделки</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">Без отделки</span>
                         </label>
                         <label>
-                          <input type="checkbox"/><span data-count="(10)">С отделкой</span>
+                          <input type="checkbox"/><span class="checkbox-elem"></span><span class="checkbox-text" data-count="(10)">С отделкой</span>
                         </label>
                       </div>
                     </div>
+                  </div>
+                  <div class="filter-box__item">
+                    <div class="filetr-clear">Сбросить фильтр</div>
                   </div>
                 </div>
               </div>
@@ -416,21 +441,51 @@
                   </div>
                 </div>
               </div>
+              <div class="filter-toggle">
+                <button class="btn">ОТКРЫТЬ ФИЛЬТР</button>
+              </div>
               <div class="catalog-filter__list">
                 <div class="catalog-filter__item">
                   <div class="minicard">
-                    <div class="minicard__image"><span class="bgimage lazyload" data-bg="/img/catalog/r[object Object].webp"></span>
+                    <div class="minicard__image">
+                      <div class="swiper-container" data-swiper="minicard">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                        </div>
+                        <div class="swiper-nav-mini">
+                          <div class="swiper-nav-mini__prev" data-swiper-prev="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-prev"></use>
+                            </svg>
+                          </div>
+                          <div class="swiper-nav-mini__next" data-swiper-next="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-next"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__price">
-                        <div class="minicard__rub"> 250 000 000 руб</div>
-                      </div>
+                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
                           <li>Спален: <span>3</span></li>
-                          <li>Отделка: <span>Под ключ с мебелью</span></li>
+                          <li>Отделка: <span>Под ключ</span></li>
+                          <li>Площаль участка: <span>3000 м2</span></li>
                         </ul>
+                      </div>
+                      <div class="minicard__price">
+                        <div class="minicard__rub"> 250 000 000 руб</div>
                       </div>
                     </div>
                     <div class="minicard__link"><a href="/details.html">
@@ -439,18 +494,45 @@
                 </div>
                 <div class="catalog-filter__item">
                   <div class="minicard">
-                    <div class="minicard__image"><span class="bgimage lazyload" data-bg="/img/catalog/r[object Object].webp"></span>
+                    <div class="minicard__image">
+                      <div class="swiper-container" data-swiper="minicard">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                        </div>
+                        <div class="swiper-nav-mini">
+                          <div class="swiper-nav-mini__prev" data-swiper-prev="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-prev"></use>
+                            </svg>
+                          </div>
+                          <div class="swiper-nav-mini__next" data-swiper-next="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-next"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__price">
-                        <div class="minicard__rub"> 250 000 000 руб</div>
-                      </div>
+                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
                           <li>Спален: <span>3</span></li>
-                          <li>Отделка: <span>Под ключ с мебелью</span></li>
+                          <li>Отделка: <span>Под ключ</span></li>
+                          <li>Площаль участка: <span>3000 м2</span></li>
                         </ul>
+                      </div>
+                      <div class="minicard__price">
+                        <div class="minicard__rub"> 250 000 000 руб</div>
                       </div>
                     </div>
                     <div class="minicard__link"><a href="/details.html">
@@ -459,18 +541,45 @@
                 </div>
                 <div class="catalog-filter__item">
                   <div class="minicard">
-                    <div class="minicard__image"><span class="bgimage lazyload" data-bg="/img/catalog/r[object Object].webp"></span>
+                    <div class="minicard__image">
+                      <div class="swiper-container" data-swiper="minicard">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                        </div>
+                        <div class="swiper-nav-mini">
+                          <div class="swiper-nav-mini__prev" data-swiper-prev="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-prev"></use>
+                            </svg>
+                          </div>
+                          <div class="swiper-nav-mini__next" data-swiper-next="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-next"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__price">
-                        <div class="minicard__rub"> 250 000 000 руб</div>
-                      </div>
+                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
                           <li>Спален: <span>3</span></li>
-                          <li>Отделка: <span>Под ключ с мебелью</span></li>
+                          <li>Отделка: <span>Под ключ</span></li>
+                          <li>Площаль участка: <span>3000 м2</span></li>
                         </ul>
+                      </div>
+                      <div class="minicard__price">
+                        <div class="minicard__rub"> 250 000 000 руб</div>
                       </div>
                     </div>
                     <div class="minicard__link"><a href="/details.html">
@@ -479,18 +588,45 @@
                 </div>
                 <div class="catalog-filter__item">
                   <div class="minicard">
-                    <div class="minicard__image"><span class="bgimage lazyload" data-bg="/img/catalog/r[object Object].webp"></span>
+                    <div class="minicard__image">
+                      <div class="swiper-container" data-swiper="minicard">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                        </div>
+                        <div class="swiper-nav-mini">
+                          <div class="swiper-nav-mini__prev" data-swiper-prev="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-prev"></use>
+                            </svg>
+                          </div>
+                          <div class="swiper-nav-mini__next" data-swiper-next="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-next"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__price">
-                        <div class="minicard__rub"> 250 000 000 руб</div>
-                      </div>
+                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
                           <li>Спален: <span>3</span></li>
-                          <li>Отделка: <span>Под ключ с мебелью</span></li>
+                          <li>Отделка: <span>Под ключ</span></li>
+                          <li>Площаль участка: <span>3000 м2</span></li>
                         </ul>
+                      </div>
+                      <div class="minicard__price">
+                        <div class="minicard__rub"> 250 000 000 руб</div>
                       </div>
                     </div>
                     <div class="minicard__link"><a href="/details.html">
@@ -499,18 +635,45 @@
                 </div>
                 <div class="catalog-filter__item">
                   <div class="minicard">
-                    <div class="minicard__image"><span class="bgimage lazyload" data-bg="/img/catalog/r[object Object].webp"></span>
+                    <div class="minicard__image">
+                      <div class="swiper-container" data-swiper="minicard">
+                        <div class="swiper-wrapper">
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                          <div class="swiper-slide"><span class="bgimage lazyload" data-bg="/img/catalog/r1.webp"></span>
+                          </div>
+                        </div>
+                        <div class="swiper-nav-mini">
+                          <div class="swiper-nav-mini__prev" data-swiper-prev="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-prev"></use>
+                            </svg>
+                          </div>
+                          <div class="swiper-nav-mini__next" data-swiper-next="minicard">
+                            <svg width="30" height="30">
+                              <use xlink:href="/img/sprites/sprite.svg#ic_swiper-next"></use>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class="minicard__desc">
-                      <div class="minicard__price">
-                        <div class="minicard__rub"> 250 000 000 руб</div>
-                      </div>
+                      <div class="minicard__title"><a href="#">ДОМ BARVIKHA</a><span>id 657345</span></div>
+                      <div class="minicard__subtitle"><a href="#">Поселок: BARVIKHA</a></div>
                       <div class="minicard__props">
                         <ul>
                           <li>Дом: <span>1120 м<sup>2<sup></span></li>
                           <li>Спален: <span>3</span></li>
-                          <li>Отделка: <span>Под ключ с мебелью</span></li>
+                          <li>Отделка: <span>Под ключ</span></li>
+                          <li>Площаль участка: <span>3000 м2</span></li>
                         </ul>
+                      </div>
+                      <div class="minicard__price">
+                        <div class="minicard__rub"> 250 000 000 руб</div>
                       </div>
                     </div>
                     <div class="minicard__link"><a href="/details.html">
@@ -739,12 +902,10 @@
           <div class="footer__nav">
             <nav>
               <ul>
-                <li><a href="/#about">О поселке</a></li>
-                <li><a href="/#gallery">Галерея</a></li>
-                <li><a href="/#catalog">Дома/участки в поселке</a></li>
-                <li><a href="/#team">Команда отдела продаж</a></li>
-                <li><a href="/#surroundings">Окружение</a></li>
-                <li><a href="/#location">Расположение поселка</a></li>
+                <li><a href="/#about">О нас</a></li>
+                <li><a href="/vilages.html">Поселки</a></li>
+                <li><a href="/#catalog">Расположение</a></li>
+                <li><a href="/#team">Инфраструктура</a></li>
               </ul>
             </nav>
           </div>
@@ -778,12 +939,10 @@
                 <div class="main-menu__nav">
                   <nav>
                     <ul>
-                      <li><a href="/#about">О поселке</a></li>
-                      <li><a href="/#gallery">Галерея</a></li>
-                      <li><a href="/#catalog">Дома/участки в поселке</a></li>
-                      <li><a href="/#team">Команда отдела продаж</a></li>
-                      <li><a href="/#surroundings">Окружение</a></li>
-                      <li><a href="/#location">Расположение поселка</a></li>
+                      <li><a href="/#about">О нас</a></li>
+                      <li><a href="/vilages.html">Поселки</a></li>
+                      <li><a href="/#catalog">Расположение</a></li>
+                      <li><a href="/#team">Инфраструктура</a></li>
                     </ul>
                   </nav>
                 </div>
@@ -879,7 +1038,7 @@
               </section>
       </div>
     </footer>
-    <script src="js/main.js?v=1.6"></script>
+    <script src="js/common.js?v=1.6"></script>
     <script src="js/vendor.js"> </script>
     <link rel="stylesheet" href="/styles/main.css">
   </body>

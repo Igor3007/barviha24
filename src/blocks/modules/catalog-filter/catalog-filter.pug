@@ -8,7 +8,7 @@ mixin catalog-filter
       .catalog-filter__title  ПОДБЕРИТЕ ДОМ <br> <span>на Новорижском шоссе <span>
       .catalog-filter
         .catalog-filter__aside
-
+          
           .filter-box
             .filter-box__wrp
               .filter-box__item: +filter-checkbox(app.filter.type)
@@ -19,33 +19,47 @@ mixin catalog-filter
               .filter-box__item: +filter-range(app.filter.area)
               .filter-box__item: +filter-range(app.filter.level)
               .filter-box__item: +filter-checkbox(app.filter.finish)
+              .filter-box__item
+                .filetr-clear Сбросить фильтр
 
         .catalog-filter__content
           .catalog-filter__topbar
             .catalog-filter__count Найдено объектов: 86
             .catalog-filter__sort
               +sortable-box
+          .filter-toggle
+            button.btn ОТКРЫТЬ ФИЛЬТР
           .catalog-filter__list
             each item in app.homeCat
-              .catalog-filter__item: +minicard(item)
+              .catalog-filter__item: +minicard('1', true)
 
 mixin filter-checkbox(data)
-  .filter-checkbox
+  .filter-checkbox.open
     .filter-checkbox__head(data-filter="show")= data.title
     .filter-checkbox__prop
       each prop in data.value
         label
           input(type="checkbox")
-          span(data-count="(10)")= prop 
+          span.checkbox-elem
+          span.checkbox-text(data-count="(10)")= prop 
         
 
 
 
 mixin filter-range-price(data)
-  .filter-range-price
+  .filter-range-price.open
     .filter-range-price__head(data-filter="show")= data.title
+
+    
+     
+
     .filter-range-price__range
+      .filter-range-price__select
+        label.price-toggle
+          input(type="checkbox")
+          span за объект
       .filter-range-price__slider
+        div(data-noui="range")
       .filter-range-price__fields
         .filter-range-price__input: input(type="text" placeholder=data.minValue)
         .filter-range-price__sp -
@@ -56,10 +70,11 @@ mixin filter-range-price(data)
 
 
 mixin filter-range(data)
-  .filter-range
+  .filter-range.open
     .filter-range__head(data-filter="show")= data.title
     .filter-range__range
       .filter-range__slider
+        div(data-noui="range" )
       .filter-range__fields
         .filter-range__input: input(type="text" placeholder=data.minValue)
         .filter-range__sp —

@@ -73,7 +73,7 @@
         margin-right: 1em;
     }
 
-    &.btn-blick {
+    &.btn-blick:not(:disabled) {
 
         position: relative;
         overflow: hidden;

@@ -16,14 +16,23 @@ mixin minicard(data, slider)
         +bgimage('/img/catalog/r'+data+'.webp')
 
     .minicard__desc
-      .minicard__price
-        .minicard__rub  250 000 000 руб
+      
+
+      .minicard__title
+        a(href='#') ДОМ BARVIKHA
+        span id 657345
+      .minicard__subtitle
+        a(href='#') Поселок: BARVIKHA
 
       .minicard__props
         ul
           li Дом: <span>1120 м<sup>2<sup></span>
           li Спален: <span>3</span>
-          li Отделка: <span>Под ключ с мебелью</span>
+          li Отделка: <span>Под ключ</span>
+          li Площаль участка: <span>3000 м2</span>
+
+      .minicard__price
+        .minicard__rub  250 000 000 руб
 
 
     .minicard__link

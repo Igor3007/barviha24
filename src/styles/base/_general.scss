@@ -114,7 +114,7 @@ main {
     }
 
     @media screen and (max-width: $w1376) {
-        max-width: 1040px;
+        max-width: 1100px;
     }
 
     @media screen and (max-width: $w940) {
@@ -265,4 +265,8 @@ main {
     @media screen and (max-width: $w580) {
         padding: rem(90) 0;
     }
+}
+
+.fancybox__container :focus {
+    outline: none !important;
 }

@@ -1,7 +1,7 @@
 .section-inmap-block {
     @include section-padding;
     background-color: #F4F4F4;
-    padding-bottom: 0;
+    padding-bottom: 0 !important;
 }
 
 .inmap-block {

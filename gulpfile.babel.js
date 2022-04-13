@@ -18,7 +18,10 @@ const requireDir = require("require-dir"),
             ]
         },
         styles: {
-            src: "./src/styles/main.{scss,sass}",
+            src: [
+                "./src/styles/main.{scss,sass}",
+                "./src/styles/base/_critical.{scss,sass}",
+            ],
             dist: "./dist/styles/",
             watch: [
                 "./src/blocks/**/*.{scss,sass}",
@@ -30,6 +33,17 @@ const requireDir = require("require-dir"),
             dist: "./dist/js/",
             watch: [
                 "./src/blocks/**/*.js",
+                "./src/js/**/*.js"
+            ]
+        },
+        vendor: {
+            watch: [
+                "./src/blocks/**/*.js",
+                "./src/js/**/*.js"
+            ]
+        },
+        common: {
+            watch: [
                 "./src/js/**/*.js"
             ]
         },
@@ -87,10 +101,10 @@ export {
 };
 
 export const development = gulp.series("clean", "smart-grid",
-    gulp.parallel(["views", "styles", "scripts", "images", "webp", "libs", "sprites", "fonts", "favicons"]),
+    gulp.parallel(["views", "styles", "vendor", "common", "images", "webp", "libs", "sprites", "fonts", "favicons"]),
     gulp.parallel("serve"));
 
 export const prod = gulp.series("clean",
-    gulp.series(["views", "styles", "scripts", "images", "webp", "sprites", "libs", "fonts", "favicons", "gzip"]));
+    gulp.series(["views", "styles", "vendor", "common", "images", "webp", "sprites", "libs", "fonts", "favicons", "gzip"]));
 
 export default development;
