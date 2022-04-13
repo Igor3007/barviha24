@@ -3,7 +3,7 @@ mixin first-block ()
     .first-block
       .first-block__bg
         .bgimage
-          +picture('./img/common/fb-bg')
+          +picture('./img/common/fb-bg', 'nolazy')
       .first-block__content
         .first-block__main
           .container
@@ -27,9 +27,9 @@ mixin get-present()
   .get-present
     .get-present__text: +bgimage('/img/common/present-text.svg')
     .get-present__btn
-      a(href='#' )
+      a(href='#' data-fancybox="" data-src="#dl-presentationt") 
         +icons('#ic_doc', 43)
-        span(data-fancybox="" data-src="#dl-presentationt") Получить презентацию
+        span Получить презентацию
 
 mixin card-vilage(data)
   .card-vilage

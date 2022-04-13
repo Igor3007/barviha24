@@ -50,7 +50,14 @@
 
         @media screen and (min-width: $w940) {
             display: block;
+
+            & .btn {
+                font-size: 20px;
+            }
+
         }
+
+
     }
 
     &__getpresent {

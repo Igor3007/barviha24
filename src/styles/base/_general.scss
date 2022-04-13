@@ -102,6 +102,10 @@ main {
     width: 100%;
 }
 
+html.with-fancybox {
+    overflow: hidden !important;
+}
+
 .container {
     max-width: 1520px;
     width: 100%;

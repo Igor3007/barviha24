@@ -366,7 +366,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelectorAll('[data-fancybox]').forEach(function (item) {
-        item.addEventListener('click', function () {
+        item.addEventListener('click', function (event) {
+
+            event.preventDefault()
+
             const ITEM = [{
                 src: this.dataset.src,
                 type: 'inline'
@@ -510,7 +513,9 @@ document.addEventListener("DOMContentLoaded", function () {
     /* ======================================================================= */
 
     if (document.querySelector('[data-popup="quiz"]')) {
-        document.querySelector('[data-popup="quiz"]').addEventListener('click', function () {
+        document.querySelector('[data-popup="quiz"]').addEventListener('click', function (event) {
+
+            event.preventDefault()
 
             const ITEMS = [{
                 src: '<div class="box-quiz-popup" ><div id="app-quiz" ></div></div>',

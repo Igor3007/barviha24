@@ -5,14 +5,14 @@ mixin all-offers
         .all-offers__left
           .all-offers__title Мы собрали <br> все предложения <br> <span>в элитных поселках Подмосковья<span>
           .all-offers__btn
-            button.btn.btn-blue Получить презентацию
+            button.btn.btn-blue(data-fancybox="" data-src="#dl-presentationt") Получить презентацию
 
         .all-offers__right
           .all-offers__list
             each item in app.offers
               .all-offers__item: +item-offers(item)
       .all-offers__getpresent
-        button.btn.btn-blue Получить презентацию
+        button.btn.btn-blue(data-fancybox="" data-src="#dl-presentationt")  Получить презентацию
 
 
 mixin item-offers(data)

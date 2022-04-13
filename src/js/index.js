@@ -361,7 +361,9 @@ document.addEventListener("DOMContentLoaded", function () {
   /* ======================================================================= */
   /* ======================================================================= */
 
-  document.querySelector('[data-popup="quiz"]').addEventListener('click', function () {
+  document.querySelector('[data-popup="quiz"]').addEventListener('click', function (event) {
+
+    event.preventDefault()
 
     const ITEMS = [{
       src: '<div class="box-quiz-popup" ><div id="app-quiz" ></div></div>',

@@ -12,15 +12,15 @@ mixin picture2(url)
     source(srcset='/img/crop/w760/'+url+'.jpg' type="image/jpeg" media='(min-width: 480px)')
     img(src='/img/crop/w480/'+url+'.jpg ' loading='lazy' alt='Image')
 
-mixin picture(url)
+mixin picture(url, lazy)
   picture
     source(srcset=''+url+'.webp' type="image/webp" )
-    img(src=''+url+'.jpg' loading='lazy' alt='image')
+    img(src=''+url+'.jpg' loading=(!lazy ? 'lazy':'') alt='image')
 
-mixin picturePng(url)
+mixin picturePng(ur, lazy)
   picture
     source(srcset=''+url+'.webp' type="image/webp" )
-    img(src=''+url+'.png' loading='lazy' alt='image')
+    img(src=''+url+'.png' loading=(!lazy ? 'lazy':'') alt='image')
 
 mixin pictureResp(url)
   picture
