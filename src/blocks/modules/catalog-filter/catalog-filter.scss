@@ -199,7 +199,7 @@
 }
 
 .filetr-clear {
-    padding: 30px 40px;
+    padding: 20px 40px;
     text-align: center;
     font-style: normal;
     font-size: 22px;
@@ -521,6 +521,20 @@
     box-sizing: border-box;
     border-radius: 25px;
 
+    &__view {
+        margin: 20px;
+        display: none;
+
+        @media screen and (max-width: $w940) {
+            display: block;
+        }
+
+        & .btn {
+            width: 100%;
+            text-transform: uppercase;
+        }
+    }
+
     &.open {
         @media screen and (max-width: $w940) {
             position: fixed;
@@ -602,7 +616,7 @@
 
 label.price-toggle {
     display: inline-block;
-    margin-left: auto;
+    margin-left: 0.5em;
 
     & input {
         display: none;
@@ -614,6 +628,7 @@ label.price-toggle {
         font-size: 0.7em;
         line-height: 100%;
         padding: 0.4em 0.8em;
-        border-radius: 6px;
+        border-radius: 0.35em;
+        display: inline-block;
     }
 }

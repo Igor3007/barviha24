@@ -532,6 +532,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.querySelector('.filter-box').classList.remove('open')
                 closeElem.remove()
             })
+
+            //close in view
+
+            document.querySelector('.filter-box__view .btn').addEventListener('click', function () {
+                document.querySelector('.filter-box').classList.remove('open')
+                closeElem.remove()
+            })
         })
 
     }

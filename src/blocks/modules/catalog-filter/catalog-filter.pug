@@ -21,6 +21,8 @@ mixin catalog-filter
               .filter-box__item: +filter-checkbox(app.filter.finish)
               .filter-box__item
                 .filetr-clear Сбросить фильтр
+            .filter-box__view
+              button.btn Показать 10
 
         .catalog-filter__content
           .catalog-filter__topbar
@@ -55,6 +57,9 @@ mixin filter-range-price(data)
 
     .filter-range-price__range
       .filter-range-price__select
+        label.price-toggle
+          input(type="checkbox")
+          span ₽
         label.price-toggle
           input(type="checkbox")
           span за объект

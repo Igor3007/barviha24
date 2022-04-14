@@ -40,6 +40,10 @@
         height: 0;
         z-index: 2;
 
+        @media screen and (max-width: $w480) {
+            top: 12%;
+        }
+
         & .container {
             height: 0;
         }

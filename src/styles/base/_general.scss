@@ -37,6 +37,10 @@ html {
     animation: none !important;
 }
 
+.swiper-container:not(.swiper-initialized) {
+    display: none;
+}
+
 button:active,
 button:hover,
 input:active,

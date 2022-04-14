@@ -1,0 +1,16 @@
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/functions";
+@import "vendor/import/smart-grid";
+@import "base/fonts";
+@import "vendor/import/normalize";
+@import "base/general";
+@import "../blocks/components/components";
+@import "../blocks/modules/common/header/header";
+
+@import "../blocks/modules/first-block/first-block";
+@import "../blocks/modules/v-first-block/v-first-block";
+
+@import "../blocks/modules/card-block/card-block.scss";
+@import "../blocks/modules/card-slider/card-slider.scss";
+@import "../blocks/modules/card-data/card-data.scss";

@@ -1373,6 +1373,13 @@ button.swiper-pagination-bullet {
     Navigation plugin
 */
 
+.not-selectable {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .carousel {
   position: relative;
   box-sizing: border-box;
@@ -1414,6 +1421,9 @@ button.swiper-pagination-bullet {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  /* https://github.com/andreszs/jquery.events.swipe#pointer-event-remarks */
+  touch-action: pan-y;
 }
 
 .has-dots {
@@ -1524,10 +1534,6 @@ button.swiper-pagination-bullet {
   Toolbar plugin
 */
 
-html.with-fancybox {
-  scroll-behavior: auto;
-}
-
 body.compensate-for-scrollbar {
   overflow: hidden !important;
   touch-action: none;
@@ -1566,11 +1572,11 @@ body.compensate-for-scrollbar {
 }
 
 .fancybox__container :focus {
-  outline: none;
+  outline: thin dotted;
 }
 
-body:not(.is-using-mouse) .fancybox__container :focus {
-  box-shadow: 0 0 0 1px #fff, 0 0 0 2px var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
+body.is-using-mouse .fancybox__container :focus {
+  outline: none;
 }
 
 .fancybox__backdrop {
@@ -1621,6 +1627,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   flex-direction: column;
   outline: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
   --carousel-button-width: 36px;
   --carousel-button-height: 36px;
   --carousel-button-svg-width: 22px;
@@ -1644,11 +1651,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   display: flex;
   flex-direction: column;
   z-index: 20;
-}
-
-.fancybox__content :focus:not(.carousel__button.is-close) {
-  outline: thin dotted;
-  box-shadow: none;
 }
 
 .fancybox__caption {
@@ -1698,7 +1700,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
 .fancybox__content > .carousel__button.is-close {
   position: absolute;
-  top: -40px;
+  top: -36px;
   right: 0;
   color: var(--fancybox-color, #fff);
 }
@@ -1929,6 +1931,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
 .fancybox__image {
   transform-origin: 0 0;
+  touch-action: none;
   user-select: none;
   transition: none;
 }
@@ -1946,12 +1949,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 .has-image[data-image-fit="contain"] {
   overflow: visible;
   touch-action: none;
-  /* Fix Mac OS Safari 11 - 13 */
-}
-
-.has-image[data-image-fit="contain"] .fancybox__content {
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .has-image[data-image-fit="contain"] .fancybox__image {
@@ -1995,7 +1992,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 .fancybox__carousel .fancybox__slide.has-pdf .fancybox__content,
 .fancybox__carousel .fancybox__slide.has-video .fancybox__content,
 .fancybox__carousel .fancybox__slide.has-html5video .fancybox__content {
-  max-width: 100%;
   flex-shrink: 1;
   min-height: 1px;
   overflow: visible;
@@ -2085,9 +2081,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
   left: 0;
   right: 0;
   bottom: 0;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--fancybox-accent-color, rgba(34, 213, 233, 0.96));
+  border: 5px solid var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
   opacity: 0;
   transition: opacity 0.15s ease;
   border-radius: var(--fancybox-thumbs-border-radius, 4px);
@@ -2168,7 +2162,7 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 }
 
 .fancybox__progress {
-  background: var(--fancybox-accent-color, rgba(34, 213, 233, 0.96));
+  background: var(--fancybox-accent-color, rgba(1, 210, 232, 0.94));
   height: 3px;
   left: 0;
   position: absolute;
@@ -2208,12 +2202,6 @@ body:not(.is-using-mouse) .fancybox__container :focus {
 
 .fancybox__container.has-slideshow .fancybox__button--slideshow g:nth-child(2) {
   display: block;
-}
-
-h1,
-h3,
-p {
-  text-align: center;
 }
 
 @keyframes left {
@@ -3185,6 +3173,10 @@ html {
 .perf-no-animation * {
   transition: none !important;
   animation: none !important;
+}
+
+.swiper-container:not(.swiper-initialized) {
+  display: none;
 }
 
 button:active,
@@ -7555,7 +7547,7 @@ footer a {
 }
 
 .filetr-clear {
-  padding: 30px 40px;
+  padding: 20px 40px;
   text-align: center;
   font-style: normal;
   font-size: 22px;
@@ -7817,6 +7809,16 @@ footer a {
   border-radius: 25px;
 }
 
+.filter-box__view {
+  margin: 20px;
+  display: none;
+}
+
+.filter-box__view .btn {
+  width: 100%;
+  text-transform: uppercase;
+}
+
 .filter-box__item:last-child > div {
   border-bottom: none;
 }
@@ -7832,7 +7834,7 @@ footer a {
 
 label.price-toggle {
   display: inline-block;
-  margin-left: auto;
+  margin-left: 0.5em;
 }
 
 label.price-toggle input {
@@ -7845,7 +7847,8 @@ label.price-toggle span {
   font-size: 0.7em;
   line-height: 100%;
   padding: 0.4em 0.8em;
-  border-radius: 6px;
+  border-radius: 0.35em;
+  display: inline-block;
 }
 
 .quiz-block {
@@ -9889,6 +9892,10 @@ label.price-toggle span {
     padding: 5.625rem 0;
   }
 
+  .filter-box__view {
+    display: block;
+  }
+
   .filter-box.open {
     position: fixed;
     left: 0;
@@ -10890,6 +10897,10 @@ label.price-toggle span {
     font-size: 22px;
   }
 
+  .minicard__props li {
+    font-size: 14px;
+  }
+
   .minicard__rub {
     font-size: 22px;
   }
@@ -10967,6 +10978,10 @@ label.price-toggle span {
 
   .inmap-block__title {
     font-size: 24px;
+  }
+
+  .inmap-block__filter {
+    top: 12%;
   }
 
   .inmap-filter {

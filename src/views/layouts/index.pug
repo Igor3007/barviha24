@@ -32,12 +32,10 @@ html(lang="ru")
 
     link(rel="preload" href="/fonts/Gilroy/Gilroy-SemiBold.woff2")
     link(rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff2")
-    link(rel="preload" href="/styles/main.css")
     link(rel="prefetch" href="/img/sprites/sprite.svg")
-
     link(rel="dns-prefetch" href="//api-maps.yandex.ru")
     style
-      include ../../styles/base/_critical.scss
+      include ../../../dist/styles/critical.min.css
 
 
   body.perf-no-animation
@@ -49,11 +47,12 @@ html(lang="ru")
     footer
       block footer
         include ../../blocks/modules/common/footer/footer.pug
+    link(rel="stylesheet" href="/styles/main.css")
     block scripts
       
       script(src="js/vendor.js")
       script(src="js/common.js")
 
-    link(rel="stylesheet" href="/styles/main.css")
+    
 
 
