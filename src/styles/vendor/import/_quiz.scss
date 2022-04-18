@@ -331,6 +331,7 @@ $gray: #3D3D3D;
                                 border-left: 2px solid #fff;
                                 border-bottom: 2px solid #fff;
                                 transform: rotate(-45deg);
+                                box-sizing: content-box;
 
                                 @media screen and (max-width: $w1376) {
                                     width: 8px;

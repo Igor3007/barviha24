@@ -1954,6 +1954,23 @@ header.fixed .header__msgr svg {
   position: relative;
 }
 
+.first-block__all {
+  width: 100%;
+  background-color: rgba(0, 62, 70, 0.5);
+}
+
+.first-block__all .container {
+  padding-top: 0;
+  justify-content: flex-end;
+  display: flex;
+  padding-bottom: 35px;
+  width: 100%;
+}
+
+.first-block__all .btn {
+  font-size: 16px;
+}
+
 .get-present {
   width: 330px;
   height: 330px;
@@ -2055,6 +2072,7 @@ header.fixed .header__msgr svg {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 4px;
 }
 
 .card-vilage:hover a {
@@ -2229,7 +2247,6 @@ header.fixed .header__msgr svg {
 .v-first-block__button .btn {
   background-color: #fff;
   color: #000;
-  height: 80px;
 }
 
 .v-first-block__button div {
@@ -2603,6 +2620,172 @@ header.fixed .header__msgr svg {
   font-size: 1.375rem;
 }
 
+.vilages-block__bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  background-color: #646464;
+}
+
+.vilages-block__bg picture {
+  position: relative;
+  display: block;
+}
+
+.vilages-block__bg picture::before {
+  content: '';
+  background: white;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #646464 95%);
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  position: absolute;
+  z-index: 2;
+  height: 50%;
+}
+
+.vilages-block__bg picture img {
+  position: relative;
+  z-index: 1;
+}
+
+.vilages-block__content {
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 6.875rem 0;
+}
+
+.vilages-block__list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -0.6875rem;
+}
+
+.vilages-block__item {
+  width: 100%;
+}
+
+.vilages-block__head {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em 0 2.5em 0;
+  font-size: 28px;
+  color: #fff;
+  align-items: center;
+}
+
+.vilages-block__breadcrumbs ul {
+  display: flex;
+}
+
+.vilages-block__breadcrumbs ul li {
+  display: flex;
+  align-items: center;
+}
+
+.vilages-block__breadcrumbs ul li a {
+  color: #fff;
+}
+
+.vilages-block__breadcrumbs ul li a:hover {
+  text-decoration: underline;
+}
+
+.vilages-block__breadcrumbs ul li::after {
+  content: '/';
+  margin: 0 0.3em;
+  margin-bottom: -2px;
+}
+
+.vilages-block__breadcrumbs ul li:last-child::after {
+  display: none;
+}
+
+.vilages-block__find {
+  width: 100%;
+}
+
+.vilages-block__find input {
+  font-size: 22px;
+  border-radius: 100px;
+  padding: 0.5em 1.5em;
+  border: none;
+  border: 2px solid #fff;
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+}
+
+.sr-item {
+  padding: 0.6875rem;
+  position: relative;
+}
+
+.sr-item:hover .sr-item__link {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.sr-item:hover .sr-item__link a span {
+  transform: translateY(-0.3em);
+}
+
+.sr-item__image {
+  position: relative;
+  z-index: 1;
+}
+
+.sr-item__image .bgimage {
+  padding-top: 65%;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+  transition: 0.3s ease;
+  background-color: #757575;
+}
+
+.sr-item__link {
+  background: rgba(0, 0, 0, 0.5);
+  left: 0.6875rem;
+  top: 0.6875rem;
+  right: 0.6875rem;
+  bottom: 0.6875rem;
+  position: absolute;
+  z-index: 2;
+  transition: 0.3s ease-in;
+}
+
+.sr-item__link a {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sr-item__link a span {
+  font-weight: 600;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: 0.2s ease-in;
+  display: block;
+  max-width: 90%;
+  text-align: center;
+  line-height: 120%;
+}
+
+@media screen and (min-width: 480.98px) {
+  .vilages-block__item {
+    width: 50%;
+  }
+}
+
 @media screen and (min-width: 580px) {
   .card-slider__thumbs .swiper-container {
     padding: 2px;
@@ -2637,11 +2820,27 @@ header.fixed .header__msgr svg {
   .card-block__data {
     padding-left: 1.875rem;
   }
+
+  .vilages-block__item {
+    width: 33.33%;
+  }
 }
 
 @media screen and (min-width: 1025px) {
   .hidden {
     margin-right: 17px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .vilages-block__item {
+    width: 25%;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .first-block__all .btn {
+    font-size: 20px;
   }
 }
 
@@ -2741,6 +2940,19 @@ header.fixed .header__msgr svg {
 
   .card-vilage__link a {
     font-weight: 500;
+  }
+
+  .vilages-block__head {
+    font-size: 18px;
+  }
+
+  .vilages-block__find input {
+    font-size: 18px;
+    max-width: 350px;
+  }
+
+  .sr-item__link a span {
+    font-size: 18px;
   }
 }
 
@@ -2905,6 +3117,18 @@ header.fixed .header__msgr svg {
   .card-block__data {
     padding-top: 2.5rem;
   }
+
+  .vilages-block__content {
+    padding: 5.625rem 0;
+  }
+
+  .vilages-block__head {
+    padding: 2.5em 0 2em 0;
+  }
+
+  .sr-item__link a span {
+    font-size: 16px;
+  }
 }
 
 @media screen and (max-width: 769px) {
@@ -3016,6 +3240,23 @@ header.fixed .header__msgr svg {
     justify-content: space-between;
     flex-wrap: wrap;
   }
+
+  .vilages-block__head {
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 3.5em 0 1.5em 0;
+  }
+
+  .vilages-block__find {
+    padding-top: 25px;
+  }
+
+  .vilages-block__find input {
+    margin-right: auto;
+    margin-left: 0;
+    max-width: 100%;
+  }
 }
 
 @media screen and (max-width: 580px) {
@@ -3102,6 +3343,10 @@ header.fixed .header__msgr svg {
 
   .card-slider__thumbs {
     padding-top: 0.5625rem;
+  }
+
+  .vilages-block__content {
+    padding: 5.625rem 0;
   }
 }
 
@@ -3194,6 +3439,11 @@ header.fixed .header__msgr svg {
     padding: 0 0 0 9px;
   }
 
+  .first-block__all .container {
+    justify-content: center;
+    padding-bottom: 30px;
+  }
+
   .get-present {
     width: 200px;
     height: 200px;
@@ -3252,6 +3502,21 @@ header.fixed .header__msgr svg {
 
   .card-slider .swiper-bottombar {
     padding: 0.625rem;
+  }
+
+  .vilages-block__list {
+    margin: 0 -0.5rem;
+  }
+
+  .sr-item {
+    padding: 0.5rem;
+  }
+
+  .sr-item__link {
+    left: 0.5rem;
+    top: 0.5rem;
+    right: 0.5rem;
+    bottom: 0.5rem;
   }
 }
 

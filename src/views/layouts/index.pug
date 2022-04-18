@@ -32,13 +32,13 @@ html(lang="ru")
 
     link(rel="preload" href="/fonts/Gilroy/Gilroy-SemiBold.woff2")
     link(rel="preload" href="/fonts/Gilroy/Gilroy-Regular.woff2")
-    link(rel="prefetch" href="/img/sprites/sprite.svg")
-    link(rel="dns-prefetch" href="//api-maps.yandex.ru")
+    link(rel="prefetch" href="/img/sprites/sprite.svg") 
+    link(rel="dns-prefetch" href="//api-maps.yandex.ru") 
     style
-      include ../../../dist/styles/critical.min.css
+      include ../../../dist/styles/critical.css 
 
 
-  body.perf-no-animation
+  body.perf-no-animation 
     header
       block header
         include ../../blocks/modules/common/header/header.pug
@@ -47,7 +47,7 @@ html(lang="ru")
     footer
       block footer
         include ../../blocks/modules/common/footer/footer.pug
-    link(rel="stylesheet" href="/styles/main.css")
+    link(rel="stylesheet" href="/styles/main.css") 
     block scripts
       
       script(src="js/vendor.js")

@@ -19,6 +19,9 @@ mixin first-block ()
             .swiper-nav-default
               .swiper-nav-default__prev(data-swiper-prev="vilages"): +icons('#ic_swiper-prev', 22)
               .swiper-nav-default__next(data-swiper-next="vilages"): +icons('#ic_swiper-next', 22) 
+        .first-block__all
+          .container
+            a(href='vilages.html'): button.btn Все поселки
 
 
 
@@ -34,7 +37,7 @@ mixin get-present()
 mixin card-vilage(data)
   .card-vilage
     .card-vilage__image
-      a(href='#' title=data.link)
+      a(href='vilage.html' title=data.link)
         +picture('/img/home/card-vilage')
     .card-vilage__link
-      a(href='#')= data.link
+      a(href='vilage.html')= data.link

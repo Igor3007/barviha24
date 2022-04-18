@@ -7,10 +7,12 @@
 @import "base/general";
 @import "../blocks/components/components";
 @import "../blocks/modules/common/header/header";
-
+//index
 @import "../blocks/modules/first-block/first-block";
 @import "../blocks/modules/v-first-block/v-first-block";
-
+//detail village
 @import "../blocks/modules/card-block/card-block.scss";
 @import "../blocks/modules/card-slider/card-slider.scss";
 @import "../blocks/modules/card-data/card-data.scss";
+//all village
+@import "../blocks/modules/vilages-block/vilages-block.scss";

@@ -2443,6 +2443,7 @@ body.is-using-mouse .fancybox__container :focus {
   border-left: 2px solid #fff;
   border-bottom: 2px solid #fff;
   transform: rotate(-45deg);
+  box-sizing: content-box;
 }
 
 .pf-radio {
@@ -5087,6 +5088,23 @@ footer a {
   position: relative;
 }
 
+.first-block__all {
+  width: 100%;
+  background-color: rgba(0, 62, 70, 0.5);
+}
+
+.first-block__all .container {
+  padding-top: 0;
+  justify-content: flex-end;
+  display: flex;
+  padding-bottom: 35px;
+  width: 100%;
+}
+
+.first-block__all .btn {
+  font-size: 16px;
+}
+
 .get-present {
   width: 330px;
   height: 330px;
@@ -5188,6 +5206,7 @@ footer a {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  padding-bottom: 4px;
 }
 
 .card-vilage:hover a {
@@ -5362,7 +5381,6 @@ footer a {
 .v-first-block__button .btn {
   background-color: #fff;
   color: #000;
-  height: 80px;
 }
 
 .v-first-block__button div {
@@ -7103,6 +7121,7 @@ footer a {
   padding-bottom: 1.5625rem;
   position: relative;
   z-index: 4;
+  line-height: 100%;
 }
 
 .banner-presentation__desc {
@@ -7126,6 +7145,8 @@ footer a {
   margin-top: 1.5625rem;
   background-color: #fff;
   color: #000;
+  font-size: 22px;
+  height: auto;
 }
 
 .banner-presentation__form .form input {
@@ -7133,7 +7154,7 @@ footer a {
   border: none;
   border-radius: 0.625rem;
   background-color: #F4F4F4;
-  font-size: 1.375rem;
+  font-size: 1.125rem;
   transition: 0.4s ease;
 }
 
@@ -8316,6 +8337,14 @@ label.price-toggle span {
   background-color: #1f1e1e;
 }
 
+.box-quiz-popup:not(.quiz--loaded)::before {
+  content: '';
+  width: 100vw;
+  max-width: 100%;
+  height: 69vh;
+  display: block;
+}
+
 @media screen and (min-width: 375.98px) {
   .surroundings-block__item:nth-child(even) .surroundings-item {
     flex-direction: row-reverse;
@@ -8699,6 +8728,10 @@ label.price-toggle span {
 }
 
 @media screen and (min-width: 1440px) {
+  .first-block__all .btn {
+    font-size: 20px;
+  }
+
   .popup-presentation .banner-presentation {
     padding-top: 7.5rem;
     padding-bottom: 7.5rem;
@@ -10742,6 +10775,11 @@ label.price-toggle span {
     width: 100%;
     max-width: 100%;
     padding: 0 0 0 9px;
+  }
+
+  .first-block__all .container {
+    justify-content: center;
+    padding-bottom: 30px;
   }
 
   .get-present {

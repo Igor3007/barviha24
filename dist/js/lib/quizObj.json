@@ -53,7 +53,7 @@
     "question": "Напишите комментарий, если он у вас есть",
     "type": "text",
     "desc": false,
-    "multiple": true,
+    "multiple": false,
     "skip": true,
     "option": [{
         "title": ""

@@ -124,6 +124,8 @@
                 this.$emit('on_change_result', {
                     value: array
                 })
+
+                console.log(array)
             },
 
             selfOption: function (event) {
@@ -158,7 +160,7 @@
                       </label>
 
                       <label v-else >
-                          <input @change="changeResult()" type="checkbox" name="answer">
+                          <input @change="changeResult($event)" type="checkbox" name="answer">
                           <div class="pf-radio"><span class="pf-radio__elem"> </span><span class="pf-radio__text">
                               <input type="text" v-model="selfOptionText" placeholder="Другое"></span></div>
                       </label>
@@ -278,7 +280,8 @@
 
         mounted: function () {
 
-            // this.changeResult()
+            this.$el.classList.add('pf-quiz--loaded')
+            this.$el.parentNode.classList.add('quiz--loaded')
         },
 
         methods: {
@@ -324,12 +327,16 @@
                         this.disableNavNext = false;
 
                         // если один вариант то перейти к след вопросу
-                        if (!this.SLIDES[this.activeSlide]['multiple'] && this.SLIDES[this.activeSlide]['type'] == 'text') {
+                        if (!this.SLIDES[this.activeSlide]['multiple'] && this.SLIDES[this.activeSlide]['type'] == 'text' && this.SLIDES[this.activeSlide]['option'].length > 1) {
                             this.nextSlide()
                         }
 
                     } else {
-                        this.disableNavNext = true;
+
+                        // если можно пропустить, то пропускаем 
+                        if (!this.SLIDES[this.activeSlide]['skip']) {
+                            this.disableNavNext = true;
+                        }
                     }
                 }
             },
@@ -345,6 +352,7 @@
             stepActive: function () {
                 return this.activeSlide + 1
             },
+
             stepTotal: function () {
                 return this.SLIDES.length
             }

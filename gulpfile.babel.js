@@ -100,11 +100,11 @@ export {
     paths
 };
 
-export const development = gulp.series("clean", "smart-grid",
-    gulp.parallel(["views", "styles", "vendor", "common", "images", "webp", "libs", "sprites", "fonts", "favicons"]),
+export const development = gulp.series("clean", "smart-grid", "styles",
+    gulp.parallel(["views", "vendor", "common", "images", "webp", "libs", "sprites", "fonts", "favicons"]),
     gulp.parallel("serve"));
 
 export const prod = gulp.series("clean",
-    gulp.series(["views", "styles", "vendor", "common", "images", "webp", "sprites", "libs", "fonts", "favicons", "gzip"]));
+    gulp.series(["styles", "views", "vendor", "common", "images", "webp", "sprites", "libs", "fonts", "favicons", "gzip"]));
 
 export default development;
